@@ -1,0 +1,75 @@
+---
+// Componente: Hero con flyer del evento
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="flyer-container">
+        <img src="/images/flyer.jpg" alt="Flyer XXXI Encuentro Nacional de Escoltas y Bandas de Guerra TecNM 2026" class="flyer-image" />
+      </div>
+      <div class="cta-buttons">
+        <a href="#evento" class="btn btn-primary">Información del Evento</a>
+        <a href="#escuelas" class="btn btn-secondary">Escuelas Participantes</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, rgba(93, 133, 166, 0.08), rgba(94, 126, 139, 0.05));
+    padding: 3rem 0;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .flyer-container {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .flyer-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+  }
+
+  .flyer-note {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    font-style: italic;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 2rem 0;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .btn {
+      width: 100%;
+    }
+  }
+</style>

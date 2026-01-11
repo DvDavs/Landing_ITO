@@ -1,0 +1,235 @@
+---
+// Componente: Sección de escuelas participantes
+import schools from '../data/schools.json';
+---
+
+<section id="escuelas" class="schools-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="text-center">Escuelas Participantes</h2>
+      <p class="text-center subtitle">40 Institutos Tecnológicos Clasificados</p>
+      <div class="info-box">
+        <p>
+          Los siguientes 40 Institutos Tecnológicos se clasificaron con los más altos puntajes en los 
+          Encuentros Regionales 2025. Cada institución participa con su Escolta y Banda de Guerra.
+        </p>
+      </div>
+    </div>
+
+    <div class="search-box">
+      <input 
+        type="text" 
+        id="schoolSearch" 
+        placeholder="Buscar instituto tecnológico..." 
+        class="search-input"
+      />
+    </div>
+
+    <div class="schools-grid" id="schoolsGrid">
+      {schools.map((school) => (
+        <div class="school-card" data-school-name={school.name.toLowerCase()}>
+          <div class="school-header">
+            <div class="school-number">#{school.id}</div>
+            <span class="badge badge-primary">{school.region}</span>
+          </div>
+          <div class="school-content">
+            <h3>{school.name}</h3>
+            <p class="school-short-name">{school.shortName}</p>
+            <p class="school-description">{school.description}</p>
+            {school.website && (
+              <a href={school.website} target="_blank" rel="noopener noreferrer" class="school-link">
+                Sitio web oficial →
+              </a>
+            )}
+          </div>
+          <div class="school-footer">
+            <div class="participation">
+              <span class="icon">🎖️</span> Escolta
+            </div>
+            <div class="participation">
+              <span class="icon">🥁</span> Banda de Guerra
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div id="noResults" class="no-results" style="display: none;">
+      <p>No se encontraron institutos que coincidan con la búsqueda.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Funcionalidad de búsqueda
+  const searchInput = document.getElementById('schoolSearch');
+  const schoolsGrid = document.getElementById('schoolsGrid');
+  const noResults = document.getElementById('noResults');
+  const schoolCards = document.querySelectorAll('.school-card');
+
+  searchInput?.addEventListener('input', (e) => {
+    const searchTerm = (e.target as HTMLInputElement).value.toLowerCase();
+    let visibleCount = 0;
+
+    schoolCards.forEach((card) => {
+      const schoolName = card.getAttribute('data-school-name') || '';
+      if (schoolName.includes(searchTerm)) {
+        (card as HTMLElement).style.display = 'block';
+        visibleCount++;
+      } else {
+        (card as HTMLElement).style.display = 'none';
+      }
+    });
+
+    if (visibleCount === 0) {
+      if (noResults) noResults.style.display = 'block';
+      if (schoolsGrid) schoolsGrid.style.display = 'none';
+    } else {
+      if (noResults) noResults.style.display = 'none';
+      if (schoolsGrid) schoolsGrid.style.display = 'grid';
+    }
+  });
+</script>
+
+<style>
+  .schools-section {
+    padding: 4rem 0;
+    background: linear-gradient(to bottom, #ffffff, #f8f8f8);
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .search-box {
+    max-width: 600px;
+    margin: 0 auto 3rem;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border: 2px solid var(--color-border);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: var(--color-tecnm-primary);
+    box-shadow: 0 0 0 3px rgba(27, 57, 106, 0.1);
+  }
+
+  .schools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .school-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid var(--color-primary);
+  }
+
+  .school-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .school-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .school-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .school-content h3 {
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+
+  .school-short-name {
+    font-weight: 600;
+    color: var(--color-accent);
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .school-description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-text-light);
+    margin-bottom: 1rem;
+  }
+
+  .school-link {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-top: 0.5rem;
+  }
+
+  .school-footer {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .participation {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    font-weight: 500;
+  }
+
+  .participation .icon {
+    font-size: 1.25rem;
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 3rem;
+    color: var(--color-text-light);
+    font-size: 1.125rem;
+  }
+
+  @media (max-width: 768px) {
+    .schools-section {
+      padding: 2rem 0;
+    }
+
+    .schools-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .search-box {
+      margin-bottom: 2rem;
+    }
+  }
+</style>

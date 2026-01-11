@@ -1,0 +1,128 @@
+[
+  {
+    "id": 1,
+    "name": "Oaxaca de Juárez",
+    "president": "Raymundo Chagoya Villanueva",
+    "type": "Capital",
+    "description": "Capital del estado de Oaxaca, reconocida por su riqueza cultural, gastronómica y arquitectónica. Centro neurálgico del evento y sede principal de las competencias.",
+    "heritage": "Patrimonio Cultural de la Humanidad por la UNESCO",
+    "highlights": [
+      "Centro Histórico Colonial",
+      "Templo de Santo Domingo",
+      "Zócalo de Oaxaca",
+      "Museos de arte prehispánico",
+      "Gastronomía reconocida mundialmente"
+    ],
+    "culturalNote": "Cuna de grandes personajes históricos como Benito Juárez y José Vasconcelos."
+  },
+  {
+    "id": 2,
+    "name": "San Pablo Villa de Mitla",
+    "president": "Esaú López Quero",
+    "type": "Pueblo Mágico",
+    "description": "Reconocido como uno de los sitios arqueológicos más importantes de Oaxaca. Famoso por sus grecas únicas en la arquitectura zapoteca.",
+    "heritage": "Zona arqueológica de importancia nacional",
+    "highlights": [
+      "Zona arqueológica de Mitla",
+      "Grecas zapotecas únicas",
+      "Templo de San Pablo",
+      "Artesanías textiles",
+      "Mezcal tradicional"
+    ],
+    "culturalNote": "Mitla significa 'Lugar de los Muertos' en náhuatl. Importante centro ceremonial zapoteco."
+  },
+  {
+    "id": 3,
+    "name": "San Jacinto Amilpas",
+    "president": "Fidel Alejandro Díaz Díaz",
+    "type": "Municipio",
+    "description": "Municipio conurbado a la ciudad de Oaxaca, conocido por su desarrollo comercial y cercanía con las principales vías de comunicación.",
+    "heritage": "Zona de crecimiento metropolitano",
+    "highlights": [
+      "Templo de San Jacinto",
+      "Mercados locales",
+      "Gastronomía tradicional",
+      "Artesanías locales"
+    ],
+    "culturalNote": "Parte importante de la zona metropolitana de Oaxaca, en constante desarrollo."
+  },
+  {
+    "id": 4,
+    "name": "Santa Cruz Xoxocotlán",
+    "president": "Nancy Natalia Benítez Zárate",
+    "type": "Municipio",
+    "description": "Municipio conocido por su aeropuerto internacional y su rica tradición en la celebración del Día de Muertos.",
+    "heritage": "Tradiciones vivas del Día de Muertos",
+    "highlights": [
+      "Aeropuerto Internacional de Oaxaca",
+      "Celebración del Día de Muertos",
+      "Templo colonial",
+      "Mercado de artesanías",
+      "Gastronomía local"
+    ],
+    "culturalNote": "Puerta de entrada aérea al estado de Oaxaca."
+  },
+  {
+    "id": 5,
+    "name": "San Sebastián Tutla",
+    "president": "Alejandro Fernández García Vásquez",
+    "type": "Municipio",
+    "description": "Municipio estratégicamente ubicado en la carretera Panamericana, conocido por su desarrollo industrial y comercial.",
+    "heritage": "Zona industrial de los Valles Centrales",
+    "highlights": [
+      "Corredor industrial",
+      "Templo de San Sebastián",
+      "Comercio regional",
+      "Gastronomía tradicional"
+    ],
+    "culturalNote": "Importante punto de desarrollo económico de la región."
+  },
+  {
+    "id": 6,
+    "name": "Santa María El Tule",
+    "president": "Filemón Gómez Soto",
+    "type": "Pueblo Mágico",
+    "description": "Hogar del famoso Árbol del Tule, uno de los árboles más anchos del mundo con más de 2,000 años de antigüedad.",
+    "heritage": "Árbol del Tule - Patrimonio natural",
+    "highlights": [
+      "Árbol del Tule (ahuehuete milenario)",
+      "Templo colonial",
+      "Mercado de artesanías",
+      "Gastronomía local",
+      "Tallado en madera"
+    ],
+    "culturalNote": "El Árbol del Tule tiene un diámetro de más de 14 metros y es considerado el árbol con el tronco más grueso del mundo."
+  },
+  {
+    "id": 7,
+    "name": "Cuilápam de Guerrero",
+    "president": "Mayra Silva Fernández",
+    "type": "Municipio Histórico",
+    "description": "Municipio de gran importancia histórica, hogar del Ex Convento de Santiago Apóstol, donde fue fusilado Vicente Guerrero.",
+    "heritage": "Ex Convento declarado Monumento Histórico",
+    "highlights": [
+      "Ex Convento de Santiago Apóstol (siglo XVI)",
+      "Sitio histórico del fusilamiento de Vicente Guerrero",
+      "Arquitectura dominica",
+      "Capilla abierta monumental",
+      "Ruinas coloniales"
+    ],
+    "culturalNote": "Lugar de gran importancia en la historia de México, vinculado a la Independencia."
+  },
+  {
+    "id": 8,
+    "name": "Santa María Atzompa",
+    "president": "Juan Justino López Torres",
+    "type": "Municipio Artesanal",
+    "description": "Reconocido por su tradición alfarera y cerámica de barro verde vidriado. También cuenta con una importante zona arqueológica.",
+    "heritage": "Alfarería tradicional y zona arqueológica",
+    "highlights": [
+      "Cerámica de barro verde vidriado",
+      "Zona arqueológica de Atzompa",
+      "Talleres artesanales",
+      "Museo comunitario",
+      "Vista panorámica de Monte Albán"
+    ],
+    "culturalNote": "La alfarería de Atzompa es Patrimonio Cultural Inmaterial. La zona arqueológica fue centro ceremonial zapoteco."
+  }
+]

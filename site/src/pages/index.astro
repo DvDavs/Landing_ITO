@@ -1,0 +1,671 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { ViewTransitions } from 'astro:transitions';
+---
+
+<BaseLayout 
+  title="Inicio - XXXI Encuentro Nacional de Escoltas y Bandas de Guerra TecNM 2026"
+  description="Bienvenido al XXXI Encuentro Nacional de Escoltas y Bandas de Guerra del Tecnológico Nacional de México 2026, sede Instituto Tecnológico de Oaxaca. 22-26 de Febrero de 2026."
+>
+  <!-- Hero Section con Flyer -->
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-text">
+            <span class="hero-badge">22 - 26 de Febrero de 2026</span>
+            <h1 class="hero-title">
+              XXXI Encuentro Nacional de Escoltas y Bandas de Guerra
+            </h1>
+            <p class="hero-subtitle">
+              Tecnológico Nacional de México
+            </p>
+            <div class="hero-info">
+              <div class="hero-info-item">
+                <span class="info-label">Sede Anfitriona</span>
+                <span class="info-value">Instituto Tecnológico de Oaxaca</span>
+              </div>
+              <div class="hero-info-item">
+                <span class="info-label">Participantes</span>
+                <span class="info-value">40 Institutos Tecnológicos</span>
+              </div>
+            </div>
+            <div class="hero-actions">
+              <a href="/evento" class="btn btn-primary btn-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                Información del Evento
+              </a>
+              <a href="/escuelas" class="btn btn-outline btn-lg btn-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                Escuelas Participantes
+              </a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <img src="/images/flyer.jpg" alt="XXXI Encuentro Nacional de Escoltas y Bandas de Guerra" class="flyer-image" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-wave">
+      <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z" fill="white"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Comunicado Oficial -->
+  <section class="official-statement">
+    <div class="container-narrow">
+      <div class="statement-card animate-scale-in">
+        <div class="statement-header">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="statement-icon">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          <h2>Comunicado Oficial</h2>
+          <p class="statement-subtitle">Tecnológico Nacional de México</p>
+        </div>
+        <div class="statement-body">
+          <p class="lead">
+            El Tecnológico Nacional de México felicita a todos los Institutos Tecnológicos Federales y Descentralizados que participaron en los Encuentros Regionales de Escoltas y Bandas de Guerra 2025 en los Institutos Tecnológicos sedes por las regiones norte, centro y sur del país: I.T de Saltillo, I.T. de Celaya e I.T. de Orizaba respectivamente.
+          </p>
+          <p>
+            Todos participando con la mayor disciplina, entrenamiento y compromiso cívico. Reconocemos con respeto y agrado la responsabilidad social demostrada y compartida con las comunidades más vulnerables.
+          </p>
+          <p>
+            Así mismo felicitamos a los promotores cívicos por su liderazgo al fomentar altos valores patrios y cívicos en la comunidad estudiantil del Tecnológico Nacional de México y en especial en quienes forman parte de un grupo cívico, gracias a los directivos por incentivar la creatividad y la búsqueda constante en mejorar cada día el trabajo en estas disciplinas cívicas.
+          </p>
+          <div class="statement-highlight">
+            <div class="highlight-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+            </div>
+            <p class="highlight-text">
+              Felicidades a los 40 Institutos Tecnológicos que por el puntaje alcanzado participarán en el XXXI Encuentro Nacional de Escoltas y Bandas de Guerra TecNM 2026 en el Instituto Tecnológico de Oaxaca del 22 al 26 de febrero de 2026.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Características -->
+  <section class="features-section section-alt">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-badge">Un Evento Nacional</span>
+        <h2>Excelencia Cívica y Competitividad</h2>
+        <p class="lead">
+          El encuentro más importante de escoltas y bandas de guerra del Tecnológico Nacional de México
+        </p>
+      </div>
+      
+      <div class="grid grid-3">
+        <div class="feature-card card">
+          <div class="feature-icon feature-icon-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3>40 Instituciones</h3>
+          <p>
+            Institutos Tecnológicos de todo México se darán cita en Oaxaca para demostrar su talento y disciplina cívica.
+          </p>
+          <a href="/escuelas" class="btn btn-ghost">
+            Ver participantes
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </a>
+        </div>
+
+        <div class="feature-card card">
+          <div class="feature-icon feature-icon-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <h3>Competencia de Alto Nivel</h3>
+          <p>
+            Escoltas y bandas de guerra demostrarán su preparación en un ambiente de respeto y excelencia.
+          </p>
+          <a href="/evento" class="btn btn-ghost">
+            Más información
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </a>
+        </div>
+
+        <div class="feature-card card">
+          <div class="feature-icon feature-icon-accent">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <h3>Oaxaca te Recibe</h3>
+          <p>
+            Descubre la riqueza cultural de Oaxaca y sus municipios durante tu participación en el encuentro.
+          </p>
+          <a href="/sedes" class="btn btn-ghost">
+            Conoce las sedes
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Logística -->
+  <section class="logistics-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-badge">Planifica tu Visita</span>
+        <h2>Información Logística</h2>
+        <p class="lead">
+          Todo lo que necesitas saber para tu participación en el encuentro
+        </p>
+      </div>
+      
+      <div class="grid grid-2">
+        <div class="logistics-card card hover-lift">
+          <div class="logistics-card-image aspect-video">
+            <img src="/images/hoteles/WhatsApp Image 2026-01-06 at 5.40.02 PM.jpeg" alt="Hoteles en Oaxaca" class="img-cover img-rounded" />
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Hospedaje</h3>
+            <p>
+              Consulta las opciones de hoteles disponibles con tarifas especiales para los participantes del encuentro.
+            </p>
+            <ul class="logistics-list">
+              <li>Tarifas preferenciales</li>
+              <li>Ubicaciones cercanas al evento</li>
+              <li>Diferentes categorías y presupuestos</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <a href="/hoteles" class="btn btn-primary w-full">
+              Ver opciones de hoteles
+            </a>
+          </div>
+        </div>
+
+        <div class="logistics-card card hover-lift">
+          <div class="logistics-card-image aspect-video">
+            <img src="/images/sedes/WhatsApp Image 2026-01-10 at 1.30.03 PM.jpeg" alt="Municipios de Oaxaca" class="img-cover img-rounded" />
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Sedes y Municipios</h3>
+            <p>
+              Conoce los municipios participantes y las sedes donde se llevarán a cabo las competencias.
+            </p>
+            <ul class="logistics-list">
+              <li>8 municipios anfitriones</li>
+              <li>Historia y cultura de cada sede</li>
+              <li>Mapas y ubicaciones</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <a href="/sedes" class="btn btn-primary w-full">
+              Explorar sedes
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta-section section-primary">
+    <div class="container">
+      <div class="cta-content text-center">
+        <h2>¿Listo para Participar?</h2>
+        <p class="lead">
+          Mantente informado sobre el proceso de registro y actualizaciones del evento
+        </p>
+        <div class="cta-buttons">
+          <a href="/registro" class="btn btn-lg" style="background: white; color: #1B396A;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="8.5" cy="7" r="4"></circle>
+              <polyline points="17 11 19 13 23 9"></polyline>
+            </svg>
+            Información de Registro
+          </a>
+          <a href="/galeria" class="btn btn-outline btn-lg" style="border-color: white; color: white;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <circle cx="8.5" cy="8.5" r="1.5"></circle>
+              <polyline points="21 15 16 10 5 21"></polyline>
+            </svg>
+            Ver Galería
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    position: relative;
+    background: linear-gradient(135deg, #5D85A6 0%, #4a6b85 100%);
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(197, 155, 109, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(94, 126, 139, 0.2) 0%, transparent 50%);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 6rem 0 8rem;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+  }
+
+  .hero-text {
+    color: white;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    margin-bottom: var(--spacing-md);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    margin-bottom: var(--spacing-sm);
+    color: white;
+    font-weight: 800;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-weight: 300;
+    margin-bottom: var(--spacing-lg);
+    color: #C59B6D;
+  }
+
+  .hero-info {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+  }
+
+  .hero-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .info-label {
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+  }
+
+  .info-value {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+  }
+
+  .btn-white {
+    background: transparent;
+    color: white;
+    border-color: white;
+  }
+
+  .btn-white:hover {
+    background: white;
+    color: #1B396A;
+    border-color: white;
+  }
+
+  .hero-image {
+    position: relative;
+  }
+
+  .flyer-image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-xl);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .hero-wave {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+  }
+
+  .hero-wave svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Official Statement */
+  .official-statement {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .statement-card {
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+  }
+
+  .statement-header {
+    background: linear-gradient(135deg, #1B396A 0%, #152d52 100%);
+    color: white;
+    padding: var(--spacing-lg);
+    text-align: center;
+  }
+
+  .statement-icon {
+    margin: 0 auto var(--spacing-sm);
+    stroke: #C59B6D;
+  }
+
+  .statement-header h2 {
+    color: white;
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+  }
+
+  .statement-subtitle {
+    color: #C59B6D;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .statement-body {
+    padding: var(--spacing-lg);
+  }
+
+  .statement-body p {
+    margin-bottom: var(--spacing-md);
+    text-align: justify;
+  }
+
+  .statement-highlight {
+    display: flex;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+    border-top: 2px solid #e5e7eb;
+    border-bottom: 2px solid #e5e7eb;
+    background: transparent;
+  }
+
+  .highlight-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #C59B6D 0%, #b88a5a 100%);
+    border-radius: var(--radius-lg);
+    color: white;
+  }
+
+  .highlight-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .highlight-text {
+    margin: 0;
+    color: #1B396A;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    font-weight: 500;
+    flex: 1;
+  }
+
+  /* Features Section */
+  .features-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .section-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .section-badge {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: #1B396A;
+    color: white;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .feature-card {
+    text-align: center;
+    padding: var(--spacing-lg);
+  }
+
+  .feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--spacing-md);
+    border-radius: var(--radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .feature-icon-primary {
+    background: linear-gradient(135deg, rgba(27, 57, 106, 0.1) 0%, rgba(27, 57, 106, 0.05) 100%);
+    color: #1B396A;
+  }
+
+  .feature-icon-secondary {
+    background: linear-gradient(135deg, rgba(197, 155, 109, 0.2) 0%, rgba(197, 155, 109, 0.1) 100%);
+    color: #C59B6D;
+  }
+
+  .feature-icon-accent {
+    background: linear-gradient(135deg, rgba(93, 133, 166, 0.1) 0%, rgba(93, 133, 166, 0.05) 100%);
+    color: #5D85A6;
+  }
+
+  .feature-card h3 {
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.5rem;
+  }
+
+  .feature-card p {
+    margin-bottom: var(--spacing-md);
+    min-height: 4.5em;
+  }
+
+  /* Logistics Section */
+  .logistics-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .logistics-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logistics-card-image {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .logistics-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-md) 0 0;
+  }
+
+  .logistics-list li {
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text-light);
+  }
+
+  .logistics-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #10b981;
+    font-weight: bold;
+    font-size: 1.125rem;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .cta-content h2 {
+    color: white;
+    margin-bottom: var(--spacing-sm);
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+
+  .cta-content .lead {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--spacing-lg);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Responsive */
+  @media (max-width: 968px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+      text-align: center;
+    }
+
+    .hero-content {
+      padding: 4rem 0 6rem;
+    }
+
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .hero-info {
+      justify-content: center;
+    }
+
+    .hero-actions {
+      justify-content: center;
+    }
+
+    .flyer-image {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-actions {
+      flex-direction: column;
+    }
+
+    .hero-actions .btn {
+      width: 100%;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .cta-buttons .btn {
+      width: 100%;
+    }
+
+    .hero-info {
+      flex-direction: column;
+    }
+  }
+</style>

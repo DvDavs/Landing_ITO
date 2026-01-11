@@ -1,0 +1,11 @@
+
+| Municipio | Presidente Municipal |
+| :--- | :--- |
+| **Oaxaca de Juárez** | Raymundo Chagoya Villanueva |
+| **San Pablo Villa de Mitla** | Esaú López Quero |
+| **San Jacinto Amilpas** | Fidel Alejandro Díaz Díaz |
+| **Santa Cruz Xoxocotlán** | Nancy Natalia Benítez Zárate |
+| **San Sebastián Tutla** | Alejandro Fernández García Vásquez |
+| **Santa María El Tule** | Filemón Gómez Soto |
+| **Cuilápam de Guerrero** | Mayra Silva Fernández |
+| **Santa María Atzompa** | Juan Justino López Torres |

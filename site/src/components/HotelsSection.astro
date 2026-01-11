@@ -1,0 +1,364 @@
+---
+// Componente: Sección de hoteles
+import hotels from '../data/hotels.json';
+---
+
+<section id="hoteles" class="hotels-section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="text-center">Información de Hoteles</h2>
+      <p class="text-center subtitle">Opciones de Hospedaje en Oaxaca</p>
+      
+      <div class="warning-box">
+        <div class="box-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+            <line x1="12" y1="9" x2="12" y2="13"></line>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+        </div>
+        <div class="box-content">
+          <strong>Importante:</strong> Las tarifas presentadas están sujetas a disponibilidad y vigencia. 
+          Se recomienda confirmar directamente con cada hotel. Todas las tarifas incluyen impuestos (IVA 16% + ISH 3%).
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabla comparativa -->
+    <div class="table-container">
+      <h3 class="text-center">Tabla Comparativa de Tarifas</h3>
+      <div class="table-wrapper">
+        <table class="hotels-table">
+          <thead>
+            <tr>
+              <th>Hotel</th>
+              <th>Sencilla</th>
+              <th>Doble</th>
+              <th>Triple</th>
+              <th>Desayuno</th>
+            </tr>
+          </thead>
+          <tbody>
+            {hotels.map((hotel) => (
+              <tr>
+                <td class="hotel-name">{hotel.name}</td>
+                <td>${hotel.rooms.sencilla}</td>
+                <td>${hotel.rooms.doble || 'N/A'}</td>
+                <td>${hotel.rooms.triple || 'N/A'}</td>
+                <td>
+                  {hotel.breakfast ? (
+                    <span class="included">✓ Incluido</span>
+                  ) : hotel.breakfastPrice > 0 ? (
+                    <span class="extra">${hotel.breakfastPrice} extra</span>
+                  ) : (
+                    <span class="not-available">No especificado</span>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Cards detalladas -->
+    <div class="hotels-grid">
+      {hotels.map((hotel) => (
+        <div class="hotel-card">
+          <div class="hotel-card-header">
+            <h3>{hotel.name}</h3>
+            <span class={`category-badge category-${hotel.category}`}>
+              {hotel.category === 'económico' && '💰 Económico'}
+              {hotel.category === 'medio' && '🏨 Categoría Media'}
+              {hotel.category === 'medio-alto' && '🏨✨ Media-Alta'}
+              {hotel.category === 'alto' && '⭐ Categoría Alta'}
+            </span>
+          </div>
+
+          <div class="hotel-details">
+            <div class="detail-item">
+              <strong>📍 Ubicación:</strong>
+              <p>{hotel.location}</p>
+              {hotel.distance && <p class="distance">{hotel.distance}</p>}
+            </div>
+
+            <div class="detail-item">
+              <strong>💵 Tarifas por noche:</strong>
+              <ul class="rates-list">
+                <li>Sencilla: <span class="price">${hotel.rooms.sencilla}</span></li>
+                {hotel.rooms.doble && <li>Doble: <span class="price">${hotel.rooms.doble}</span></li>}
+                {hotel.rooms.triple && <li>Triple: <span class="price">${hotel.rooms.triple}</span></li>}
+                {hotel.rooms.cuadruple && <li>Cuádruple: <span class="price">${hotel.rooms.cuadruple}</span></li>}
+              </ul>
+            </div>
+
+            {hotel.services && hotel.services.length > 0 && (
+              <div class="detail-item">
+                <strong>✨ Servicios:</strong>
+                <ul class="services-list">
+                  {hotel.services.map((service) => (
+                    <li>{service}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {hotel.notes && (
+              <div class="detail-item notes">
+                <strong>📝 Notas importantes:</strong>
+                <p>{hotel.notes}</p>
+              </div>
+            )}
+
+            {hotel.reservationCode && (
+              <div class="reservation-code">
+                <strong>Código de reserva:</strong> {hotel.reservationCode}
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hotels-section {
+    padding: 4rem 0;
+    background-color: var(--color-bg-alt);
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Tabla comparativa */
+  .table-container {
+    margin-bottom: 4rem;
+  }
+
+  .table-container h3 {
+    margin-bottom: 1.5rem;
+    color: var(--color-primary);
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+    box-shadow: var(--shadow-md);
+    border-radius: 12px;
+  }
+
+  .hotels-table {
+    width: 100%;
+    background: white;
+    border-radius: 12px;
+  }
+
+  .hotels-table th {
+    background: var(--color-primary);
+    color: white;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .hotels-table td {
+    padding: 1rem;
+  }
+
+  .hotel-name {
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .included {
+    color: #10b981;
+    font-weight: 600;
+  }
+
+  .extra {
+    color: #f59e0b;
+    font-weight: 600;
+  }
+
+  .not-available {
+    color: var(--color-text-light);
+    font-style: italic;
+  }
+
+  /* Cards de hoteles */
+  .hotels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  .hotel-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hotel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .hotel-card-header {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    color: white;
+    padding: 1.5rem;
+  }
+
+  .hotel-card-header h3 {
+    color: white;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  .category-badge {
+    display: inline-block;
+    font-size: 0.875rem;
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+  }
+
+  .hotel-details {
+    padding: 1.5rem;
+  }
+
+  .detail-item {
+    margin-bottom: 1.5rem;
+  }
+
+  .detail-item strong {
+    display: block;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .detail-item p {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .distance {
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    font-style: italic;
+  }
+
+  .rates-list,
+  .services-list {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .rates-list li {
+    padding: 0.35rem 0;
+    color: var(--color-text-light);
+  }
+
+  .price {
+    font-weight: 700;
+    color: var(--color-accent);
+    font-size: 1.05rem;
+  }
+
+  .services-list li {
+    padding: 0.25rem 0 0.25rem 1.25rem;
+    position: relative;
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+  }
+
+  .services-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #10b981;
+    font-weight: bold;
+  }
+
+  .notes {
+    background: #fff9e6;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 3px solid #f59e0b;
+  }
+
+  .reservation-code {
+    background: var(--color-bg-alt);
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-family: monospace;
+    color: var(--color-accent);
+    font-size: 1.05rem;
+  }
+
+  .reservation-code strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-primary);
+    color: var(--color-primary);
+  }
+
+  .warning-box {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: flex-start;
+  }
+
+  .box-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    border-radius: var(--radius-md);
+    color: white;
+  }
+
+  .box-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .box-content {
+    flex: 1;
+  }
+
+  @media (max-width: 768px) {
+    .hotels-section {
+      padding: 2rem 0;
+    }
+
+    .hotels-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .table-wrapper {
+      font-size: 0.875rem;
+    }
+
+    .hotels-table th,
+    .hotels-table td {
+      padding: 0.75rem 0.5rem;
+    }
+  }
+</style>

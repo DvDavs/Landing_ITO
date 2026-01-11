@@ -1,0 +1,150 @@
+---
+// Componente: Información del evento
+---
+
+<section id="evento" class="event-info">
+  <div class="container">
+    <h2 class="text-center">XXXI Encuentro Nacional de Escoltas y Bandas de Guerra</h2>
+    <h3 class="text-center subtitle">Tecnológico Nacional de México 2026</h3>
+    
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="icon">📅</div>
+        <h4>Fechas</h4>
+        <p class="highlight">22 al 26 de febrero de 2026</p>
+      </div>
+      
+      <div class="info-card">
+        <div class="icon">📍</div>
+        <h4>Sede Principal</h4>
+        <p class="highlight">Instituto Tecnológico de Oaxaca</p>
+        <p class="small">Oaxaca de Juárez, Oaxaca</p>
+      </div>
+      
+      <div class="info-card">
+        <div class="icon">🏛️</div>
+        <h4>Organizador</h4>
+        <p class="highlight">Tecnológico Nacional de México</p>
+      </div>
+      
+      <div class="info-card">
+        <div class="icon">🎖️</div>
+        <h4>Tipo de Evento</h4>
+        <p class="highlight">Nacional Cívico-Competitivo</p>
+      </div>
+    </div>
+
+    <div class="event-description">
+      <h3>Sobre el Evento</h3>
+      <p>
+        El <strong>XXXI Encuentro Nacional de Escoltas y Bandas de Guerra</strong> del Tecnológico Nacional de México 
+        es el evento cívico-cultural más importante del sistema tecnológico nacional. Reúne a las mejores 
+        40 instituciones del país, clasificadas tras los encuentros regionales en las zonas norte, centro y sur.
+      </p>
+      <p>
+        Este encuentro representa la culminación de meses de preparación, disciplina y compromiso cívico 
+        por parte de estudiantes, instructores y directivos de todo el TecNM.
+      </p>
+      <p class="values">
+        <strong>Valores que promovemos:</strong> Disciplina • Respeto • Compromiso • Identidad Nacional • Excelencia
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .event-info {
+    background-color: var(--color-bg);
+    padding: 4rem 0;
+  }
+
+  .subtitle {
+    color: var(--color-accent);
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .info-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+
+  .info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .info-card h4 {
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .highlight {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.25rem;
+  }
+
+  .small {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+  }
+
+  .event-description {
+    background: linear-gradient(135deg, rgba(27, 57, 106, 0.05), rgba(93, 133, 166, 0.05));
+    padding: 2.5rem;
+    border-radius: 12px;
+    margin-top: 3rem;
+    border-left: 5px solid var(--color-primary);
+  }
+
+  .event-description h3 {
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  .event-description p {
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .values {
+    font-weight: 600;
+    color: var(--color-accent);
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 2px solid var(--color-border);
+  }
+
+  @media (max-width: 768px) {
+    .event-info {
+      padding: 2rem 0;
+    }
+
+    .info-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .event-description {
+      padding: 1.5rem;
+    }
+  }
+</style>

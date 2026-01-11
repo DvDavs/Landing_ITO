@@ -1,0 +1,776 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import hotelsData from '../data/hotels.json';
+
+// Ordenar hoteles por precio (sencilla)
+const hotelsSorted = [...hotelsData].sort((a, b) => a.rooms.sencilla - b.rooms.sencilla);
+
+const categories = {
+  'económico': 'Económico',
+  'medio': 'Categoría Media',
+  'medio-alto': 'Categoría Media-Alta',
+  'alto': 'Categoría Alta'
+};
+---
+
+<BaseLayout 
+  title="Hoteles y Hospedaje - XXXI Encuentro Nacional TecNM 2026"
+  description="Encuentra las mejores opciones de hospedaje en Oaxaca con tarifas especiales para participantes del XXXI Encuentro Nacional de Escoltas y Bandas de Guerra."
+>
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <span class="page-badge">{hotelsData.length} Opciones Disponibles</span>
+        <h1 class="page-title">Hoteles y Hospedaje</h1>
+        <p class="page-subtitle">
+          Opciones de alojamiento con tarifas preferenciales para el evento
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Info -->
+  <section class="quick-info-section section-alt">
+    <div class="container">
+      <div class="info-boxes grid grid-3">
+        <div class="info-box-card">
+          <div class="info-box-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <h3>Tarifas Especiales</h3>
+          <p>Precios preferenciales para delegaciones del TecNM</p>
+        </div>
+
+        <div class="info-box-card">
+          <div class="info-box-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <h3>Ubicaciones Estratégicas</h3>
+          <p>Cercanos al Instituto Tecnológico y centro de Oaxaca</p>
+        </div>
+
+        <div class="info-box-card">
+          <div class="info-box-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"></path>
+              <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"></path>
+            </svg>
+          </div>
+          <h3>Diferentes Presupuestos</h3>
+          <p>Desde opciones económicas hasta categoría alta</p>
+        </div>
+      </div>
+
+      <div class="warning-box">
+        <strong>Importante:</strong> Las tarifas están sujetas a disponibilidad y vigencia. Se recomienda hacer reservaciones con anticipación mencionando el código del evento.
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparative Table -->
+  <section class="comparison-section">
+    <div class="container-wide">
+      <div class="section-header text-center">
+        <h2>Comparativa de Tarifas</h2>
+        <p class="lead">Todas las tarifas son por noche e incluyen impuestos (IVA 16% + ISH 3%)</p>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="hotels-table">
+          <thead>
+            <tr>
+              <th>Hotel</th>
+              <th>Categoría</th>
+              <th>Sencilla</th>
+              <th>Doble</th>
+              <th>Triple</th>
+              <th>Cuádruple</th>
+              <th>Desayuno</th>
+              <th>Ubicación</th>
+            </tr>
+          </thead>
+          <tbody>
+            {hotelsSorted.map((hotel) => (
+              <tr>
+                <td>
+                  <strong>{hotel.name}</strong>
+                  {hotel.reservationCode && (
+                    <span class="reservation-code">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="8.5" cy="7" r="4"></circle>
+                        <polyline points="17 11 19 13 23 9"></polyline>
+                      </svg>
+                      {hotel.reservationCode}
+                    </span>
+                  )}
+                </td>
+                <td>
+                  <span class={`category-badge category-${hotel.category}`}>
+                    {categories[hotel.category as keyof typeof categories]}
+                  </span>
+                </td>
+                <td class="price">${hotel.rooms.sencilla.toLocaleString('es-MX')}</td>
+                <td class="price">{hotel.rooms.doble ? `$${hotel.rooms.doble.toLocaleString('es-MX')}` : '-'}</td>
+                <td class="price">{hotel.rooms.triple ? `$${hotel.rooms.triple.toLocaleString('es-MX')}` : '-'}</td>
+                <td class="price">{hotel.rooms.cuadruple ? `$${hotel.rooms.cuadruple.toLocaleString('es-MX')}` : '-'}</td>
+                <td>
+                  {hotel.breakfast ? (
+                    <span class="badge badge-success">Incluido</span>
+                  ) : hotel.breakfastPrice > 0 ? (
+                    <span class="badge">+${hotel.breakfastPrice}</span>
+                  ) : (
+                    <span class="text-muted">No incluido</span>
+                  )}
+                </td>
+                <td class="location-cell">{hotel.distance}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-note info-box">
+        <p><strong>Nota:</strong> Los precios pueden variar según disponibilidad y temporada. Contacta directamente con el hotel mencionando tu participación en el XXXI Encuentro Nacional TecNM 2026.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hotel Details -->
+  <section class="hotels-detail-section section-alt">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2>Información Detallada</h2>
+        <p class="lead">Conoce los servicios y características de cada hotel</p>
+      </div>
+
+      <div class="hotels-grid">
+        {hotelsData.map((hotel) => (
+          <div class="hotel-detail-card card">
+            <div class="hotel-card-header">
+              <div class="hotel-card-title">
+                <h3>{hotel.name}</h3>
+                <span class={`category-badge category-${hotel.category}`}>
+                  {categories[hotel.category as keyof typeof categories]}
+                </span>
+              </div>
+              <div class="hotel-price-highlight">
+                <span class="price-label">Desde</span>
+                <span class="price-value">${hotel.rooms.sencilla.toLocaleString('es-MX')}</span>
+                <span class="price-period">por noche</span>
+              </div>
+            </div>
+
+            <div class="hotel-card-body">
+              <div class="hotel-info-section">
+                <h4>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  Ubicación
+                </h4>
+                <p>{hotel.location}</p>
+                <p class="distance-info"><strong>Distancia:</strong> {hotel.distance}</p>
+              </div>
+
+              <div class="hotel-info-section">
+                <h4>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                  </svg>
+                  Servicios e Instalaciones
+                </h4>
+                <ul class="services-list">
+                  {hotel.services.map((service) => (
+                    <li>{service}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="hotel-info-section">
+                <h4>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"></path>
+                    <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"></path>
+                  </svg>
+                  Tarifas por Tipo de Habitación
+                </h4>
+                <div class="rates-grid">
+                  <div class="rate-item">
+                    <span class="rate-type">Sencilla</span>
+                    <span class="rate-price">${hotel.rooms.sencilla.toLocaleString('es-MX')}</span>
+                  </div>
+                  {hotel.rooms.doble && (
+                    <div class="rate-item">
+                      <span class="rate-type">Doble</span>
+                      <span class="rate-price">${hotel.rooms.doble.toLocaleString('es-MX')}</span>
+                    </div>
+                  )}
+                  {hotel.rooms.triple && (
+                    <div class="rate-item">
+                      <span class="rate-type">Triple</span>
+                      <span class="rate-price">${hotel.rooms.triple.toLocaleString('es-MX')}</span>
+                    </div>
+                  )}
+                  {hotel.rooms.cuadruple && (
+                    <div class="rate-item">
+                      <span class="rate-type">Cuádruple</span>
+                      <span class="rate-price">${hotel.rooms.cuadruple.toLocaleString('es-MX')}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {hotel.breakfast && (
+                <div class="breakfast-included">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                  <span>Desayuno incluido en la tarifa</span>
+                </div>
+              )}
+
+              {hotel.breakfastPrice > 0 && (
+                <div class="breakfast-optional">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg>
+                  <span>Desayuno disponible por ${hotel.breakfastPrice} adicionales</span>
+                </div>
+              )}
+
+              {hotel.notes && (
+                <div class="hotel-notes">
+                  <p><strong>Información adicional:</strong> {hotel.notes}</p>
+                </div>
+              )}
+
+              {hotel.reservationCode && (
+                <div class="reservation-info success-box">
+                  <strong>Código de reserva:</strong> {hotel.reservationCode}
+                  <p class="mt-1">Menciona este código al hacer tu reservación</p>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Tips -->
+  <section class="tips-section">
+    <div class="container-narrow">
+      <div class="section-header text-center">
+        <h2>Recomendaciones para Reservar</h2>
+      </div>
+
+      <div class="tips-grid grid grid-2">
+        <div class="tip-card">
+          <div class="tip-number">1</div>
+          <h3>Reserva con Anticipación</h3>
+          <p>Contacta a los hoteles lo antes posible. Febrero es temporada alta en Oaxaca y la disponibilidad puede ser limitada.</p>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-number">2</div>
+          <h3>Menciona el Evento</h3>
+          <p>Identifícate como participante del XXXI Encuentro Nacional TecNM 2026 para acceder a las tarifas preferenciales.</p>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-number">3</div>
+          <h3>Usa los Códigos</h3>
+          <p>Algunos hoteles tienen códigos de reserva específicos. Menciónalos al momento de reservar.</p>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-number">4</div>
+          <h3>Confirma Políticas</h3>
+          <p>Verifica políticas de cancelación, depósitos requeridos y servicios incluidos antes de confirmar.</p>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-number">5</div>
+          <h3>Considera la Ubicación</h3>
+          <p>Evalúa la distancia al Instituto Tecnológico y la facilidad de transporte para tu delegación.</p>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-number">6</div>
+          <h3>Pregunta por Grupos</h3>
+          <p>Si viajas con una delegación grande, consulta sobre descuentos adicionales por grupo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .page-hero {
+    background: linear-gradient(135deg, #1B396A 0%, #5D85A6 100%);
+    padding: 4rem 0 3rem;
+    color: white;
+    position: relative;
+  }
+
+  .page-hero-content {
+    position: relative;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .page-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    margin-bottom: var(--spacing-md);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .page-title {
+    color: white;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .page-subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 300;
+  }
+
+  /* Quick Info */
+  .quick-info-section {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .info-boxes {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .info-box-card {
+    background: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    border: 1px solid var(--color-border);
+    transition: all var(--transition-base);
+  }
+
+  .info-box-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-primary);
+  }
+
+  .info-box-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto var(--spacing-md);
+    background: linear-gradient(135deg, rgba(27, 57, 106, 0.1) 0%, rgba(27, 57, 106, 0.05) 100%);
+    border-radius: var(--radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .info-box-icon svg {
+    stroke: var(--color-primary);
+  }
+
+  .info-box-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .info-box-card p {
+    margin: 0;
+    color: var(--color-text-light);
+  }
+
+  /* Comparison Table */
+  .comparison-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .hotels-table {
+    min-width: 1000px;
+  }
+
+  .hotels-table th {
+    background: linear-gradient(135deg, var(--color-tecnm-primary) 0%, #152d52 100%);
+    white-space: nowrap;
+  }
+
+  .hotels-table td {
+    vertical-align: middle;
+  }
+
+  .price {
+    font-weight: 600;
+    color: var(--color-primary);
+    font-size: 1.0625rem;
+    white-space: nowrap;
+  }
+
+  .location-cell {
+    font-size: 0.9375rem;
+    max-width: 200px;
+  }
+
+  .reservation-code {
+    display: block;
+    font-size: 0.8125rem;
+    color: var(--color-accent);
+    font-weight: 500;
+    margin-top: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .reservation-code svg {
+    flex-shrink: 0;
+  }
+
+  .category-badge {
+    display: inline-block;
+    padding: 0.375rem 0.875rem;
+    border-radius: var(--radius-full);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .category-económico {
+    background: #dcfce7;
+    color: #166534;
+  }
+
+  .category-medio {
+    background: #dbeafe;
+    color: #1e40af;
+  }
+
+  .category-medio-alto {
+    background: #fef3c7;
+    color: #92400e;
+  }
+
+  .category-alto {
+    background: #fce7f3;
+    color: #9f1239;
+  }
+
+  .table-note {
+    max-width: 900px;
+    margin: var(--spacing-lg) auto 0;
+  }
+
+  /* Hotel Detail Cards */
+  .hotels-detail-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .hotels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .hotel-detail-card {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .hotel-card-header {
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, var(--color-tecnm-primary) 0%, #152d52 100%);
+    color: white;
+  }
+
+  .hotel-card-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+  }
+
+  .hotel-card-title h3 {
+    color: white;
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  .hotel-price-highlight {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+  }
+
+  .price-label {
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .price-value {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--color-secondary);
+  }
+
+  .price-period {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .hotel-card-body {
+    padding: var(--spacing-lg);
+  }
+
+  .hotel-info-section {
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .hotel-info-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .hotel-info-section h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-primary);
+  }
+
+  .hotel-info-section h4 svg {
+    flex-shrink: 0;
+  }
+
+  .hotel-info-section p {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .distance-info {
+    color: var(--color-text-lighter);
+    font-size: 0.9375rem;
+  }
+
+  .services-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .services-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 0.9375rem;
+    color: var(--color-text-light);
+  }
+
+  .services-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #10b981;
+    font-weight: bold;
+  }
+
+  .rates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--spacing-sm);
+  }
+
+  .rate-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem;
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-md);
+    text-align: center;
+  }
+
+  .rate-type {
+    font-size: 0.875rem;
+    color: var(--color-text-lighter);
+    font-weight: 500;
+  }
+
+  .rate-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .breakfast-included,
+  .breakfast-optional {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: var(--spacing-sm);
+    background: #f0fdf4;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.9375rem;
+    color: #065f46;
+    font-weight: 500;
+  }
+
+  .breakfast-optional {
+    background: #fffbeb;
+    color: #92400e;
+  }
+
+  .breakfast-included svg {
+    flex-shrink: 0;
+    stroke: #10b981;
+  }
+
+  .breakfast-optional svg {
+    flex-shrink: 0;
+    stroke: #f59e0b;
+  }
+
+  .hotel-notes {
+    padding: var(--spacing-sm);
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.9375rem;
+  }
+
+  .hotel-notes p {
+    margin: 0;
+  }
+
+  .reservation-info {
+    margin-top: var(--spacing-md);
+  }
+
+  /* Tips Section */
+  .tips-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .tips-grid {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .tip-card {
+    background: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-border);
+    position: relative;
+    padding-left: 5rem;
+    transition: all var(--transition-base);
+  }
+
+  .tip-card:hover {
+    transform: translateX(8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+  }
+
+  .tip-number {
+    position: absolute;
+    left: var(--spacing-md);
+    top: var(--spacing-lg);
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    box-shadow: var(--shadow-md);
+  }
+
+  .tip-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .tip-card p {
+    margin: 0;
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .hotels-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .info-boxes {
+      grid-template-columns: 1fr;
+    }
+
+    .tips-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tip-card {
+      padding-left: var(--spacing-md);
+      padding-top: 5rem;
+    }
+
+    .tip-number {
+      left: 50%;
+      transform: translateX(-50%);
+      top: var(--spacing-md);
+    }
+
+    .services-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

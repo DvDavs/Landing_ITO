@@ -1,0 +1,151 @@
+[
+  {
+    "id": 1,
+    "name": "Hotel Antiguo Fortín",
+    "category": "económico",
+    "rooms": {
+      "sencilla": 850,
+      "doble": 1050,
+      "triple": 1250,
+      "cuadruple": 1450
+    },
+    "breakfast": false,
+    "breakfastPrice": 0,
+    "location": "Cerca del Instituto Tecnológico de Oaxaca y Estadio de los Alebrijes",
+    "services": [
+      "Wi-Fi gratuito",
+      "Ventilador",
+      "TV por cable",
+      "Terraza con vista",
+      "Estacionamiento para autobuses"
+    ],
+    "notes": "Requiere depósito del 50% para garantizar reserva. Opción más económica.",
+    "distance": "10 minutos del centro en auto"
+  },
+  {
+    "id": 2,
+    "name": "Hotel Los Olivos Spa",
+    "category": "medio",
+    "rooms": {
+      "sencilla": 1170,
+      "doble": 1170,
+      "triple": 1320,
+      "cuadruple": 1470
+    },
+    "breakfast": false,
+    "breakfastPrice": 240,
+    "location": "A dos cuadras del Tecnológico de Oaxaca",
+    "services": [
+      "Alberca semiolímpica",
+      "Gimnasio",
+      "Wi-Fi gratuito",
+      "Estacionamiento gratuito",
+      "Spa"
+    ],
+    "notes": "Capacidad para grupos grandes (70 habitaciones). Desayuno buffet disponible por $240 adicionales.",
+    "distance": "2 cuadras del Instituto Tecnológico"
+  },
+  {
+    "id": 3,
+    "name": "One Oaxaca Centro",
+    "category": "medio-alto",
+    "rooms": {
+      "sencilla": 1696,
+      "doble": 1796,
+      "triple": 2046,
+      "cuadruple": 2296
+    },
+    "breakfast": true,
+    "breakfastPrice": 0,
+    "location": "Centro histórico de Oaxaca",
+    "services": [
+      "Desayuno buffet americano incluido",
+      "Internet de alta velocidad",
+      "Estacionamiento techado",
+      "Café y té 24 horas",
+      "Centro de lavado",
+      "Propinas incluidas"
+    ],
+    "notes": "Código de reserva: G1VWJX@OAX. Tarifa todo incluido con desayuno.",
+    "reservationCode": "G1VWJX@OAX",
+    "distance": "Centro histórico"
+  },
+  {
+    "id": 4,
+    "name": "Hotel Victoria Oaxaca",
+    "category": "alto",
+    "rooms": {
+      "sencilla": 1875,
+      "doble": 1875,
+      "triple": 2375,
+      "cuadruple": 2875
+    },
+    "breakfast": false,
+    "breakfastPrice": 360,
+    "location": "Zona hotelera",
+    "services": [
+      "Estacionamiento para autobuses",
+      "Wi-Fi en áreas públicas y salones",
+      "Salones para convenciones",
+      "Servicios de lujo"
+    ],
+    "notes": "Cargos extra: Bell boy $30 (entrada/salida), Camaristas $40 por noche. Cortesía: 1 habitación gratis por cada 20 pagadas (máx. 3).",
+    "distance": "Zona hotelera"
+  },
+  {
+    "id": 5,
+    "name": "Villas del Sol",
+    "category": "medio",
+    "rooms": {
+      "sencilla": 1100,
+      "doble": 1200
+    },
+    "breakfast": false,
+    "breakfastPrice": 0,
+    "location": "Oaxaca",
+    "services": [
+      "Villas con espacios amplios",
+      "Servicios básicos de calidad"
+    ],
+    "notes": "Código de reserva: #ESCOLTAS Y BANDAS. Grupo Santa Rosa Panzacola.",
+    "reservationCode": "#ESCOLTAS Y BANDAS",
+    "distance": "Por confirmar"
+  },
+  {
+    "id": 6,
+    "name": "Life Hotel",
+    "category": "medio",
+    "rooms": {
+      "sencilla": 1300,
+      "doble": 1600
+    },
+    "breakfast": false,
+    "breakfastPrice": 0,
+    "location": "Oaxaca",
+    "services": [
+      "Instalaciones modernas",
+      "Servicios de calidad"
+    ],
+    "notes": "Código de reserva: #ESCOLTAS Y BANDAS. Grupo Santa Rosa Panzacola.",
+    "reservationCode": "#ESCOLTAS Y BANDAS",
+    "distance": "Por confirmar"
+  },
+  {
+    "id": 7,
+    "name": "Kōoch Aparthotel",
+    "category": "medio-alto",
+    "rooms": {
+      "sencilla": 1500
+    },
+    "breakfast": false,
+    "breakfastPrice": 0,
+    "location": "Oaxaca",
+    "services": [
+      "Tipo aparthotel",
+      "Espacios funcionales"
+    ],
+    "notes": "Código de reserva: #ESCOLTAS Y BANDAS. Grupo Santa Rosa Panzacola.",
+    "reservationCode": "#ESCOLTAS Y BANDAS",
+    "distance": "Por confirmar"
+  }
+]

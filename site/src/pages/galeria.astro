@@ -1,0 +1,722 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getImage } from 'astro:assets';
+
+// Lista de imágenes de la galería
+const galleryImages = [
+  {
+    id: 1,
+    src: '/images/escoltas/12122025_escolta-1024x1024.png',
+    alt: 'Escolta en formación',
+    category: 'Escoltas'
+  },
+  {
+    id: 2,
+    src: '/images/escoltas/495098947_1229603755842845_3110889817962747073_n.jpg',
+    alt: 'Escolta en ceremonia',
+    category: 'Escoltas'
+  },
+  {
+    id: 3,
+    src: '/images/escoltas/597716955_1350716400421249_6888935462609749141_n.jpg',
+    alt: 'Banda de guerra en desfile',
+    category: 'Bandas'
+  },
+  {
+    id: 4,
+    src: '/images/escoltas/598583887_122161610414789277_328695429715700718_n.jpg',
+    alt: 'Ceremonia de inauguración',
+    category: 'Ceremonias'
+  },
+  {
+    id: 5,
+    src: '/images/escoltas/599091360_1435823661887519_201917931349658465_n.jpg',
+    alt: 'Escolta marchando',
+    category: 'Escoltas'
+  },
+  {
+    id: 6,
+    src: '/images/escoltas/599370695_1292110469621726_305694927949810631_n.jpg',
+    alt: 'Banda de guerra actuando',
+    category: 'Bandas'
+  },
+  {
+    id: 7,
+    src: '/images/escoltas/600289569_1344046010855378_3282665262656441046_n.jpg',
+    alt: 'Competencia de escoltas',
+    category: 'Escoltas'
+  },
+  {
+    id: 8,
+    src: '/images/escoltas/600289902_873752938541232_6907474978700034534_n.jpg',
+    alt: 'Delegación participante',
+    category: 'Ceremonias'
+  }
+];
+
+const categories = ['Todas', 'Escoltas', 'Bandas', 'Ceremonias'];
+---
+
+<BaseLayout 
+  title="Galería - XXXI Encuentro Nacional TecNM 2026"
+  description="Revive los mejores momentos de encuentros anteriores de Escoltas y Bandas de Guerra del TecNM."
+>
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <span class="page-badge">Momentos Memorables</span>
+        <h1 class="page-title">Galería</h1>
+        <p class="page-subtitle">
+          Descubre la pasión, disciplina y excelencia de encuentros anteriores
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Filters -->
+  <section class="filters-section section-alt">
+    <div class="container">
+      <div class="filters-wrapper">
+        <p class="filters-label">Filtrar por:</p>
+        <div class="filter-buttons" id="filterButtons">
+          {categories.map((category, index) => (
+            <button 
+              class={`filter-btn ${index === 0 ? 'active' : ''}`} 
+              data-category={category}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="gallery-section">
+    <div class="container-wide">
+      <div class="gallery-grid" id="galleryGrid">
+        {galleryImages.map((image) => (
+          <div class="gallery-item" data-category={image.category}>
+            <div class="gallery-item-inner">
+              <img 
+                src={image.src} 
+                alt={image.alt}
+                loading="lazy"
+                class="gallery-image"
+              />
+              <div class="gallery-overlay">
+                <div class="gallery-content">
+                  <span class="gallery-category">{image.category}</span>
+                  <button class="gallery-zoom-btn" data-image-id={image.id}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <path d="m21 21-4.35-4.35"></path>
+                      <line x1="11" y1="8" x2="11" y2="14"></line>
+                      <line x1="8" y1="11" x2="14" y2="11"></line>
+                    </svg>
+                    <span>Ver más</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div id="noResults" class="no-results" style="display: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <circle cx="8.5" cy="8.5" r="1.5"></circle>
+          <polyline points="21 15 16 10 5 21"></polyline>
+        </svg>
+        <h3>No hay imágenes en esta categoría</h3>
+        <p>Selecciona otra categoría para ver más fotos</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Info Section -->
+  <section class="info-section section-primary">
+    <div class="container-narrow text-center">
+      <h2>Próximamente Más Contenido</h2>
+      <p class="lead">
+        Durante el XXXI Encuentro Nacional 2026, esta galería se actualizará con las mejores 
+        fotografías y videos de las competencias, ceremonias y actividades culturales.
+      </p>
+      <div class="info-features">
+        <div class="info-feature">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21 15 16 10 5 21"></polyline>
+          </svg>
+          <span>Fotografías profesionales de las competencias</span>
+        </div>
+        <div class="info-feature">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="23 7 16 12 23 17 23 7"></polygon>
+            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+          </svg>
+          <span>Videos destacados de presentaciones</span>
+        </div>
+        <div class="info-feature">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          <span>Momentos especiales con las delegaciones</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox" style="display: none;">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Anterior">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Siguiente">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+    <div class="lightbox-content">
+      <img id="lightboxImage" src="" alt="" class="lightbox-image" />
+      <div class="lightbox-info">
+        <span id="lightboxCategory" class="lightbox-category"></span>
+        <p id="lightboxCounter" class="lightbox-counter"></p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .page-hero {
+    background: linear-gradient(135deg, #1B396A 0%, #5D85A6 100%);
+    padding: 4rem 0 3rem;
+    color: white;
+    position: relative;
+  }
+
+  .page-hero-content {
+    position: relative;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .page-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    margin-bottom: var(--spacing-md);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .page-title {
+    color: white;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .page-subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 300;
+  }
+
+  /* Filters */
+  .filters-section {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .filters-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+  }
+
+  .filters-label {
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  .filter-buttons {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 0.625rem 1.5rem;
+    background: white;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    color: var(--color-text);
+  }
+
+  .filter-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  .filter-btn.active {
+    background: linear-gradient(135deg, var(--color-tecnm-primary) 0%, #152d52 100%);
+    color: white;
+    border-color: var(--color-primary);
+  }
+
+  /* Gallery */
+  .gallery-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+  }
+
+  .gallery-item {
+    animation: fadeIn 0.6s ease-out;
+    transition: opacity var(--transition-base);
+  }
+
+  .gallery-item.hidden {
+    display: none;
+  }
+
+  .gallery-item-inner {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-alt);
+    cursor: pointer;
+  }
+
+  .gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .gallery-item-inner:hover .gallery-image {
+    transform: scale(1.1);
+  }
+
+  .gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      transparent 40%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    display: flex;
+    align-items: flex-end;
+    padding: var(--spacing-md);
+  }
+
+  .gallery-item-inner:hover .gallery-overlay {
+    opacity: 1;
+  }
+
+  .gallery-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .gallery-category {
+    padding: 0.375rem 0.875rem;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .gallery-zoom-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    background: white;
+    color: var(--color-primary);
+    border: none;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all var(--transition-base);
+  }
+
+  .gallery-zoom-btn:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: scale(1.05);
+  }
+
+  .gallery-zoom-btn svg {
+    flex-shrink: 0;
+  }
+
+  /* No Results */
+  .no-results {
+    text-align: center;
+    padding: var(--spacing-2xl) var(--spacing-md);
+  }
+
+  .no-results svg {
+    stroke: var(--color-text-lighter);
+    margin: 0 auto var(--spacing-md);
+  }
+
+  .no-results h3 {
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .no-results p {
+    color: var(--color-text-lighter);
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  /* Info Section */
+  .info-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .info-section h2 {
+    color: white;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .info-section .lead {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .info-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .info-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: white;
+    text-align: center;
+  }
+
+  .info-feature svg {
+    stroke: var(--color-secondary);
+    flex-shrink: 0;
+  }
+
+  .info-feature span {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* Lightbox */
+  .lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md);
+    animation: fadeIn 0.3s ease;
+  }
+
+  .lightbox-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .lightbox-image {
+    max-width: 100%;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .lightbox-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
+
+  .lightbox-category {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .lightbox-counter {
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+  }
+
+  .lightbox-close,
+  .lightbox-nav {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    z-index: 10000;
+  }
+
+  .lightbox-close:hover,
+  .lightbox-nav:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+  }
+
+  .lightbox-close {
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+  }
+
+  .lightbox-prev {
+    left: var(--spacing-md);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .lightbox-next {
+    right: var(--spacing-md);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .gallery-grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: var(--spacing-sm);
+    }
+
+    .filters-wrapper {
+      flex-direction: column;
+    }
+
+    .filter-buttons {
+      width: 100%;
+    }
+
+    .filter-btn {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .lightbox-close,
+    .lightbox-nav {
+      width: 48px;
+      height: 48px;
+    }
+
+    .info-features {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  // Gallery filtering
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const galleryGrid = document.getElementById('galleryGrid');
+  const noResults = document.getElementById('noResults');
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const category = (btn as HTMLElement).dataset.category;
+
+      filterButtons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      let visibleCount = 0;
+
+      galleryItems.forEach((item) => {
+        const itemCategory = (item as HTMLElement).dataset.category;
+
+        if (category === 'Todas' || itemCategory === category) {
+          item.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      // Show/hide no results
+      if (noResults && galleryGrid) {
+        if (visibleCount === 0) {
+          noResults.style.display = 'block';
+          galleryGrid.style.display = 'none';
+        } else {
+          noResults.style.display = 'none';
+          galleryGrid.style.display = 'grid';
+        }
+      }
+    });
+  });
+
+  // Lightbox functionality
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightboxImage') as HTMLImageElement;
+  const lightboxCategory = document.getElementById('lightboxCategory');
+  const lightboxCounter = document.getElementById('lightboxCounter');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxPrev = document.getElementById('lightboxPrev');
+  const lightboxNext = document.getElementById('lightboxNext');
+  const zoomButtons = document.querySelectorAll('.gallery-zoom-btn');
+
+  let currentImageIndex = 0;
+  const images = Array.from(galleryItems).map((item) => {
+    const img = item.querySelector('.gallery-image') as HTMLImageElement;
+    const category = (item as HTMLElement).dataset.category;
+    return { src: img.src, alt: img.alt, category };
+  });
+
+  function showLightbox(index: number) {
+    if (!lightbox || !lightboxImage) return;
+
+    currentImageIndex = index;
+    const image = images[index];
+
+    lightboxImage.src = image.src;
+    lightboxImage.alt = image.alt;
+
+    if (lightboxCategory) {
+      lightboxCategory.textContent = image.category || '';
+    }
+
+    if (lightboxCounter) {
+      lightboxCounter.textContent = `${index + 1} / ${images.length}`;
+    }
+
+    lightbox.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  function showPrevImage() {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    showLightbox(currentImageIndex);
+  }
+
+  function showNextImage() {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    showLightbox(currentImageIndex);
+  }
+
+  // Event listeners
+  zoomButtons.forEach((btn, index) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showLightbox(index);
+    });
+  });
+
+  galleryItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      showLightbox(index);
+    });
+  });
+
+  lightboxClose?.addEventListener('click', closeLightbox);
+  lightboxPrev?.addEventListener('click', showPrevImage);
+  lightboxNext?.addEventListener('click', showNextImage);
+
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (lightbox?.style.display === 'flex') {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showPrevImage();
+      if (e.key === 'ArrowRight') showNextImage();
+    }
+  });
+</script>

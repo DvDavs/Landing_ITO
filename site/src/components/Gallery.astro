@@ -1,0 +1,182 @@
+---
+// Componente: Galería de imágenes
+---
+
+<section id="galeria" class="gallery-section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="text-center">Galería</h2>
+      <p class="text-center subtitle">Momentos de Encuentros Anteriores</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="/images/escoltas/12122025_escolta-1024x1024.png" alt="Escolta en formación" loading="lazy" />
+        <div class="gallery-overlay">
+          <p class="gallery-caption">Escolta en formación ceremonial</p>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="/images/escoltas/495098947_1229603755842845_3110889817962747073_n.jpg" alt="Banda de Guerra" loading="lazy" />
+        <div class="gallery-overlay">
+          <p class="gallery-caption">Banda de Guerra en desfile</p>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="/images/escoltas/597716955_1350716400421249_6888935462609749141_n.jpg" alt="Ceremonia cívica" loading="lazy" />
+        <div class="gallery-overlay">
+          <p class="gallery-caption">Ceremonia cívica</p>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="/images/escoltas/598583887_122161610414789277_328695429715700718_n.jpg" alt="Presentación de escolta" loading="lazy" />
+        <div class="gallery-overlay">
+          <p class="gallery-caption">Presentación de escolta</p>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="/images/escoltas/599091360_1435823661887519_201917931349658465_n.jpg" alt="Banda con instrumentos" loading="lazy" />
+        <div class="gallery-overlay">
+          <p class="gallery-caption">Banda de Guerra</p>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="/images/escoltas/599370695_1292110469621726_305694927949810631_n.jpg" alt="Competencia de escoltas" loading="lazy" />
+        <div class="gallery-overlay">
+          <p class="gallery-caption">Competencia de escoltas</p>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="/images/escoltas/600289569_1344046010855378_3282665262656441046_n.jpg" alt="Desfile" loading="lazy" />
+        <div class="gallery-overlay">
+          <p class="gallery-caption">Desfile cívico</p>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="/images/escoltas/600289902_873752938541232_6907474978700034534_n.jpg" alt="Evento masivo" loading="lazy" />
+        <div class="gallery-overlay">
+          <p class="gallery-caption">Concentración de participantes</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-note">
+      <p>
+        📸 Estas imágenes corresponden a encuentros anteriores. La galería se actualizará durante 
+        el evento del 22 al 26 de febrero de 2026.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gallery-section {
+    padding: 4rem 0;
+    background-color: var(--color-bg-alt);
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    aspect-ratio: 1;
+    background: #f0f0f0;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .gallery-item:hover {
+    transform: scale(1.03);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.1);
+  }
+
+  .gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: white;
+    padding: 1.5rem 1rem 1rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-item:hover .gallery-overlay {
+    transform: translateY(0);
+  }
+
+  .gallery-caption {
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+  }
+
+  .gallery-note {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .gallery-note p {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .gallery-section {
+      padding: 2rem 0;
+    }
+
+    .gallery-grid {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      aspect-ratio: 1;
+    }
+  }
+</style>

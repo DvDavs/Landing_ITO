@@ -1,0 +1,324 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="header-top">
+    <div class="container">
+      <div class="logos-row">
+        <a href="https://www.tecnm.mx/" target="_blank" rel="noopener" class="logo-link">
+          <img src="/images/logos/TecNM_logo.png" alt="Tecnológico Nacional de México" class="logo-tecnm" />
+        </a>
+        <a href="/" class="logo-link logo-evento-link">
+          <img src="/images/logos/logo-evento.png" alt="XXXI Encuentro Nacional" class="logo-evento" />
+        </a>
+        <a href="http://www.itoaxaca.edu.mx/" target="_blank" rel="noopener" class="logo-link">
+          <img src="/images/logos/Logo_ITO.png" alt="Instituto Tecnológico de Oaxaca" class="logo-ito" />
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="main-nav">
+    <div class="container">
+      <button class="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+      
+      <ul class="nav-menu">
+        <li><a href="/" class={currentPath === '/' ? 'active' : ''}>Inicio</a></li>
+        <li><a href="/evento" class={currentPath === '/evento' ? 'active' : ''}>El Evento</a></li>
+        <li><a href="/escuelas" class={currentPath === '/escuelas' ? 'active' : ''}>Escuelas</a></li>
+        <li><a href="/hoteles" class={currentPath === '/hoteles' ? 'active' : ''}>Hoteles</a></li>
+        <li><a href="/sedes" class={currentPath === '/sedes' ? 'active' : ''}>Sedes</a></li>
+        <li><a href="/galeria" class={currentPath === '/galeria' ? 'active' : ''}>Galería</a></li>
+        <li><a href="/registro" class={currentPath === '/registro' ? 'active' : ''}>Registro</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .header-top {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .logos-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    max-width: 1200px;
+  }
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .logo-link:hover {
+    transform: translateY(-4px);
+    opacity: 0.85;
+  }
+
+  .logo-tecnm,
+  .logo-ito {
+    height: 60px;
+    width: auto;
+  }
+
+  .logo-evento {
+    height: 80px;
+    width: auto;
+  }
+
+  .logo-evento-link {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .main-nav {
+    background: linear-gradient(135deg, #1B396A 0%, #152d52 100%);
+    position: relative;
+  }
+
+  .nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 1rem;
+    z-index: 1001;
+  }
+
+  .hamburger {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: white;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .hamburger::before,
+  .hamburger::after {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 3px;
+    background: white;
+    transition: all 0.3s ease;
+  }
+
+  .hamburger::before {
+    top: -8px;
+  }
+
+  .hamburger::after {
+    bottom: -8px;
+  }
+
+  .nav-toggle[aria-expanded="true"] .hamburger {
+    background: transparent;
+  }
+
+  .nav-toggle[aria-expanded="true"] .hamburger::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+
+  .nav-toggle[aria-expanded="true"] .hamburger::after {
+    transform: rotate(-45deg);
+    bottom: 0;
+  }
+
+  .nav-menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-menu li {
+    position: relative;
+  }
+
+  .nav-menu a {
+    display: block;
+    padding: 1rem 1.5rem;
+    color: white;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: #C59B6D;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  .nav-menu a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #C59B6D;
+  }
+
+  .nav-menu a:hover::after,
+  .nav-menu a.active::after {
+    width: 80%;
+  }
+
+  .nav-menu a.active {
+    background: rgba(255, 255, 255, 0.15);
+    color: #C59B6D;
+    font-weight: 600;
+  }
+
+  @media (max-width: 968px) {
+    .logos-row {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .logo-evento-link {
+      order: -1;
+      flex-basis: 100%;
+      text-align: center;
+    }
+
+    .nav-toggle {
+      display: block;
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .nav-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 300px;
+      height: 100vh;
+      background: linear-gradient(180deg, #1B396A 0%, #152d52 100%);
+      flex-direction: column;
+      padding: 6rem 0 2rem;
+      gap: 0;
+      transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+      overflow-y: auto;
+    }
+
+    .nav-menu.active {
+      right: 0;
+    }
+
+    .nav-menu a {
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-menu a::after {
+      left: 0;
+      transform: translateX(0);
+      width: 0;
+      height: 100%;
+      top: 0;
+      background: rgba(197, 155, 109, 0.2);
+    }
+
+    .nav-menu a:hover::after,
+    .nav-menu a.active::after {
+      width: 5px;
+    }
+
+    .logo-tecnm,
+    .logo-ito {
+      height: 50px;
+    }
+
+    .logo-evento {
+      height: 70px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .header-top {
+      padding: 1rem 0;
+    }
+
+    .logos-row {
+      gap: 1rem;
+    }
+
+    .logo-tecnm,
+    .logo-ito {
+      height: 40px;
+    }
+
+    .logo-evento {
+      height: 60px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const navToggle = document.querySelector('.nav-toggle') as HTMLButtonElement;
+    const navMenu = document.querySelector('.nav-menu') as HTMLElement;
+    
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', () => {
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', (!isExpanded).toString());
+        navMenu.classList.toggle('active');
+        
+        // Prevenir scroll cuando el menú está abierto
+        document.body.style.overflow = isExpanded ? '' : 'hidden';
+      });
+
+      // Cerrar menú al hacer clic en un enlace
+      const navLinks = navMenu.querySelectorAll('a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          navToggle.setAttribute('aria-expanded', 'false');
+          navMenu.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      });
+
+      // Cerrar menú al hacer clic fuera
+      document.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        if (!navToggle.contains(target) && !navMenu.contains(target) && navMenu.classList.contains('active')) {
+          navToggle.setAttribute('aria-expanded', 'false');
+          navMenu.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+  });
+</script>

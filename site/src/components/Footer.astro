@@ -1,0 +1,301 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Sección del Evento -->
+        <div class="footer-section">
+          <h3 class="footer-title">XXXI Encuentro Nacional</h3>
+          <p class="footer-text">
+            Escoltas y Bandas de Guerra del Tecnológico Nacional de México 2026
+          </p>
+          <div class="footer-event-info">
+            <div class="info-item">
+              <strong>Fecha:</strong> 22-26 de Febrero de 2026
+            </div>
+            <div class="info-item">
+              <strong>Sede:</strong> Instituto Tecnológico de Oaxaca
+            </div>
+          </div>
+        </div>
+
+        <!-- Enlaces Rápidos -->
+        <div class="footer-section">
+          <h4 class="footer-title">Enlaces Rápidos</h4>
+          <ul class="footer-links">
+            <li><a href="/evento">Información del Evento</a></li>
+            <li><a href="/escuelas">Escuelas Participantes</a></li>
+            <li><a href="/hoteles">Hospedaje</a></li>
+            <li><a href="/sedes">Sedes y Municipios</a></li>
+            <li><a href="/galeria">Galería</a></li>
+            <li><a href="/registro">Registro</a></li>
+          </ul>
+        </div>
+
+        <!-- Contacto -->
+        <div class="footer-section">
+          <h4 class="footer-title">Contacto</h4>
+          <div class="footer-contact">
+            <p><strong>Instituto Tecnológico de Oaxaca</strong></p>
+            <p>Av. Ing. Víctor Bravo Ahuja No. 125</p>
+            <p>Esquina Calzada Tecnológico</p>
+            <p>C.P. 68030, Oaxaca de Juárez, Oaxaca</p>
+          </div>
+        </div>
+
+        <!-- Institucional -->
+        <div class="footer-section">
+          <h4 class="footer-title">Institucional</h4>
+          <div class="footer-logos">
+            <a href="https://www.gob.mx/" target="_blank" rel="noopener" class="footer-logo-link">
+              <span>Gobierno de México</span>
+            </a>
+            <a href="https://www.gob.mx/sep" target="_blank" rel="noopener" class="footer-logo-link">
+              <span>Secretaría de Educación Pública</span>
+            </a>
+            <a href="https://www.tecnm.mx/" target="_blank" rel="noopener" class="footer-logo-link">
+              <span>Tecnológico Nacional de México</span>
+            </a>
+            <a href="http://www.itoaxaca.edu.mx/" target="_blank" rel="noopener" class="footer-logo-link">
+              <span>Instituto Tecnológico de Oaxaca</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-content">
+        <p class="copyright">
+          &copy; {currentYear} Tecnológico Nacional de México. Todos los derechos reservados.
+        </p>
+        <p class="footer-disclaimer">
+          Instituto Tecnológico de Oaxaca - Sede del XXXI Encuentro Nacional
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: linear-gradient(180deg, #1B396A 0%, #152d52 100%);
+    color: #d1d5db;
+    margin-top: auto;
+  }
+
+  .footer-main {
+    padding: var(--spacing-2xl) 0 var(--spacing-xl);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .footer-section {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .footer-title {
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    font-family: var(--font-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+    padding-bottom: 0.75rem;
+  }
+
+  .footer-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, #C59B6D, #FF6600);
+    border-radius: 2px;
+  }
+
+  .footer-text {
+    color: #d1d5db;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .footer-event-info {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    border-left: 3px solid #C59B6D;
+  }
+
+  .info-item {
+    color: #e5e7eb;
+    margin-bottom: 0.5rem;
+    font-size: 0.9375rem;
+  }
+
+  .info-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .info-item strong {
+    color: #C59B6D;
+    margin-right: 0.5rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-links a {
+    color: #d1d5db;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .footer-links a::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: #C59B6D;
+    font-weight: bold;
+    font-size: 1.25rem;
+    transition: transform var(--transition-fast);
+  }
+
+  .footer-links a:hover {
+    color: white;
+    padding-left: 1.5rem;
+  }
+
+  .footer-links a:hover::before {
+    transform: translateX(4px);
+    color: #FF6600;
+  }
+
+  .footer-contact {
+    color: #d1d5db;
+    line-height: 1.8;
+  }
+
+  .footer-contact p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9375rem;
+  }
+
+  .footer-contact strong {
+    color: white;
+    display: block;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+  }
+
+  .footer-logos {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .footer-logo-link {
+    color: #d1d5db;
+    text-decoration: none;
+    font-size: 0.9375rem;
+    transition: all var(--transition-fast);
+    padding: 0.5rem;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid transparent;
+  }
+
+  .footer-logo-link:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #C59B6D;
+    transform: translateX(4px);
+  }
+
+  .footer-bottom {
+    padding: var(--spacing-md) 0;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .footer-bottom-content {
+    text-align: center;
+  }
+
+  .copyright {
+    color: #9ca3af;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-disclaimer {
+    color: #6b7280;
+    font-size: 0.8125rem;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .footer-main {
+      padding: var(--spacing-xl) 0;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .footer-section {
+      padding-bottom: var(--spacing-md);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-section:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .footer-bottom-content {
+      text-align: center;
+    }
+
+    .footer-title {
+      font-size: 1rem;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
