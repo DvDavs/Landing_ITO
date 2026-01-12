@@ -4,7 +4,7 @@ import { ViewTransitions } from 'astro:transitions';
 ---
 
 <BaseLayout 
-  title="Inicio - XXXI Encuentro Nacional de Escoltas y Bandas de Guerra TecNM 2026"
+  title="XXXI Encuentro Escoltas y Bandas de Guerra 2026 | ITO"
   description="Bienvenido al XXXI Encuentro Nacional de Escoltas y Bandas de Guerra del Tecnológico Nacional de México 2026, sede Instituto Tecnológico de Oaxaca. 22-26 de Febrero de 2026."
 >
   <!-- Hero Section con Flyer -->
@@ -28,7 +28,7 @@ import { ViewTransitions } from 'astro:transitions';
               </div>
               <div class="hero-info-item">
                 <span class="info-label">Participantes</span>
-                <span class="info-value">40 Institutos Tecnológicos</span>
+                <span class="info-value">40 Institutos + Sede</span>
               </div>
             </div>
             <div class="hero-actions">
@@ -97,9 +97,64 @@ import { ViewTransitions } from 'astro:transitions';
               </svg>
             </div>
             <p class="highlight-text">
-              Felicidades a los 40 Institutos Tecnológicos que por el puntaje alcanzado participarán en el XXXI Encuentro Nacional de Escoltas y Bandas de Guerra TecNM 2026 en el Instituto Tecnológico de Oaxaca del 22 al 26 de febrero de 2026.
+              Felicidades a los cuarenta grupos cívicos de los Institutos Tecnológicos Federales y Descentralizados que obtuvieron su pase al encuentro nacional, más el Instituto Tecnológico sede, que participarán en el XXXI Encuentro Nacional de Escoltas y Bandas de Guerra TecNM 2026 en el Instituto Tecnológico de Oaxaca del 22 al 26 de febrero de 2026.
             </p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Convocatoria -->
+  <section class="convocatoria-section section-alt">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-badge">Documento Oficial</span>
+        <h2>Convocatoria</h2>
+        <p class="lead">
+          Consulta la convocatoria oficial del XXXI Encuentro Nacional de Escoltas y Bandas de Guerra
+        </p>
+      </div>
+      
+      <div class="convocatoria-card card">
+        <div class="convocatoria-content">
+          <div class="convocatoria-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </div>
+          <div class="convocatoria-info">
+            <h3>Convocatoria Oficial</h3>
+            <p>
+              Descarga la convocatoria completa del XXXI Encuentro Nacional de Escoltas y Bandas de Guerra 2026, 
+              que incluye toda la información sobre requisitos, fechas, sedes y proceso de participación.
+            </p>
+            <div class="convocatoria-details">
+              <div class="detail-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <span>Documento PDF</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="convocatoria-actions">
+          <a href="/convocatoria.pdf" target="_blank" class="btn btn-primary btn-lg">
+            Ver convocatoria
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
+            <path d="M5 12h14"></path>
+            <path d="M12 5l7 7-7 7"></path>
+          </svg>
+
+          </a>
         </div>
       </div>
     </div>
@@ -126,9 +181,9 @@ import { ViewTransitions } from 'astro:transitions';
               <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
             </svg>
           </div>
-          <h3>40 Instituciones</h3>
+          <h3>40 Instituciones Clasificadas + Sede</h3>
           <p>
-            Institutos Tecnológicos de todo México se darán cita en Oaxaca para demostrar su talento y disciplina cívica.
+            Cuarenta Institutos Tecnológicos seleccionados en los Encuentros Regionales 2025, más el Instituto Tecnológico de Oaxaca como sede del evento, se darán cita en Oaxaca para demostrar su talento y disciplina cívica.
           </p>
           <a href="/escuelas" class="btn btn-ghost">
             Ver participantes
@@ -490,6 +545,103 @@ import { ViewTransitions } from 'astro:transitions';
     line-height: 1.7;
     font-weight: 500;
     flex: 1;
+  }
+
+  /* Convocatoria Section */
+  .convocatoria-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .convocatoria-card {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--spacing-xl);
+  }
+
+  .convocatoria-content {
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: flex-start;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .convocatoria-icon {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(27, 57, 106, 0.1) 0%, rgba(27, 57, 106, 0.05) 100%);
+    border-radius: var(--radius-xl);
+    color: #1B396A;
+  }
+
+  .convocatoria-icon svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .convocatoria-info {
+    flex: 1;
+  }
+
+  .convocatoria-info h3 {
+    color: #1B396A;
+    font-size: 1.75rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .convocatoria-info p {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .convocatoria-details {
+    display: flex;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+    margin-top: var(--spacing-md);
+  }
+
+  .detail-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--color-text-light);
+    font-size: 0.9375rem;
+  }
+
+  .detail-item svg {
+    color: #1B396A;
+  }
+
+  .convocatoria-actions {
+    display: flex;
+    justify-content: center;
+    padding-top: var(--spacing-md);
+    border-top: 2px solid var(--color-border);
+  }
+
+  @media (max-width: 768px) {
+    .convocatoria-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .convocatoria-icon {
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .convocatoria-details {
+      justify-content: center;
+    }
+
+    .convocatoria-actions .btn {
+      width: 100%;
+    }
   }
 
   /* Features Section */

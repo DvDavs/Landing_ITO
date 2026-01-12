@@ -14,7 +14,7 @@ const categories = {
 ---
 
 <BaseLayout 
-  title="Hoteles y Hospedaje - XXXI Encuentro Nacional TecNM 2026"
+  title="Hoteles | XXXI Encuentro Escoltas y Bandas 2026"
   description="Encuentra las mejores opciones de hospedaje en Oaxaca con tarifas especiales para participantes del XXXI Encuentro Nacional de Escoltas y Bandas de Guerra."
 >
   <!-- Hero Section -->
@@ -703,21 +703,20 @@ const categories = {
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     border: 1px solid var(--color-border);
-    position: relative;
-    padding-left: 5rem;
     transition: all var(--transition-base);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 var(--spacing-lg);
+    align-items: start;
   }
 
   .tip-card:hover {
-    transform: translateX(8px);
+    transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
     border-color: var(--color-primary);
   }
 
   .tip-number {
-    position: absolute;
-    left: var(--spacing-md);
-    top: var(--spacing-lg);
     width: 56px;
     height: 56px;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
@@ -729,17 +728,24 @@ const categories = {
     font-size: 1.5rem;
     font-weight: 800;
     box-shadow: var(--shadow-md);
+    grid-row: 1 / 3;
+    grid-column: 1;
   }
 
   .tip-card h3 {
     font-size: 1.25rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 0.25rem;
   }
 
   .tip-card p {
     margin: 0;
     color: var(--color-text-light);
     line-height: 1.6;
+    grid-column: 2;
+    grid-row: 2;
   }
 
   /* Responsive */
@@ -759,14 +765,16 @@ const categories = {
     }
 
     .tip-card {
-      padding-left: var(--spacing-md);
-      padding-top: 5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var(--spacing-md);
+      padding: var(--spacing-lg);
     }
 
     .tip-number {
-      left: 50%;
-      transform: translateX(-50%);
-      top: var(--spacing-md);
+      margin-bottom: var(--spacing-sm);
     }
 
     .services-list {
