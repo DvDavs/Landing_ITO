@@ -22,15 +22,61 @@ if ! command -v nginx &> /dev/null; then
     exit 1
 fi
 
-# Hacer backup de la configuración actual
-if [ -f "$CONFIG_FILE" ]; then
+# Crear archivo de configuración si no existe
+if [ ! -f "$CONFIG_FILE" ]; then
+    echo "📝 Creando archivo de configuración de Nginx..."
+    sudo tee "$CONFIG_FILE" > /dev/null <<EOF
+server {
+    listen 80;
+    server_name $DOMINIO;
+
+    # Tamaño máximo de archivos
+    client_max_body_size 10M;
+
+    # Logs
+    access_log /var/log/nginx/landing-ito-access.log;
+    error_log /var/log/nginx/landing-ito-error.log;
+
+    # Configuración de proxy
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade \$http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host \$host;
+        proxy_set_header X-Real-IP \$remote_addr;
+        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto \$scheme;
+        proxy_cache_bypass \$http_upgrade;
+        proxy_read_timeout 300s;
+        proxy_connect_timeout 75s;
+    }
+
+    # Cache para archivos estáticos
+    location ~* \.(jpg|jpeg|png|gif|ico|css|js|svg|woff|woff2|ttf|eot)$ {
+        proxy_pass http://localhost:3000;
+        proxy_set_header Host \$host;
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+    }
+}
+EOF
+    echo "✅ Archivo de configuración creado"
+    
+    # Crear enlace simbólico si no existe
+    if [ ! -L "/etc/nginx/sites-enabled/landing-ito" ]; then
+        echo "🔗 Creando enlace simbólico..."
+        sudo ln -s "$CONFIG_FILE" /etc/nginx/sites-enabled/landing-ito
+    fi
+else
+    # Hacer backup de la configuración actual
     echo "📦 Creando backup de configuración actual..."
     sudo cp "$CONFIG_FILE" "${CONFIG_FILE}.backup.$(date +%Y%m%d_%H%M%S)"
+    
+    # Actualizar server_name en la configuración existente
+    echo "✏️  Actualizando configuración de Nginx..."
+    sudo sed -i "s/server_name.*;/server_name $DOMINIO;/" "$CONFIG_FILE"
 fi
-
-# Actualizar server_name en la configuración
-echo "✏️  Actualizando configuración de Nginx..."
-sudo sed -i "s/server_name.*;/server_name $DOMINIO www.$DOMINIO;/" "$CONFIG_FILE"
 
 # Verificar configuración
 echo "🔍 Verificando configuración de Nginx..."
