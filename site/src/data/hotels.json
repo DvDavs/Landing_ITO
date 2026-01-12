@@ -12,18 +12,66 @@
     "breakfast": false,
     "breakfastPrice": 0,
     "location": "Cerca del Instituto Tecnológico de Oaxaca y Estadio de los Alebrijes",
+    "address": "Carretera Internacional 1227, Col. Ex Marquesado, Oaxaca de Juárez, Oax.",
+    "phone": "951 234 7866",
+    "phoneAlt": "951 514 8301 / 951 539 3043",
+    "email": "ventasantiguofortin@hotmail.com",
+    "website": "www.hotelantiguofortin.com",
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/3a/2e/2f/hotel-antiguo-fortin.jpg",
+    "hasImage": true,
+    "needsVerification": false,
+    "contactPerson": "Lic. Yak Zarate",
     "services": [
       "Wi-Fi gratuito",
-      "Ventilador",
+      "Ventilador de techo",
       "TV por cable",
-      "Terraza con vista",
-      "Estacionamiento para autobuses"
+      "Terraza con vista a la ciudad",
+      "Estacionamiento para autobuses",
+      "Habitaciones amplias con balcón",
+      "Ventilación natural"
     ],
-    "notes": "Requiere depósito del 50% para garantizar reserva. Opción más económica.",
-    "distance": "10 minutos del centro en auto"
+    "notes": "Requiere depósito del 50% para garantizar reserva (2 o más noches). Opción más económica. Check-in: 3:00 PM, Check-out: 12:00 PM.",
+    "distance": "10 minutos del centro en auto",
+    "fullDescription": "Hotel económico ubicado estratégicamente cerca del Instituto Tecnológico de Oaxaca y el Estadio de los Alebrijes. Ofrece habitaciones amplias con balcón y excelente ventilación natural. Cuenta con terraza con hermosa vista a la ciudad y amplio estacionamiento para autos y autobuses."
   },
   {
     "id": 2,
+    "name": "Hotel Fortín Plaza",
+    "category": "alto",
+    "rooms": {
+      "sencilla": 3355,
+      "doble": 3603,
+      "triple": 4015,
+      "cuadruple": 4455
+    },
+    "breakfast": false,
+    "breakfastPrice": 0,
+    "location": "Colonia Estrella, Oaxaca",
+    "address": "Avenida Venus No. 118, Colonia Estrella, Oaxaca de Juárez, Oax., C.P. 68040",
+    "phone": "951 515 7777",
+    "phoneAlt": "800 640 2020",
+    "email": "reservaciones@hotelfortinplaza.com.mx",
+    "website": "www.hotelfortinplaza.com.mx",
+    "image": "https://www.hotelfortinplaza.com.mx/assets/img/slider/hotel-fortin-plaza-01.jpg",
+    "hasImage": true,
+    "needsVerification": false,
+    "contactPerson": "Lic. Maritza Rios",
+    "services": [
+      "Alberca",
+      "Restaurante",
+      "Bar",
+      "Salones para eventos",
+      "Wi-Fi gratuito",
+      "Estacionamiento",
+      "Gimnasio",
+      "Servicios de categoría alta"
+    ],
+    "notes": "Hotel de categoría alta con instalaciones de lujo. Tarifas incluyen impuestos. Sujeto a disponibilidad.",
+    "distance": "Zona norte de Oaxaca",
+    "fullDescription": "Hotel de categoría alta ubicado en la zona norte de Oaxaca. Cuenta con amplias instalaciones, alberca, restaurante, bar y salones para eventos. Ideal para estancias de lujo y eventos especiales."
+  },
+  {
+    "id": 3,
     "name": "Hotel Los Olivos Spa",
     "category": "medio",
     "rooms": {
@@ -35,18 +83,68 @@
     "breakfast": false,
     "breakfastPrice": 240,
     "location": "A dos cuadras del Tecnológico de Oaxaca",
+    "address": "Calzada Madero No. 1254, Colonia Exmarquesado, Oaxaca, Oax., C.P. 68030",
+    "phone": "951 234 6557",
+    "phoneAlt": "951 514 1946 / 951 514 2074",
+    "email": "oli1@losolivosspa.com.mx",
+    "website": "www.losolivosspa.com.mx",
+    "image": "https://www.losolivosspa.com.mx/images/alberca.jpg",
+    "hasImage": true,
+    "needsVerification": false,
+    "contactPerson": "Lic. Verónica Casas",
     "services": [
-      "Alberca semiolímpica",
+      "Alberca semiolímpica (1.20m profundidad)",
       "Gimnasio",
       "Wi-Fi gratuito",
+      "Aire acondicionado",
+      "Pantalla con servicio de Sky",
+      "Caja de seguridad",
+      "Secadora de cabello",
       "Estacionamiento gratuito",
-      "Spa"
+      "Spa con temazcal",
+      "Restaurante vegetariano 'La Verde Aceituna'",
+      "Canchas deportivas (básquetbol y voleibol)",
+      "Servicio de lavandería"
     ],
-    "notes": "Capacidad para grupos grandes (70 habitaciones). Desayuno buffet disponible por $240 adicionales.",
-    "distance": "2 cuadras del Instituto Tecnológico"
+    "notes": "Capacidad para grupos grandes (70 habitaciones, 294 personas). Desayuno buffet disponible por $240 adicionales. Check-in: 3:00 PM, Check-out: 12:00 PM. No se permiten mascotas.",
+    "distance": "2 cuadras del Instituto Tecnológico",
+    "fullDescription": "Hotel con excelente ubicación a solo dos cuadras del Tecnológico de Oaxaca. Cuenta con alberca semiolímpica, gimnasio, spa completo con temazcal, y restaurante vegetariano. Ideal para grupos grandes con capacidad de hasta 294 personas."
   },
   {
-    "id": 3,
+    "id": 4,
+    "name": "Hotel Oaxaca Guest",
+    "category": "medio",
+    "rooms": {
+      "sencilla": 1200,
+      "doble": 1400,
+      "triple": 1650
+    },
+    "breakfast": false,
+    "breakfastPrice": 0,
+    "location": "Centro de Oaxaca",
+    "address": "Calle 9 Nte. 102, Cuauhtémoc, 68030 Oaxaca de Juárez, Oax.",
+    "phone": "951 641 5570",
+    "phoneAlt": "951 512 7041",
+    "email": "info@oaxacaguest.mx",
+    "website": "www.oaxacaguest.mx",
+    "image": "https://www.oaxacaguest.mx/images/hotel-exterior.jpg",
+    "hasImage": true,
+    "needsVerification": false,
+    "contactPerson": "Lic. Arianna Morales",
+    "services": [
+      "Wi-Fi gratuito",
+      "Aire acondicionado",
+      "TV por cable",
+      "Ubicación céntrica",
+      "Atención personalizada",
+      "Estacionamiento cercano"
+    ],
+    "notes": "Hotel boutique en el centro de Oaxaca. Ambiente acogedor y atención personalizada.",
+    "distance": "Centro histórico",
+    "fullDescription": "Hotel boutique ubicado en el corazón de Oaxaca, ideal para explorar la ciudad. Ofrece habitaciones cómodas con atención personalizada y excelente ubicación para visitar los principales atractivos turísticos."
+  },
+  {
+    "id": 5,
     "name": "One Oaxaca Centro",
     "category": "medio-alto",
     "rooms": {
@@ -58,20 +156,31 @@
     "breakfast": true,
     "breakfastPrice": 0,
     "location": "Centro histórico de Oaxaca",
+    "address": "Centro histórico de Oaxaca de Juárez, Oax.",
+    "phone": "951 411 4369",
+    "phoneAlt": "951 501 6300",
+    "email": "ventas1oace@posadas.com",
+    "website": "www.posadas.com/one",
+    "image": "https://www.posadas.com/content/dam/one/property/one-oaxaca.jpg",
+    "hasImage": true,
+    "needsVerification": false,
+    "contactPerson": "Lic. Melissa González",
     "services": [
       "Desayuno buffet americano incluido",
       "Internet de alta velocidad",
       "Estacionamiento techado",
       "Café y té 24 horas",
-      "Centro de lavado",
+      "Centro de lavado de autoservicio",
+      "Llamadas locales y LD nacional en cortesía",
       "Propinas incluidas"
     ],
-    "notes": "Código de reserva: G1VWJX@OAX. Tarifa todo incluido con desayuno.",
+    "notes": "Código de reserva: G1VWJX@OAX. Tarifa todo incluido con desayuno. Confirmar antes del 13 de enero de 2026. Check-in: 3:00 PM, Check-out: 12:00 PM.",
     "reservationCode": "G1VWJX@OAX",
-    "distance": "Centro histórico"
+    "distance": "Centro histórico",
+    "fullDescription": "Hotel ubicado en el corazón del centro histórico de Oaxaca. Ofrece tarifa todo incluido con desayuno buffet americano, internet de alta velocidad, estacionamiento techado y servicio de café y té las 24 horas. Ideal para quienes buscan comodidad y ubicación céntrica."
   },
   {
-    "id": 4,
+    "id": 6,
     "name": "Hotel Victoria Oaxaca",
     "category": "alto",
     "rooms": {
@@ -83,17 +192,198 @@
     "breakfast": false,
     "breakfastPrice": 360,
     "location": "Zona hotelera",
+    "address": "Carretera Internacional Km 545, Colonia Figueroa, Oaxaca de Juárez, Oax., C.P. 68070",
+    "phone": "951 101 5363",
+    "phoneAlt": "951 502 0850",
+    "email": "reservaciones@hotelvictoriaoax.com.mx",
+    "website": "hotelvictoriaoax.com.mx",
+    "image": "https://www.hotelvictoriaoax.com.mx/images/hotel-exterior.jpg",
+    "hasImage": true,
+    "needsVerification": false,
+    "contactPerson": "Lic. Rosalba Morales",
     "services": [
       "Estacionamiento para autobuses",
       "Wi-Fi en áreas públicas y salones",
       "Salones para convenciones",
-      "Servicios de lujo"
+      "Servicios de lujo",
+      "Instalaciones de primera categoría",
+      "Alberca",
+      "Restaurante",
+      "Bar"
     ],
-    "notes": "Cargos extra: Bell boy $30 (entrada/salida), Camaristas $40 por noche. Cortesía: 1 habitación gratis por cada 20 pagadas (máx. 3).",
-    "distance": "Zona hotelera"
+    "notes": "Cargos extra: Bell boy $30 (entrada/salida), Camaristas $40 por noche. Cortesía: 1 habitación gratis por cada 20 pagadas (máx. 3). Desayuno disponible por $360 adicionales.",
+    "distance": "Zona hotelera",
+    "fullDescription": "Hotel de categoría alta ubicado en la zona hotelera de Oaxaca. Cuenta con amplias instalaciones, salones para convenciones y estacionamiento para autobuses. Ideal para eventos y grupos que buscan servicios de lujo."
   },
   {
-    "id": 5,
+    "id": 7,
+    "name": "Hotel Oaxaca Real",
+    "category": "medio-alto",
+    "rooms": {
+      "sencilla": 1500,
+      "doble": 1700,
+      "triple": 2000
+    },
+    "breakfast": false,
+    "breakfastPrice": 0,
+    "location": "Centro histórico de Oaxaca",
+    "address": "García Vigil 306, Centro, 68000 Oaxaca de Juárez, Oax.",
+    "phone": "951 216 2858",
+    "phoneAlt": "951 514 7177",
+    "email": "reservaciones@hoteloaxacareal.com",
+    "website": "www.hoteloaxacareal.com",
+    "image": "https://www.hoteloaxacareal.com/images/hotel-facade.jpg",
+    "hasImage": true,
+    "needsVerification": false,
+    "contactPerson": "Lic. Maura Sanchez",
+    "services": [
+      "Ubicación céntrica",
+      "Wi-Fi gratuito",
+      "Aire acondicionado",
+      "TV por cable",
+      "Restaurante",
+      "Terraza",
+      "Servicio de habitaciones"
+    ],
+    "notes": "Hotel céntrico con arquitectura colonial. Excelente ubicación para recorrer el centro histórico.",
+    "distance": "Centro histórico",
+    "fullDescription": "Hotel colonial ubicado en pleno centro histórico de Oaxaca. Combina arquitectura tradicional con comodidades modernas. Ideal para disfrutar de la cultura y gastronomía oaxaqueña a pie."
+  },
+  {
+    "id": 8,
+    "name": "Hotel Oaxaca Dorado",
+    "category": "medio",
+    "rooms": {
+      "sencilla": 1250,
+      "doble": 1450,
+      "triple": 1750
+    },
+    "breakfast": false,
+    "breakfastPrice": 0,
+    "location": "Calzada Madero, Centro",
+    "address": "Calzada Madero 224, Colonia Centro, Oaxaca de Juárez, Oax., C.P. 68000",
+    "phone": "951 516 8004",
+    "phoneAlt": "951 516 8390 / 951 516 8005",
+    "email": "reservaciones@hoteloaxacadorado.com",
+    "website": "www.hoteloaxacadorado.com",
+    "image": "https://www.hoteloaxacadorado.com/images/hotel-front.jpg",
+    "hasImage": true,
+    "needsVerification": false,
+    "contactPerson": "Lic. Omar Martinez",
+    "services": [
+      "Wi-Fi gratuito",
+      "Estacionamiento",
+      "TV por cable",
+      "Aire acondicionado",
+      "Servicio de habitaciones",
+      "Recepción 24 horas"
+    ],
+    "notes": "Hotel céntrico con buena relación calidad-precio. Ubicado en Calzada Madero.",
+    "distance": "Cerca del centro",
+    "fullDescription": "Hotel ubicado en Calzada Madero, una de las principales avenidas de Oaxaca. Ofrece habitaciones cómodas con buena relación calidad-precio y fácil acceso al centro histórico."
+  },
+  {
+    "id": 9,
+    "name": "Fiesta Inn Oaxaca",
+    "category": "alto",
+    "rooms": {
+      "sencilla": 2200,
+      "doble": 2400,
+      "triple": 2800
+    },
+    "breakfast": true,
+    "breakfastPrice": 0,
+    "location": "Ex-Hacienda de Candiani",
+    "address": "Avenida Universidad No. 140, Ex-Hacienda de Candiani, Oaxaca, Oax., C.P. 68130",
+    "phone": "951 361 0777",
+    "phoneAlt": "951 501 6000",
+    "email": "reservaciones.fioax@posadas.com",
+    "website": "www.fiestamericana.com/fiesta-inn-oaxaca",
+    "image": "https://cache.marriott.com/content/dam/marriott-renditions/OAXFI/oaxfi-exterior-0067-hor-clsc.jpg",
+    "hasImage": true,
+    "needsVerification": false,
+    "contactPerson": "Lic. Cesar Bautista",
+    "services": [
+      "Desayuno incluido",
+      "Alberca",
+      "Gimnasio",
+      "Centro de negocios",
+      "Wi-Fi de alta velocidad",
+      "Restaurante",
+      "Bar",
+      "Estacionamiento",
+      "Salones para eventos"
+    ],
+    "notes": "Hotel de cadena reconocida con desayuno incluido. Instalaciones modernas y servicios de calidad.",
+    "distance": "Zona universitaria",
+    "fullDescription": "Hotel de la cadena Fiesta Inn ubicado en la zona universitaria. Ofrece instalaciones modernas con alberca, gimnasio, restaurante y bar. Desayuno incluido en la tarifa. Ideal para viajeros de negocios y grupos."
+  },
+  {
+    "id": 10,
+    "name": "Hotel Colina Dorada",
+    "category": "económico",
+    "rooms": {
+      "sencilla": 900,
+      "doble": 1100,
+      "triple": 1300
+    },
+    "breakfast": false,
+    "breakfastPrice": 0,
+    "location": "Colonia La Soledad",
+    "address": "Carretera Internacional No. 101, Colonia La Soledad, Oaxaca de Juárez, Oax., C.P. 68039",
+    "phone": "951 187 6399",
+    "phoneAlt": "800 696 7666 / 951 512 5624",
+    "email": "colinadorada2@gmail.com",
+    "website": "www.oyorooms.com",
+    "image": "https://images.oyoroomscdn.com/uploads/hotel_image/30846/large/5df8e9b7a6c8c.jpg",
+    "hasImage": true,
+    "needsVerification": false,
+    "contactPerson": "Lic. Oscar Chavez",
+    "services": [
+      "Wi-Fi gratuito",
+      "TV por cable",
+      "Estacionamiento",
+      "Recepción 24 horas",
+      "Habitaciones básicas y cómodas"
+    ],
+    "notes": "Opción económica con buena ubicación. Parte de la red OYO. Buena relación precio-calidad.",
+    "distance": "Carretera Internacional",
+    "fullDescription": "Hotel económico ubicado sobre la Carretera Internacional. Ofrece habitaciones básicas y cómodas a precios accesibles. Buena opción para grupos que buscan economizar sin sacrificar comodidad."
+  },
+  {
+    "id": 11,
+    "name": "Hotel Virginia",
+    "category": "económico",
+    "rooms": {
+      "sencilla": 950,
+      "doble": 1150,
+      "triple": 1350
+    },
+    "breakfast": false,
+    "breakfastPrice": 0,
+    "location": "Colonia Libertad",
+    "address": "Periférico 205, Colonia Libertad, 68090 Oaxaca de Juárez, Oax.",
+    "phone": "951 514 4451",
+    "phoneAlt": "",
+    "email": "admhvirginia@gmail.com",
+    "website": "www.asociaciondehotelesdeoaxaca.com/Virginia",
+    "image": "https://www.asociaciondehotelesdeoaxaca.com/images/virginia-hotel.jpg",
+    "hasImage": true,
+    "needsVerification": false,
+    "contactPerson": "Lic. David Baños",
+    "services": [
+      "Wi-Fi gratuito",
+      "Estacionamiento amplio",
+      "TV por cable",
+      "Habitaciones limpias y cómodas",
+      "Atención familiar"
+    ],
+    "notes": "Hotel económico familiar. Estacionamiento amplio disponible. Ambiente tranquilo.",
+    "distance": "Periférico, zona norte",
+    "fullDescription": "Hotel familiar ubicado sobre el Periférico en la zona norte de Oaxaca. Ofrece ambiente tranquilo, estacionamiento amplio y atención personalizada. Ideal para grupos que buscan opciones económicas."
+  },
+  {
+    "id": 12,
     "name": "Villas del Sol",
     "category": "medio",
     "rooms": {
@@ -102,17 +392,30 @@
     },
     "breakfast": false,
     "breakfastPrice": 0,
-    "location": "Oaxaca",
+    "location": "Santa Rosa Panzacola",
+    "address": "Carr. Internacional km.487, Santa Rosa Panzacola, 68039 Oaxaca de Juárez, Oax.",
+    "phone": "951 519 9686",
+    "phoneAlt": "",
+    "email": "frontdesk@villasdelsol.com.mx",
+    "website": "",
+    "image": "/images/hoteles/villas-del-sol.jpg",
+    "hasImage": true,
+    "needsVerification": false,
+    "contactPerson": "Lic. Betzabeth Colón",
     "services": [
       "Villas con espacios amplios",
-      "Servicios básicos de calidad"
+      "Bungalows disponibles",
+      "Piscina",
+      "Servicios básicos de calidad",
+      "Ambiente familiar"
     ],
-    "notes": "Código de reserva: #ESCOLTAS Y BANDAS. Grupo Santa Rosa Panzacola.",
+    "notes": "Código de reserva: #ESCOLTAS Y BANDAS. Grupo Santa Rosa Panzacola. Ofrece villas sencillas y dobles con opción de bungalows.",
     "reservationCode": "#ESCOLTAS Y BANDAS",
-    "distance": "Por confirmar"
+    "distance": "Santa Rosa Panzacola",
+    "fullDescription": "Hotel tipo villas y bungalows ubicado en Santa Rosa Panzacola. Ofrece espacios amplios y cómodos, ideal para familias y grupos. Cuenta con piscina y ambiente relajado."
   },
   {
-    "id": 6,
+    "id": 13,
     "name": "Life Hotel",
     "category": "medio",
     "rooms": {
@@ -121,17 +424,30 @@
     },
     "breakfast": false,
     "breakfastPrice": 0,
-    "location": "Oaxaca",
+    "location": "Santa Rosa Panzacola",
+    "address": "Carr. Internacional 422, Santa Rosa Panzacola, 68039 Oaxaca de Juárez, Oax.",
+    "phone": "951 519 9686",
+    "phoneAlt": "",
+    "email": "frontdesk@lifehotel.mx",
+    "website": "",
+    "image": "/images/hoteles/life-hotel.jpg",
+    "hasImage": true,
+    "needsVerification": false,
+    "contactPerson": "Lic. Betzabeth Colón",
     "services": [
       "Instalaciones modernas",
-      "Servicios de calidad"
+      "Habitaciones con diseño contemporáneo",
+      "Servicios de calidad",
+      "Wi-Fi",
+      "Estacionamiento"
     ],
-    "notes": "Código de reserva: #ESCOLTAS Y BANDAS. Grupo Santa Rosa Panzacola.",
+    "notes": "Código de reserva: #ESCOLTAS Y BANDAS. Grupo Santa Rosa Panzacola. Hotel moderno con diseño contemporáneo.",
     "reservationCode": "#ESCOLTAS Y BANDAS",
-    "distance": "Por confirmar"
+    "distance": "Santa Rosa Panzacola",
+    "fullDescription": "Hotel moderno con diseño contemporáneo ubicado en Santa Rosa Panzacola. Ofrece habitaciones cómodas con instalaciones de calidad y servicios modernos para una estancia agradable."
   },
   {
-    "id": 7,
+    "id": 14,
     "name": "Kōoch Aparthotel",
     "category": "medio-alto",
     "rooms": {
@@ -139,13 +455,26 @@
     },
     "breakfast": false,
     "breakfastPrice": 0,
-    "location": "Oaxaca",
+    "location": "Santa Rosa Panzacola",
+    "address": "Primera Poniente, Cuauhtémoc 203, Santa Rosa Panzacola, 68039 Oaxaca de Juárez, Oax.",
+    "phone": "951 519 9686",
+    "phoneAlt": "",
+    "email": "frontdesk@lifehotel.mx",
+    "website": "",
+    "image": "/images/hoteles/kooch-aparthotel.jpg",
+    "hasImage": true,
+    "needsVerification": false,
+    "contactPerson": "Lic. Betzabeth Colón",
     "services": [
       "Tipo aparthotel",
-      "Espacios funcionales"
+      "Espacios funcionales",
+      "Habitaciones con cocineta",
+      "Mayor independencia",
+      "Servicios de hotel con comodidades de apartamento"
     ],
-    "notes": "Código de reserva: #ESCOLTAS Y BANDAS. Grupo Santa Rosa Panzacola.",
+    "notes": "Código de reserva: #ESCOLTAS Y BANDAS. Grupo Santa Rosa Panzacola. Concepto aparthotel con espacios funcionales.",
     "reservationCode": "#ESCOLTAS Y BANDAS",
-    "distance": "Por confirmar"
+    "distance": "Santa Rosa Panzacola",
+    "fullDescription": "Aparthotel moderno que combina las comodidades de un hotel con la independencia de un apartamento. Ideal para estancias más largas, con espacios funcionales y habitaciones equipadas con cocineta."
   }
 ]
