@@ -1,5 +1,14 @@
 [
   {
+    "id": 0,
+    "name": "Instituto Tecnológico de Oaxaca",
+    "shortName": "IT Oaxaca",
+    "region": "Sur",
+    "website": "https://www.itoaxaca.edu.mx",
+    "description": "Sede del XXXI Encuentro Nacional de Escoltas y Bandas de Guerra del TecNM 2026",
+    "sede": true
+  },
+  {
     "id": 1,
     "name": "Instituto Tecnológico de Celaya",
     "shortName": "IT Celaya",

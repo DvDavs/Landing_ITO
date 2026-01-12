@@ -74,7 +74,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <div>
                 <h3>Sede Principal</h3>
                 <p><strong>Instituto Tecnológico de Oaxaca</strong></p>
-                <p class="text-muted">Av. Ing. Víctor Bravo Ahuja No. 125, Oaxaca de Juárez, Oaxaca</p>
+                <p class="text-muted">Av. Francisco I. Madero, 68033 Oaxaca de Juárez, Oaxaca</p>
               </div>
             </div>
 
@@ -103,15 +103,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               </div>
               <div>
                 <h3>Participantes</h3>
-                <p><strong>40 Institutos Tecnológicos</strong></p>
-                <p class="text-muted">Clasificados de las tres regiones: Norte, Centro y Sur</p>
+                <p><strong>40 Institutos Clasificados + Sede Oaxaca</strong></p>
+                <p class="text-muted">40 grupos cívicos clasificados de los Encuentros Regionales 2025 más el Instituto Tecnológico de Oaxaca como sede</p>
               </div>
             </div>
 
             <div class="info-item-detailed">
               <div class="info-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
                 </svg>
               </div>
               <div>
@@ -137,7 +138,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 </div>
                 <div>
                   <h4>Escoltas</h4>
-                  <p>Competencia de escoltas de bandera con evaluación en orden cerrado, porte y ceremonia</p>
+                  <p>Conformada por seis estudiantes y uno(a) de reserva. Evaluación en orden cerrado, porte y ceremonia</p>
                 </div>
               </div>
               <div class="discipline-item">
@@ -150,8 +151,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 </div>
                 <div>
                   <h4>Bandas de Guerra</h4>
-                  <p>Competencia de bandas de guerra evaluando marcialidad, repertorio y ejecución musical</p>
+                  <p>Un(a) comandante, un(a) corneta de órdenes, guion de 8 a 10 tambores y 8 a 10 cornetas. Evaluación de marcialidad, repertorio y ejecución musical</p>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Junta Técnica -->
+          <div class="sidebar-card card">
+            <h3 class="sidebar-title">Junta Técnica</h3>
+            <div class="info-item-detailed" style="border-left: none; padding: 0; background: transparent;">
+              <div class="info-icon" style="width: 40px; height: 40px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+              </div>
+              <div>
+                <p style="margin: 0; line-height: 1.6;"><strong>5 al 7 de febrero de 2026</strong></p>
+                <p style="margin: 0.5rem 0 0; font-size: 0.9375rem; color: var(--color-text-light);">Reunión de promotores cívicos en el Instituto Tecnológico de Oaxaca</p>
               </div>
             </div>
           </div>
@@ -178,7 +198,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <a href="/hoteles" class="sidebar-link-btn btn btn-secondary w-full">
                 Opciones de Hospedaje
               </a>
-              <a href="/sedes" class="sidebar-link-btn btn btn-outline w-full">
+              <a href="/sedes" class="sidebar-link-btn btn btn-sedes w-full">
                 Sedes y Municipios
               </a>
             </div>
@@ -211,16 +231,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                   <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                   <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                 </svg>
-                <span>Registro de delegaciones</span>
-              </div>
-              <div class="activity">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
-                  <line x1="16" y1="13" x2="8" y2="13"></line>
-                  <line x1="16" y1="17" x2="8" y2="17"></line>
-                </svg>
-                <span>Junta técnica y sorteo</span>
+                <span>Registro de delegaciones (7:00 - 10:00 horas)</span>
               </div>
               <div class="activity">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -242,17 +253,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="timeline-activities">
               <div class="activity">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
                 </svg>
-                <span>Ceremonia inaugural</span>
-              </div>
-              <div class="activity">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M9 18V5l12-2v13"></path>
-                  <circle cx="6" cy="18" r="3"></circle>
-                  <circle cx="18" cy="16" r="3"></circle>
-                </svg>
-                <span>Inicio de competencias - Primera ronda</span>
+                <span>Actividades programadas por el Comité Organizador</span>
               </div>
             </div>
           </div>
@@ -267,16 +270,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="timeline-activities">
               <div class="activity">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                 </svg>
-                <span>Competencias - Segunda ronda</span>
+                <span>Ceremonia de inauguración</span>
               </div>
               <div class="activity">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
                 </svg>
-                <span>Recorridos culturales por Oaxaca</span>
+                <span>Inicio de competencias</span>
               </div>
             </div>
           </div>
@@ -291,16 +293,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="timeline-activities">
               <div class="activity">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
                 </svg>
-                <span>Semifinales</span>
+                <span>Continuación de competencias</span>
               </div>
               <div class="activity">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
                   <polyline points="17 2 12 7 7 2"></polyline>
                 </svg>
-                <span>Evento cultural nocturno</span>
+                <span>Actividades programadas por el Comité Organizador</span>
               </div>
             </div>
           </div>
@@ -315,16 +317,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="timeline-activities">
               <div class="activity">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                </svg>
-                <span>Finales y exhibiciones</span>
-              </div>
-              <div class="activity">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                   <polyline points="22 4 12 14.01 9 11.01"></polyline>
                 </svg>
                 <span>Ceremonia de clausura y premiación</span>
+              </div>
+              <div class="activity">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+                <span>Entrega de reconocimientos a delegaciones y participantes</span>
               </div>
             </div>
           </div>
@@ -332,7 +334,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <div class="program-note info-box">
-        <strong>Nota importante:</strong> Este es un programa tentativo. Las fechas y horarios específicos se comunicarán oficialmente a través de los canales institucionales.
+        <strong>Nota importante:</strong> El programa general del Encuentro será enviado oportunamente por el Comité Organizador. Las fechas y horarios específicos de las actividades se comunicarán oficialmente a través de los canales institucionales.
       </div>
     </div>
   </section>
@@ -619,6 +621,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
+  }
+
+  .sidebar-cta .btn-sedes {
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    font-weight: 600;
+    transition: all var(--transition-base);
+  }
+
+  .sidebar-cta .btn-sedes:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.6);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
 
   /* Timeline */

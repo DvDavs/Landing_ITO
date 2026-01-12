@@ -32,7 +32,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <h2>Sistema de Inscripción</h2>
         <p class="status-description">
           El registro se realizará vía internet en la plataforma del <strong>Sistema de Inscripción de los Encuentros de Escoltas y Bandas de Guerra (SIEEyB)</strong>, 
-          al cual se podrá acceder a través del <strong>HUB de aplicaciones del TecNM</strong>. 
+          al cual se podrá acceder a través del <strong><a href="https://hubapp.tecnm.mx/" target="_blank" rel="noopener" class="hub-link">HUB de aplicaciones del TecNM</a></strong>. 
           El sistema emitirá las cédulas de inscripción con espacio para firma y fotografía de cada integrante.
         </p>
         <div class="status-badge">
@@ -40,7 +40,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
             <polyline points="22 4 12 14.01 9 11.01"></polyline>
           </svg>
-          <span>SIEEyB - HUB TecNM</span>
+          <a href="https://hubapp.tecnm.mx/" target="_blank" rel="noopener" class="status-badge-link">SIEEyB - HUB TecNM</a>
         </div>
       </div>
     </div>
@@ -115,39 +115,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- Photo Requirements Section -->
-  <section class="photo-requirements-section">
-    <div class="container-narrow">
-      <div class="photo-card card">
-        <div class="photo-header">
-          <div class="photo-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-              <circle cx="8.5" cy="8.5" r="1.5"></circle>
-              <polyline points="21 15 16 10 5 21"></polyline>
-            </svg>
-          </div>
-          <div class="photo-header-text">
-            <h2>Características de las Fotografías</h2>
-            <p>Requisitos para las fotografías en las cédulas de inscripción</p>
-          </div>
-        </div>
-        <div class="photo-body">
-          <ul class="photo-list">
-            <li>
-              <strong>Tamaño:</strong> Mínimo de 256 KB y máximo de 1 MB
-            </li>
-            <li>
-              <strong>Dimensiones:</strong> No menores a 200x200 píxeles, ni mayores a 500x500 píxeles
-            </li>
-            <li>
-              <strong>Dimensiones ideales:</strong> 400x400 píxeles
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+
 
   <!-- Requirements Section -->
   <section class="requirements-section section-alt">
@@ -451,8 +419,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </h3>
           <p class="faq-answer">
             El registro se realizará vía internet en la plataforma del Sistema de Inscripción de los Encuentros 
-            de Escoltas y Bandas de Guerra (SIEEyB), al cual se podrá acceder a través del HUB de aplicaciones 
-            del TecNM. El sistema emitirá las cédulas de inscripción con espacio para firma y fotografía de cada integrante.
+            de Escoltas y Bandas de Guerra (SIEEyB), al cual se podrá acceder a través del <a href="https://hubapp.tecnm.mx/" target="_blank" rel="noopener">HUB de aplicaciones del TecNM</a>. 
+            El sistema emitirá las cédulas de inscripción con espacio para firma y fotografía de cada integrante.
           </p>
         </div>
 
@@ -463,11 +431,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
               <line x1="12" y1="17" x2="12.01" y2="17"></line>
             </svg>
-            ¿Los 40 institutos ya están confirmados?
+            ¿Los 40 institutos clasificados ya están confirmados?
           </h3>
           <p class="faq-answer">
-            Sí, los 40 institutos participantes fueron seleccionados mediante los Encuentros Regionales 
-            realizados en 2026 en las sedes de Saltillo, Celaya y Orizaba.
+            Sí, los 40 institutos clasificados fueron seleccionados mediante los Encuentros Regionales 
+            realizados en 2026 en las sedes de Saltillo, Celaya y Orizaba, más el Instituto Tecnológico 
+            de Oaxaca como sede del evento nacional.
           </p>
         </div>
 
@@ -628,6 +597,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .status-badge svg {
     flex-shrink: 0;
     stroke: #f59e0b;
+  }
+
+  .status-badge-link {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity var(--transition-base);
+  }
+
+  .status-badge-link:hover {
+    opacity: 0.8;
+  }
+
+  .hub-link {
+    color: #f59e0b;
+    text-decoration: underline;
+    transition: opacity var(--transition-base);
+  }
+
+  .hub-link:hover {
+    opacity: 0.8;
+  }
+
+  .faq-answer a {
+    color: var(--color-accent);
+    font-weight: 600;
+    text-decoration: underline;
   }
 
   /* Photo Requirements Section */
