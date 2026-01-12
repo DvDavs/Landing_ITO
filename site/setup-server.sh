@@ -28,7 +28,7 @@ fi
 
 # Iniciar con PM2 usando la configuración
 echo "🚀 Iniciando aplicación con PM2..."
-pm2 start ecosystem.config.js
+pm2 start ecosystem.config.cjs
 
 if [ $? -ne 0 ]; then
     echo "❌ Error al iniciar PM2"
