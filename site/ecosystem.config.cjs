@@ -3,8 +3,9 @@ module.exports = {
     {
       name: 'landing-ito',
       // Opción 1: Usar servidor Node.js personalizado (más confiable)
-      script: 'server.js',
+      script: 'server.cjs',
       cwd: '/var/www/Landing_ITO/site',
+      exec_mode: 'fork', // Forzar modo fork en lugar de cluster
       instances: 1,
       autorestart: true,
       watch: false,
