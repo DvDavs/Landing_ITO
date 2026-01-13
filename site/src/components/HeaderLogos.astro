@@ -1,18 +1,47 @@
 ---
-// Componente: Header con logos institucionales
+// Componente: Header con logos institucionales (versión responsive horizontal)
 ---
 
 <header class="header">
   <div class="container">
     <div class="logos-container">
+      <!-- Logo TecNM -->
       <a href="https://www.tecnm.mx" target="_blank" rel="noopener noreferrer" class="logo-link">
-        <img src="/images/logos/TecNM_logo.png" alt="Tecnológico Nacional de México" class="logo" />
+        <picture>
+          <source 
+            media="(max-width: 768px)" 
+            srcset="/images/logos/TecNM_logo_responsive.png"
+          />
+          <img 
+            src="/images/logos/TecNM_logo.png" 
+            alt="Tecnológico Nacional de México" 
+            class="logo logo-tecnm" 
+          />
+        </picture>
       </a>
+
+      <!-- Logo Evento -->
       <div class="logo-evento-container">
-        <img src="/images/logos/logo-evento.png" alt="XXXI Encuentro Nacional de Escoltas y Bandas de Guerra" class="logo-evento" />
+        <picture>
+          <source 
+            media="(max-width: 768px)" 
+            srcset="/images/logos/logo-evento-responsive.png"
+          />
+          <img 
+            src="/images/logos/logo-evento.png" 
+            alt="XXXI Encuentro Nacional de Escoltas y Bandas de Guerra" 
+            class="logo-evento" 
+          />
+        </picture>
       </div>
+
+      <!-- Logo ITO -->
       <a href="https://www.itoaxaca.edu.mx" target="_blank" rel="noopener noreferrer" class="logo-link">
-        <img src="/images/logos/Logo_ITO.png" alt="Instituto Tecnológico de Oaxaca" class="logo" />
+        <img 
+          src="/images/logos/Logo_ITO.png" 
+          alt="Instituto Tecnológico de Oaxaca" 
+          class="logo logo-ito" 
+        />
       </a>
     </div>
   </div>
@@ -31,7 +60,6 @@
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
-    flex-wrap: wrap;
   }
 
   .logo-link {
@@ -63,24 +91,89 @@
     object-fit: contain;
   }
 
+  /* ==========================================
+     RESPONSIVE: FILA HORIZONTAL 1x3 EN MÓVIL
+     ========================================== */
   @media (max-width: 768px) {
-    .logos-container {
-      flex-direction: column;
-      text-align: center;
-      gap: 1.5rem;
+    .header {
+      padding: 1rem 0 !important;
     }
 
-    .logo {
-      height: 60px;
+    .logos-container {
+      /* CRÍTICO: Forzar fila horizontal con !important */
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      gap: 0.5rem !important;
+      padding: 0 0.5rem !important;
+      width: 100% !important;
+    }
+
+    .logo-link {
+      flex: 0 0 auto !important;
+      min-width: 0 !important;
+    }
+
+    /* Logos laterales: TecNM e ITO */
+    .logo-tecnm,
+    .logo-ito {
+      height: 45px !important;
+      width: auto !important;
+      max-width: 80px !important;
+    }
+
+    /* Logo central: Evento */
+    .logo-evento-container {
+      flex: 0 1 auto !important;
+      max-width: none !important;
+      margin: 0 !important;
+      display: flex !important;
+      justify-content: center !important;
     }
 
     .logo-evento {
-      height: 90px;
+      height: 60px !important;
+      width: auto !important;
+      max-width: 140px !important;
+    }
+  }
+
+  /* RESPONSIVE: Pantallas muy pequeñas */
+  @media (max-width: 480px) {
+    .logos-container {
+      gap: 0.3rem !important;
+      padding: 0 0.25rem !important;
     }
 
-    .logo-evento-container {
-      width: 100%;
-      max-width: 300px;
+    .logo-tecnm,
+    .logo-ito {
+      height: 38px !important;
+      max-width: 65px !important;
+    }
+
+    .logo-evento {
+      height: 50px !important;
+      max-width: 120px !important;
+    }
+  }
+
+  /* RESPONSIVE: Pantallas extra pequeñas */
+  @media (max-width: 360px) {
+    .logos-container {
+      gap: 0.2rem !important;
+    }
+
+    .logo-tecnm,
+    .logo-ito {
+      height: 32px !important;
+      max-width: 55px !important;
+    }
+
+    .logo-evento {
+      height: 42px !important;
+      max-width: 100px !important;
     }
   }
 </style>
