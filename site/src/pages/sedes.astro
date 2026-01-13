@@ -1,6 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import venuesData from '../data/venues.json';
+
+const municipalityLinks = {
+  'Oaxaca de Juárez': 'https://www.oaxaca.gob.mx/',
+  'San Pablo Villa de Mitla': 'https://www.economia.gob.mx/datamexico/es/profile/geo/san-pablo-villa-de-mitla',
+  'San Jacinto Amilpas': 'https://www.economia.gob.mx/datamexico/es/profile/geo/san-jacinto-amilpas',
+  'Santa Cruz Xoxocotlán': 'https://santacruzxoxocotlan.gob.mx/',
+  'San Sebastián Tutla': 'https://www.sansebastiantutla.gob.mx/',
+  'Santa María El Tule': 'https://santamariadeltule.gob.mx/',
+  'Cuilápam de Guerrero': 'https://municipiodecuilapamdeguerrero.gob.mx/',
+  'Santa María Atzompa': 'https://santamariatzompa.gob.mx/municipio/'
+};
 ---
 
 <BaseLayout 
@@ -14,26 +25,27 @@ import venuesData from '../data/venues.json';
         <span class="page-badge">8 Municipios Anfitriones</span>
         <h1 class="page-title">Sedes y Municipios</h1>
         <p class="page-subtitle">
-          Descubre la riqueza cultural e histórica de Oaxaca
+          Oaxaca te da la Bienvenida
         </p>
-      </div>
-    </div>
-  </section>
 
-  <!-- Intro Section -->
-  <section class="intro-section">
-    <div class="container-narrow">
-      <div class="intro-content text-center">
-        <h2>Oaxaca te da la Bienvenida</h2>
-        <p class="lead">
-          El XXXI Encuentro Nacional se llevará a cabo en 8 municipios de los Valles Centrales de Oaxaca, 
-          cada uno con su propia identidad cultural, historia y tradiciones que enriquecerán tu experiencia.
-        </p>
-        <p>
-          Más allá de las competencias, este evento es una oportunidad única para conocer el patrimonio 
-          cultural de Oaxaca, declarado Patrimonio Mundial por la UNESCO, y disfrutar de su reconocida 
-          gastronomía, artesanías y hospitalidad.
-        </p>
+        <div class="municipalities-links-container card">
+          <div class="municipalities-links-image">
+            <img src="/images/sedes/WhatsApp Image 2026-01-10 at 1.30.03 PM.jpeg" alt="Mapa de municipios" />
+          </div>
+          <div class="municipalities-links-separator"></div>
+          <div class="municipalities-links-list">
+            {venuesData.map((venue) => (
+              <a href={municipalityLinks[venue.name] || '#'} target="_blank" rel="noopener noreferrer" class="municipality-link">
+                {venue.name}
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -109,74 +121,7 @@ import venuesData from '../data/venues.json';
       ))}
     </div>
   </section>
-
-  <!-- Map Section -->
-  <section class="map-section">
-    <div class="container">
-      <div class="section-header text-center">
-        <h2>Información de Municipios</h2>
-        <p class="lead">
-          Todos los municipios están ubicados en los Valles Centrales de Oaxaca
-        </p>
-      </div>
-
-      <div class="map-layout-grid">
-        <div class="map-container card">
-          <img src="/images/sedes/WhatsApp Image 2026-01-10 at 1.30.03 PM.jpeg" alt="Mapa de municipios participantes" class="map-image" />
-        </div>
-
-        <div class="municipalities-table-container card">
-          <div class="table-header">
-            <h3>Enlaces Oficiales</h3>
-          </div>
-          <div class="table-responsive">
-            <table class="municipalities-table">
-              <thead>
-                <tr>
-                  <th>Municipio</th>
-                  <th>Página Web</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Oaxaca de Juárez</strong></td>
-                  <td><a href="https://www.oaxaca.gob.mx/" target="_blank" rel="noopener noreferrer">Visitar sitio <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></td>
-                </tr>
-                <tr>
-                  <td><strong>San Pablo Villa de Mitla</strong></td>
-                  <td><a href="https://www.economia.gob.mx/datamexico/es/profile/geo/san-pablo-villa-de-mitla" target="_blank" rel="noopener noreferrer">Visitar sitio <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></td>
-                </tr>
-                <tr>
-                  <td><strong>San Jacinto Amilpas</strong></td>
-                  <td><a href="https://www.economia.gob.mx/datamexico/es/profile/geo/san-jacinto-amilpas" target="_blank" rel="noopener noreferrer">Visitar sitio <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></td>
-                </tr>
-                <tr>
-                  <td><strong>Santa Cruz Xoxocotlán</strong></td>
-                  <td><a href="https://santacruzxoxocotlan.gob.mx/" target="_blank" rel="noopener noreferrer">Visitar sitio <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></td>
-                </tr>
-                <tr>
-                  <td><strong>San Sebastián Tutla</strong></td>
-                  <td><a href="https://www.sansebastiantutla.gob.mx/" target="_blank" rel="noopener noreferrer">Visitar sitio <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></td>
-                </tr>
-                <tr>
-                  <td><strong>Santa María El Tule</strong></td>
-                  <td><a href="https://santamariadeltule.gob.mx/" target="_blank" rel="noopener noreferrer">Visitar sitio <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></td>
-                </tr>
-                <tr>
-                  <td><strong>Cuilápam de Guerrero</strong></td>
-                  <td><a href="https://municipiodecuilapamdeguerrero.gob.mx/" target="_blank" rel="noopener noreferrer">Visitar sitio <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></td>
-                </tr>
-                <tr>
-                  <td><strong>Santa María Atzompa</strong></td>
-                  <td><a href="https://santamariatzompa.gob.mx/municipio/" target="_blank" rel="noopener noreferrer">Visitar sitio <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- Cultural Highlights -->
   <section class="cultural-section section-primary">
@@ -310,7 +255,7 @@ import venuesData from '../data/venues.json';
           <h3>Transporte</h3>
           <p>
             Los municipios anfitriones están bien conectados por carretera. Se recomienda usar 
-            taxis sitio o aplicaciones de transporte. Durante el evento habrá transporte coordinado 
+            taxis sitio, binnibus o colectivos. Durante el evento habrá transporte coordinado 
             entre las sedes principales.
           </p>
         </div>
@@ -999,6 +944,126 @@ import venuesData from '../data/venues.json';
 
     .map-container {
       order: -1;
+    }
+  }
+
+  /* Municipalities Links Container */
+  .municipalities-links-container {
+    display: flex;
+    align-items: stretch;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+    width: 100%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .page-hero-content .municipalities-links-container {
+    max-width: 1400px;
+    width: calc(100% + 300px);
+    margin-left: calc(-150px);
+    margin-right: calc(-150px);
+  }
+  
+  @media (max-width: 1200px) {
+    .page-hero-content .municipalities-links-container {
+      width: calc(100% + 200px);
+      margin-left: calc(-100px);
+      margin-right: calc(-100px);
+    }
+  }
+  
+  @media (max-width: 968px) {
+    .page-hero-content .municipalities-links-container {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  .municipalities-links-image {
+    flex-shrink: 0;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+  }
+
+  .municipalities-links-image img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    border-radius: var(--radius-md);
+  }
+
+  .municipalities-links-separator {
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--color-border), transparent);
+    flex-shrink: 0;
+  }
+
+  .municipalities-links-list {
+    width: 30%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-left: var(--spacing-md);
+  }
+
+  .municipality-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.25rem var(--spacing-sm);
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+    font-size: 0.9375rem;
+    line-height: 1  ;
+  }
+
+  .municipality-link:hover {
+    color: var(--color-primary);
+    background: var(--color-bg-alt);
+    text-decoration: underline;
+  }
+
+  .municipality-link svg {
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  .municipality-link:hover svg {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .municipalities-links-container {
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+
+    .municipalities-links-image {
+      width: 100%;
+      min-height: 200px;
+    }
+
+    .municipalities-links-separator {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--color-border), transparent);
+    }
+
+    .municipalities-links-list {
+      padding-left: 0;
     }
   }
 </style>
