@@ -2,6 +2,7 @@
   {
     "id": 1,
     "name": "Hotel Antiguo Fortín",
+    "convenio": true,
     "category": "económico",
     "rooms": {
       "sencilla": 850,
@@ -16,7 +17,8 @@
     "phone": "951 234 7866",
     "phoneAlt": "951 514 8301 / 951 539 3043",
     "email": "ventasantiguofortin@hotmail.com",
-    "website": "www.hotelantiguofortin.com",
+    "website": "https://www.hotelantiguofortin.com/",
+    "mapLink": "https://maps.app.goo.gl/aozcMZuvUNNKjzjy5",
     "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/3a/2e/2f/hotel-antiguo-fortin.jpg",
     "hasImage": true,
     "needsVerification": false,
@@ -37,6 +39,7 @@
   {
     "id": 2,
     "name": "Hotel Fortín Plaza",
+    "convenio": true,
     "category": "alto",
     "rooms": {
       "sencilla": 3355,
@@ -51,7 +54,8 @@
     "phone": "951 515 7777",
     "phoneAlt": "800 640 2020",
     "email": "reservaciones@hotelfortinplaza.com.mx",
-    "website": "www.hotelfortinplaza.com.mx",
+    "website": "https://hotelfortinplaza.com.mx/",
+    "mapLink": "https://maps.app.goo.gl/JPNGa3HCW5W8J9vaA",
     "image": "https://www.hotelfortinplaza.com.mx/assets/img/slider/hotel-fortin-plaza-01.jpg",
     "hasImage": true,
     "needsVerification": false,
@@ -73,6 +77,7 @@
   {
     "id": 3,
     "name": "Hotel Los Olivos Spa",
+    "convenio": false,
     "category": "medio",
     "rooms": {
       "sencilla": 1170,
@@ -87,7 +92,8 @@
     "phone": "951 234 6557",
     "phoneAlt": "951 514 1946 / 951 514 2074",
     "email": "oli1@losolivosspa.com.mx",
-    "website": "www.losolivosspa.com.mx",
+    "website": "https://www.losolivosspa.com.mx/",
+    "mapLink": "https://maps.app.goo.gl/RdBAYZ41Kjvv3xCD7",
     "image": "https://www.losolivosspa.com.mx/images/alberca.jpg",
     "hasImage": true,
     "needsVerification": false,
@@ -113,6 +119,7 @@
   {
     "id": 4,
     "name": "Hotel Oaxaca Guest",
+    "convenio": false,
     "category": "medio",
     "rooms": {
       "sencilla": 1200,
@@ -126,7 +133,8 @@
     "phone": "951 641 5570",
     "phoneAlt": "951 512 7041",
     "email": "info@oaxacaguest.mx",
-    "website": "www.oaxacaguest.mx",
+    "website": "http://oaxacaguest.mx/en/",
+    "mapLink": "https://maps.app.goo.gl/37hk4b6AecceJXgh7",
     "image": "https://www.oaxacaguest.mx/images/hotel-exterior.jpg",
     "hasImage": true,
     "needsVerification": false,
@@ -146,6 +154,7 @@
   {
     "id": 5,
     "name": "One Oaxaca Centro",
+    "convenio": true,
     "category": "medio-alto",
     "rooms": {
       "sencilla": 1696,
@@ -160,7 +169,8 @@
     "phone": "951 411 4369",
     "phoneAlt": "951 501 6300",
     "email": "ventas1oace@posadas.com",
-    "website": "www.posadas.com/one",
+    "website": "https://www.fiestamericanatravelty.com/one-hoteles/hoteles/one-oaxaca-centro",
+    "mapLink": "https://maps.app.goo.gl/tS5nKmsPcPxz2zrb8",
     "image": "https://www.posadas.com/content/dam/one/property/one-oaxaca.jpg",
     "hasImage": true,
     "needsVerification": false,
@@ -182,6 +192,7 @@
   {
     "id": 6,
     "name": "Hotel Victoria Oaxaca",
+    "convenio": true,
     "category": "alto",
     "rooms": {
       "sencilla": 1875,
@@ -196,7 +207,8 @@
     "phone": "951 101 5363",
     "phoneAlt": "951 502 0850",
     "email": "reservaciones@hotelvictoriaoax.com.mx",
-    "website": "hotelvictoriaoax.com.mx",
+    "website": "https://hotelvictoriaoax.com.mx/",
+    "mapLink": "https://maps.app.goo.gl/zkXjgFG1JZUDD8P96",
     "image": "https://www.hotelvictoriaoax.com.mx/images/hotel-exterior.jpg",
     "hasImage": true,
     "needsVerification": false,
@@ -218,6 +230,7 @@
   {
     "id": 7,
     "name": "Hotel Oaxaca Real",
+    "convenio": false,
     "category": "medio-alto",
     "rooms": {
       "sencilla": 1500,
@@ -231,7 +244,8 @@
     "phone": "951 216 2858",
     "phoneAlt": "951 514 7177",
     "email": "reservaciones@hoteloaxacareal.com",
-    "website": "www.hoteloaxacareal.com",
+    "website": "https://www.oaxacareal.com/",
+    "mapLink": "https://maps.app.goo.gl/CAtE1EYcwPGkHfkW7",
     "image": "https://www.hoteloaxacareal.com/images/hotel-facade.jpg",
     "hasImage": true,
     "needsVerification": false,
@@ -252,6 +266,7 @@
   {
     "id": 8,
     "name": "Hotel Oaxaca Dorado",
+    "convenio": false,
     "category": "medio",
     "rooms": {
       "sencilla": 1250,
@@ -265,7 +280,8 @@
     "phone": "951 516 8004",
     "phoneAlt": "951 516 8390 / 951 516 8005",
     "email": "reservaciones@hoteloaxacadorado.com",
-    "website": "www.hoteloaxacadorado.com",
+    "website": "https://www.hoteloaxacadorado.com/",
+    "mapLink": "https://maps.app.goo.gl/xKKUWGZ1JqzBzjPH7",
     "image": "https://www.hoteloaxacadorado.com/images/hotel-front.jpg",
     "hasImage": true,
     "needsVerification": false,
@@ -285,6 +301,7 @@
   {
     "id": 9,
     "name": "Fiesta Inn Oaxaca",
+    "convenio": true,
     "category": "alto",
     "rooms": {
       "sencilla": 2200,
@@ -298,7 +315,8 @@
     "phone": "951 361 0777",
     "phoneAlt": "951 501 6000",
     "email": "reservaciones.fioax@posadas.com",
-    "website": "www.fiestamericana.com/fiesta-inn-oaxaca",
+    "website": "https://www.fiestamericana.com/fiesta-inn/hoteles/fiesta-inn-oaxaca",
+    "mapLink": "https://maps.app.goo.gl/SROuGhs57BfrzMmt5",
     "image": "https://cache.marriott.com/content/dam/marriott-renditions/OAXFI/oaxfi-exterior-0067-hor-clsc.jpg",
     "hasImage": true,
     "needsVerification": false,
@@ -321,6 +339,7 @@
   {
     "id": 10,
     "name": "Hotel Colina Dorada",
+    "convenio": false,
     "category": "económico",
     "rooms": {
       "sencilla": 900,
@@ -334,7 +353,8 @@
     "phone": "951 187 6399",
     "phoneAlt": "800 696 7666 / 951 512 5624",
     "email": "colinadorada2@gmail.com",
-    "website": "www.oyorooms.com",
+    "website": "https://capital-o-colina-dorada.oaxaca-hotels.com/es/",
+    "mapLink": "https://www.google.com/travel/hotels/s/By9rjj2x6R3EbMwe6",
     "image": "https://images.oyoroomscdn.com/uploads/hotel_image/30846/large/5df8e9b7a6c8c.jpg",
     "hasImage": true,
     "needsVerification": false,
@@ -353,6 +373,7 @@
   {
     "id": 11,
     "name": "Hotel Virginia",
+    "convenio": false,
     "category": "económico",
     "rooms": {
       "sencilla": 950,
@@ -366,7 +387,8 @@
     "phone": "951 514 4451",
     "phoneAlt": "",
     "email": "admhvirginia@gmail.com",
-    "website": "www.asociaciondehotelesdeoaxaca.com/Virginia",
+    "website": "https://virginia.hotels-oaxaca.com/es/",
+    "mapLink": "https://maps.app.goo.gl/ih5MoAxScqB75Svy9",
     "image": "https://www.asociaciondehotelesdeoaxaca.com/images/virginia-hotel.jpg",
     "hasImage": true,
     "needsVerification": false,
@@ -385,6 +407,7 @@
   {
     "id": 12,
     "name": "Villas del Sol",
+    "convenio": true,
     "category": "medio",
     "rooms": {
       "sencilla": 1100,
@@ -397,7 +420,8 @@
     "phone": "951 519 9686",
     "phoneAlt": "",
     "email": "frontdesk@villasdelsol.com.mx",
-    "website": "",
+    "website": "https://www.villasdelsol.com.mx/es/index.html",
+    "mapLink": "https://maps.app.goo.gl/H9Qu6V77eRqtMs1JA",
     "image": "/images/hoteles/villas-del-sol.jpg",
     "hasImage": true,
     "needsVerification": false,
@@ -417,6 +441,7 @@
   {
     "id": 13,
     "name": "Life Hotel",
+    "convenio": true,
     "category": "medio",
     "rooms": {
       "sencilla": 1300,
@@ -429,7 +454,8 @@
     "phone": "951 519 9686",
     "phoneAlt": "",
     "email": "frontdesk@lifehotel.mx",
-    "website": "",
+    "website": "https://www.lifehotel.mx/es/index.html",
+    "mapLink": "https://maps.app.goo.gl/xzyCNxNn8FCB6Byo8",
     "image": "/images/hoteles/life-hotel.jpg",
     "hasImage": true,
     "needsVerification": false,
@@ -449,6 +475,7 @@
   {
     "id": 14,
     "name": "Kōoch Aparthotel",
+    "convenio": true,
     "category": "medio-alto",
     "rooms": {
       "sencilla": 1500
@@ -460,7 +487,8 @@
     "phone": "951 519 9686",
     "phoneAlt": "",
     "email": "frontdesk@lifehotel.mx",
-    "website": "",
+    "website": "https://apt-kooch.hotels-oaxaca.com/es/",
+    "mapLink": "https://maps.app.goo.gl/Kqojf5MZ2A97V3Gp9",
     "image": "/images/hoteles/kooch-aparthotel.jpg",
     "hasImage": true,
     "needsVerification": false,

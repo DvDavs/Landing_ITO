@@ -44,7 +44,7 @@ import venuesData from '../data/venues.json';
       {venuesData.map((venue, index) => (
         <div class={`venue-card ${index % 2 === 0 ? 'venue-card-left' : 'venue-card-right'}`}>
           <div class="venue-card-inner card">
-            <div class="venue-header">
+            <div class="venue-header" style={`background-image: linear-gradient(rgba(27, 57, 106, 0.85), rgba(93, 133, 166, 0.85)), url('${venue.image}'); background-size: cover; background-position: center;`}>
               <div class="venue-number">{index + 1}</div>
               <div class="venue-title-section">
                 <h3 class="venue-name">{venue.name}</h3>
@@ -114,9 +114,59 @@ import venuesData from '../data/venues.json';
         </p>
       </div>
 
-      <div class="map-container card">
-        <img src="/images/sedes/WhatsApp Image 2026-01-10 at 1.30.03 PM.jpeg" alt="Mapa de municipios participantes" class="map-image" />
-        <div class="map-caption">
+      <div class="map-layout-grid">
+        <div class="map-container card">
+          <img src="/images/sedes/WhatsApp Image 2026-01-10 at 1.30.03 PM.jpeg" alt="Mapa de municipios participantes" class="map-image" />
+        </div>
+
+        <div class="municipalities-table-container card">
+          <div class="table-header">
+            <h3>Enlaces Oficiales</h3>
+          </div>
+          <div class="table-responsive">
+            <table class="municipalities-table">
+              <thead>
+                <tr>
+                  <th>Municipio</th>
+                  <th>Página Web</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Oaxaca de Juárez</strong></td>
+                  <td><a href="https://www.oaxaca.gob.mx/" target="_blank" rel="noopener noreferrer">Visitar sitio <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></td>
+                </tr>
+                <tr>
+                  <td><strong>San Pablo Villa de Mitla</strong></td>
+                  <td><a href="https://www.economia.gob.mx/datamexico/es/profile/geo/san-pablo-villa-de-mitla" target="_blank" rel="noopener noreferrer">Visitar sitio <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></td>
+                </tr>
+                <tr>
+                  <td><strong>San Jacinto Amilpas</strong></td>
+                  <td><a href="https://www.economia.gob.mx/datamexico/es/profile/geo/san-jacinto-amilpas" target="_blank" rel="noopener noreferrer">Visitar sitio <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></td>
+                </tr>
+                <tr>
+                  <td><strong>Santa Cruz Xoxocotlán</strong></td>
+                  <td><a href="https://santacruzxoxocotlan.gob.mx/" target="_blank" rel="noopener noreferrer">Visitar sitio <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></td>
+                </tr>
+                <tr>
+                  <td><strong>San Sebastián Tutla</strong></td>
+                  <td><a href="https://www.sansebastiantutla.gob.mx/" target="_blank" rel="noopener noreferrer">Visitar sitio <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></td>
+                </tr>
+                <tr>
+                  <td><strong>Santa María El Tule</strong></td>
+                  <td><a href="https://santamariadeltule.gob.mx/" target="_blank" rel="noopener noreferrer">Visitar sitio <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></td>
+                </tr>
+                <tr>
+                  <td><strong>Cuilápam de Guerrero</strong></td>
+                  <td><a href="https://municipiodecuilapamdeguerrero.gob.mx/" target="_blank" rel="noopener noreferrer">Visitar sitio <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></td>
+                </tr>
+                <tr>
+                  <td><strong>Santa María Atzompa</strong></td>
+                  <td><a href="https://santamariatzompa.gob.mx/municipio/" target="_blank" rel="noopener noreferrer">Visitar sitio <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
@@ -407,7 +457,8 @@ import venuesData from '../data/venues.json';
     display: flex;
     gap: var(--spacing-md);
     padding: var(--spacing-lg);
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    /* Background handled via inline styles for images */
+    background-color: var(--color-primary); 
     color: white;
     align-items: flex-start;
   }
@@ -570,11 +621,7 @@ import venuesData from '../data/venues.json';
     overflow: hidden;
   }
 
-  .map-image {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
+  /* Old map-image style removed, moved to new block */
 
   .map-caption {
     padding: var(--spacing-md) var(--spacing-lg);
@@ -690,6 +737,113 @@ import venuesData from '../data/venues.json';
 
     .highlights-list {
       grid-template-columns: 1fr;
+    }
+  }
+    .highlights-list {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Map and Table Layout */
+  /* Map and Table Layout */
+  .map-layout-grid {
+    display: flex; /* Changed from grid to flex for stacking */
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1000px; /* Reduced width for better centered look */
+    margin: 0 auto;
+  }
+
+  .municipalities-table-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .map-container {
+    margin: 0 auto;
+    width: auto;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+  }
+
+  .map-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .table-header {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    padding: var(--spacing-md) var(--spacing-lg);
+    color: white;
+  }
+
+  .table-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: white;
+  }
+
+  .municipalities-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .municipalities-table th,
+  .municipalities-table td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .municipalities-table th {
+    background: var(--color-bg-alt);
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .municipalities-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .municipalities-table tr:hover {
+    background-color: #f8fafc;
+  }
+
+  .municipalities-table a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .municipalities-table a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 968px) {
+    .map-layout-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .map-container {
+      order: -1;
     }
   }
 </style>
