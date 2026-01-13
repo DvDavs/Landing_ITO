@@ -53,9 +53,40 @@ import { ViewTransitions } from 'astro:transitions';
             </div>
           </div>
           <div class="hero-image">
-          <!--
-            <img src="/images/flyer.jpg" alt="XXXI Encuentro Nacional de Escoltas y Bandas de Guerra" class="flyer-image" />
-          -->
+            <div class="hero-carousel-container">
+              <div class="hero-carousel">
+                <div class="carousel-slide active" style="background-image: url('/images/carrusel/pexels-abraham-191284090-12116371.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('/images/carrusel/pexels-abraham-191284090-12116378.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('/images/carrusel/pexels-alberto-cruz-1763350548-28145164.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('/images/carrusel/pexels-alberto-cruz-1763350548-28145165.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('/images/carrusel/pexels-cris-ramos-1837545236-32830157.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('/images/carrusel/pexels-diana-reyes-227887231-33715073.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('/images/carrusel/pexels-eduardo-vite-211353151-33381052.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('/images/carrusel/pexels-emilio-gonzalez-663433162-18989013.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('/images/carrusel/pexels-isai-matus-297239489-14087240.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('/images/carrusel/pexels-isai-matus-297239489-14087241.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('/images/carrusel/pexels-jesus-rivera-2156773390-34697929.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('/images/carrusel/pexels-jhovani-morales-242490132-12319847.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('/images/carrusel/pexels-jhovani-morales-242490132-12319997.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('/images/carrusel/pexels-luis-ariza-221718218-17024409.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('/images/carrusel/pexels-luis-ariza-221718218-27089751.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('/images/carrusel/pexels-luis-de-sandoval-243127921-12325556.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('/images/carrusel/pexels-mikegles-33704066.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('/images/carrusel/pexels-mikhail-nilov-6942660.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('/images/carrusel/pexels-yorchllavadu-252429672-14831657.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('/images/carrusel/pexels-yorchllavadu-252429672-14831667.jpg')"></div>
+              </div>
+              <button class="carousel-control prev" aria-label="Anterior">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button class="carousel-control next" aria-label="Siguiente">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -323,13 +354,93 @@ import { ViewTransitions } from 'astro:transitions';
       </div>
     </div>
   </section>
+  <script>
+    function initHeroCarousel() {
+      const carousel = document.querySelector('.hero-carousel');
+      if (!carousel) return;
+
+      const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+      if (slides.length === 0) return;
+
+      let currentIndex = 0;
+      let intervalId;
+
+      // Ensure first slide is active
+      if (!carousel.querySelector('.active')) {
+          slides[0].classList.add('active');
+      }
+
+      const nextSlide = () => {
+        slides[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % slides.length;
+        slides[currentIndex].classList.add('active');
+      };
+
+      // Create previous slide function
+      const prevSlide = () => {
+        slides[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        slides[currentIndex].classList.add('active');
+      };
+
+      const startAutoplay = () => {
+        if (intervalId) clearInterval(intervalId);
+        intervalId = setInterval(nextSlide, 3000); // 3 seconds confirmed
+      };
+
+      const stopAutoplay = () => {
+        if (intervalId) {
+          clearInterval(intervalId);
+          intervalId = null;
+        }
+      };
+
+      // Reset autoplay on manual interaction
+      const resetAutoplay = () => {
+        stopAutoplay();
+        startAutoplay();
+      };
+
+      // Event Listeners for buttons
+      const prevBtn = document.querySelector('.carousel-control.prev');
+      const nextBtn = document.querySelector('.carousel-control.next');
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+          e.preventDefault(); // Prevent default if button is inside a form or anchor (safety)
+          prevSlide();
+          resetAutoplay();
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          nextSlide();
+          resetAutoplay();
+        });
+      }
+
+      // Start autoplay
+      startAutoplay();
+
+      // Pause on hover
+      carousel.addEventListener('mouseenter', stopAutoplay);
+      carousel.addEventListener('mouseleave', startAutoplay);
+    }
+
+    // Run on invalidation (for ViewTransitions) or load
+    document.addEventListener('astro:page-load', initHeroCarousel);
+    // Also run on initial load just in case
+    document.addEventListener('DOMContentLoaded', initHeroCarousel);
+  </script>
 </BaseLayout>
 
 <style>
   /* Hero Section */
   .hero-section {
     position: relative;
-    background: linear-gradient(135deg, rgba(27, 57, 106, 0.85) 0%, rgba(93, 133, 166, 0.85) 100%), url('/images/oaxaca/Monte-Alban-Oaxaca-Mexico-1200x850.jpeg');
+    background: linear-gradient(135deg, rgba(27, 57, 106, 0.5) 0%, rgba(93, 133, 166, 0.5) 100%), url('/images/oaxaca/Monte-Alban-Oaxaca-Mexico-1200x850.jpeg');
     background-size: cover;
     background-position: center;
     padding: 0;
@@ -800,6 +911,77 @@ import { ViewTransitions } from 'astro:transitions';
       max-width: 500px;
       margin: 0 auto;
     }
+  }
+
+  /* Carousel Styles */
+  .hero-carousel-container {
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 4/5;
+    margin: 0 auto;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-2xl);
+    position: relative;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+  }
+
+  .hero-carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+  }
+
+  .carousel-slide.active {
+    opacity: 1;
+    z-index: 2;
+  }
+
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+  }
+
+  .carousel-control:hover {
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--color-primary);
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .carousel-control.prev {
+    left: 10px;
+  }
+
+  .carousel-control.next {
+    right: 10px;
   }
 
   @media (max-width: 640px) {
