@@ -32,14 +32,14 @@
       "Habitaciones amplias con balcón",
       "Ventilación natural"
     ],
-    "notes": "Requiere depósito del 50% para garantizar reserva (2 o más noches). Opción más económica. Check-in: 3:00 PM, Check-out: 12:00 PM.",
+    "notes": "Requiere depósito del 50% para garantizar reserva (2 o más noches), y del 100% en caso de ser solo una noche. Opción más económica. Check-in: 3:00 PM, Check-out: 12:00 PM.",
     "distance": "10 minutos del centro en auto",
     "fullDescription": "Hotel económico ubicado estratégicamente cerca del Instituto Tecnológico de Oaxaca y el Estadio de los Alebrijes. Ofrece habitaciones amplias con balcón y excelente ventilación natural. Cuenta con terraza con hermosa vista a la ciudad y amplio estacionamiento para autos y autobuses."
   },
   {
     "id": 2,
     "name": "Hotel Fortín Plaza",
-    "convenio": true,
+    "convenio": false,
     "category": "alto",
     "rooms": {
       "sencilla": 3355,
@@ -83,9 +83,10 @@
       "sencilla": 1170,
       "doble": 1170,
       "triple": 1320,
-      "cuadruple": 1470
+      "cuadruple": 1470,
+      "quintuple": 1820
     },
-    "breakfast": false,
+    "breakfast": true,
     "breakfastPrice": 240,
     "location": "A dos cuadras del Tecnológico de Oaxaca",
     "address": "Calzada Madero No. 1254, Colonia Exmarquesado, Oaxaca, Oax., C.P. 68030",
@@ -110,7 +111,7 @@
       "Spa con temazcal",
       "Restaurante vegetariano 'La Verde Aceituna'",
       "Canchas deportivas (básquetbol y voleibol)",
-      "Servicio de lavandería"
+      "Servicio de lavandería (costo adicional)"
     ],
     "notes": "Capacidad para grupos grandes (70 habitaciones, 294 personas). Desayuno buffet disponible por $240 adicionales. Check-in: 3:00 PM, Check-out: 12:00 PM. No se permiten mascotas.",
     "distance": "2 cuadras del Instituto Tecnológico",
@@ -122,9 +123,10 @@
     "convenio": false,
     "category": "medio",
     "rooms": {
-      "sencilla": 1200,
-      "doble": 1400,
-      "triple": 1650
+      "sencilla": 893,
+      "doble": 1105,
+      "triple": 1297,
+      "suite": 2911
     },
     "breakfast": false,
     "breakfastPrice": 0,
@@ -133,7 +135,7 @@
     "phone": "951 641 5570",
     "phoneAlt": "951 512 7041",
     "email": "info@oaxacaguest.mx",
-    "website": "http://oaxacaguest.mx/en/",
+    "website": "http://oaxacaguest.mx/es",
     "mapLink": "https://maps.app.goo.gl/37hk4b6AecceJXgh7",
     "image": "https://www.oaxacaguest.mx/images/hotel-exterior.jpg",
     "hasImage": true,
@@ -145,7 +147,9 @@
       "TV por cable",
       "Ubicación céntrica",
       "Atención personalizada",
-      "Estacionamiento cercano"
+      "Estacionamiento cercano",
+      "Se permiten mascosas",
+      "Habitaciones para no fumadores"
     ],
     "notes": "Hotel boutique en el centro de Oaxaca. Ambiente acogedor y atención personalizada.",
     "distance": "Centro histórico",
@@ -165,7 +169,7 @@
     "breakfast": true,
     "breakfastPrice": 0,
     "location": "Centro histórico de Oaxaca",
-    "address": "Centro histórico de Oaxaca de Juárez, Oax.",
+    "address": "Prolongacion Calzada de la Republica #205, RUTA INDEPENDENCIA, Centro, 68000 Oaxaca de Juárez, Oax.",
     "phone": "951 411 4369",
     "phoneAlt": "951 501 6300",
     "email": "ventas1oace@posadas.com",
@@ -269,9 +273,7 @@
     "convenio": false,
     "category": "medio",
     "rooms": {
-      "sencilla": 1250,
-      "doble": 1450,
-      "triple": 1750
+      "sencilla": ""
     },
     "breakfast": false,
     "breakfastPrice": 0,
@@ -294,7 +296,7 @@
       "Servicio de habitaciones",
       "Recepción 24 horas"
     ],
-    "notes": "Hotel céntrico con buena relación calidad-precio. Ubicado en Calzada Madero.",
+    "notes": "Hotel céntrico con buena relación calidad-precio. Ubicado en Calzada Madero. Precios cotizados en booking.com, agencia de viajes",
     "distance": "Cerca del centro",
     "fullDescription": "Hotel ubicado en Calzada Madero, una de las principales avenidas de Oaxaca. Ofrece habitaciones cómodas con buena relación calidad-precio y fácil acceso al centro histórico."
   },
@@ -342,9 +344,7 @@
     "convenio": false,
     "category": "económico",
     "rooms": {
-      "sencilla": 900,
-      "doble": 1100,
-      "triple": 1300
+      "sencilla": ""
     },
     "breakfast": false,
     "breakfastPrice": 0,
@@ -376,9 +376,9 @@
     "convenio": false,
     "category": "económico",
     "rooms": {
-      "sencilla": 950,
-      "doble": 1150,
-      "triple": 1350
+      "sencilla": 700,
+      "doble": 900,
+      "triple": 950
     },
     "breakfast": false,
     "breakfastPrice": 0,
@@ -410,8 +410,7 @@
     "convenio": true,
     "category": "medio",
     "rooms": {
-      "sencilla": 1100,
-      "doble": 1200
+      "sencilla": ""
     },
     "breakfast": false,
     "breakfastPrice": 0,
