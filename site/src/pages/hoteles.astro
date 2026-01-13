@@ -82,8 +82,20 @@ const categories = {
         <p class="lead">Todas las tarifas son por noche e incluyen impuestos (IVA 16% + ISH 3%)</p>
       </div>
 
-      <div class="table-wrapper">
-        <table class="hotels-table">
+      <div class="table-outer-container">
+        <!-- Static Header Table -->
+        <table class="hotels-table header-table">
+          <colgroup>
+            <col style="width: 25%">
+            <col style="width: 8%">
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 12%">
+            <col style="width: 5%">
+          </colgroup>
           <thead>
             <tr>
               <th>Hotel</th>
@@ -97,66 +109,83 @@ const categories = {
               <th>Enlaces</th>
             </tr>
           </thead>
-          <tbody>
-            {hotelsSorted.map((hotel) => (
-              <tr>
-                <td>
-                  <strong>{hotel.name}</strong>
-                  {hotel.reservationCode && (
-                    <span class="reservation-code">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="8.5" cy="7" r="4"></circle>
-                        <polyline points="17 11 19 13 23 9"></polyline>
-                      </svg>
-                      {hotel.reservationCode}
-                    </span>
-                  )}
-                </td>
-                <td>
-                  <span class={`category-badge category-${hotel.convenio ? 'económico' : 'alto'}`} style={`background-color: ${hotel.convenio ? '#dcfce7' : '#fee2e2'}; color: ${hotel.convenio ? '#166534' : '#991b1b'};`}>
-                    {hotel.convenio ? 'Sí' : 'No'}
-                  </span>
-                </td>
-                <td class="price">${hotel.rooms.sencilla.toLocaleString('es-MX')}</td>
-                <td class="price">{hotel.rooms.doble ? `$${hotel.rooms.doble.toLocaleString('es-MX')}` : '-'}</td>
-                <td class="price">{hotel.rooms.triple ? `$${hotel.rooms.triple.toLocaleString('es-MX')}` : '-'}</td>
-                <td class="price">{hotel.rooms.cuadruple ? `$${hotel.rooms.cuadruple.toLocaleString('es-MX')}` : '-'}</td>
-                <td>
-                  {hotel.breakfast ? (
-                    <span class="badge badge-success">Incluido</span>
-                  ) : hotel.breakfastPrice > 0 ? (
-                    <span class="badge">+${hotel.breakfastPrice}</span>
-                  ) : (
-                    <span class="text-muted">No incluido</span>
-                  )}
-                </td>
-                <td class="location-cell" style="font-size: 0.85rem;">{hotel.notes || hotel.distance}</td>
-                <td>
-                  <div class="hotel-quick-links" style="display: flex; gap: 0.5rem; justify-content: center;">
-                    {hotel.mapLink && (
-                      <a href={hotel.mapLink} target="_blank" rel="noopener noreferrer" title="Ver ubicación" style="color: var(--color-primary);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                          <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                      </a>
-                    )}
-                    {hotel.website && (
-                      <a href={hotel.website} target="_blank" rel="noopener noreferrer" title="Visitar sitio web" style="color: var(--color-primary);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <line x1="2" y1="12" x2="22" y2="12"></line>
-                          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                        </svg>
-                      </a>
-                    )}
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
         </table>
+
+        <!-- Scrollable Body Table -->
+        <div class="table-body-wrapper">
+          <table class="hotels-table body-table">
+            <colgroup>
+              <col style="width: 25%">
+              <col style="width: 8%">
+              <col style="width: 10%">
+              <col style="width: 10%">
+              <col style="width: 10%">
+              <col style="width: 10%">
+              <col style="width: 10%">
+              <col style="width: 12%">
+              <col style="width: 5%">
+            </colgroup>
+            <tbody>
+              {hotelsSorted.map((hotel) => (
+                <tr>
+                  <td>
+                    <strong>{hotel.name}</strong>
+                    {hotel.reservationCode && (
+                      <span class="reservation-code">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                          <circle cx="8.5" cy="7" r="4"></circle>
+                          <polyline points="17 11 19 13 23 9"></polyline>
+                        </svg>
+                        {hotel.reservationCode}
+                      </span>
+                    )}
+                  </td>
+                  <td>
+                    <span class={`category-badge category-${hotel.convenio ? 'económico' : 'alto'}`} style={`background-color: ${hotel.convenio ? '#dcfce7' : '#fee2e2'}; color: ${hotel.convenio ? '#166534' : '#991b1b'};`}>
+                      {hotel.convenio ? 'Sí' : 'No'}
+                    </span>
+                  </td>
+                  <td class="price">${hotel.rooms.sencilla.toLocaleString('es-MX')}</td>
+                  <td class="price">{hotel.rooms.doble ? `$${hotel.rooms.doble.toLocaleString('es-MX')}` : '-'}</td>
+                  <td class="price">{hotel.rooms.triple ? `$${hotel.rooms.triple.toLocaleString('es-MX')}` : '-'}</td>
+                  <td class="price">{hotel.rooms.cuadruple ? `$${hotel.rooms.cuadruple.toLocaleString('es-MX')}` : '-'}</td>
+                  <td>
+                    {hotel.breakfast ? (
+                      <span class="badge badge-success">Incluido</span>
+                    ) : hotel.breakfastPrice > 0 ? (
+                      <span class="badge">+${hotel.breakfastPrice}</span>
+                    ) : (
+                      <span class="text-muted">No incluido</span>
+                    )}
+                  </td>
+                  <td class="location-cell" style="font-size: 0.85rem;">{hotel.notes || hotel.distance}</td>
+                  <td>
+                    <div class="hotel-quick-links" style="display: flex; gap: 0.5rem; justify-content: center;">
+                      {hotel.mapLink && (
+                        <a href={hotel.mapLink} target="_blank" rel="noopener noreferrer" title="Ver ubicación" style="color: var(--color-primary);">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                          </svg>
+                        </a>
+                      )}
+                      {hotel.website && (
+                        <a href={hotel.website} target="_blank" rel="noopener noreferrer" title="Visitar sitio web" style="color: var(--color-primary);">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                          </svg>
+                        </a>
+                      )}
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div class="table-note info-box">
@@ -460,11 +489,41 @@ const categories = {
 
   .hotels-table {
     min-width: 1000px;
+    width: 100%;
+    table-layout: fixed; /* Enforce constant column widths */
+  }
+
+  /* Scroll Wrapper Logic */
+  .table-outer-container {
+    overflow-x: auto; /* Enable horizontal scroll for wide table */
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-border);
+  }
+
+  .header-table {
+    margin-bottom: 0; /* Attach directly to body table */
+    background: white;
+  }
+  
+  .table-body-wrapper {
+    max-height: 70vh;
+    overflow-y: auto;
+    /* Hide scrollbar for header matching? Optional */
+  }
+  
+  .body-table {
+    border-top: none;
   }
 
   .hotels-table th {
+    /* No longer sticky needed, it's in a separate static table */
+    /* top: 0; */
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     background: linear-gradient(135deg, var(--color-tecnm-primary) 0%, #152d52 100%);
     white-space: nowrap;
+    padding: 1rem 0.5rem; /* Compact padding */
   }
 
   .hotels-table td {
