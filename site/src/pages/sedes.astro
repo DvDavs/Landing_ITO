@@ -20,6 +20,17 @@ const municipalityLinks = {
 >
   <!-- Hero Section -->
   <section class="page-hero">
+    <div class="hero-bg-carousel">
+      <div class="hero-bg-slide" style="background-image: url('/images/sedes/atzompa.jpg')"></div>
+      <div class="hero-bg-slide" style="background-image: url('/images/sedes/cuilapam.jpg')"></div>
+      <div class="hero-bg-slide" style="background-image: url('/images/sedes/mitla.jpg')"></div>
+      <div class="hero-bg-slide" style="background-image: url('/images/sedes/oaxacajuarez.jpg')"></div>
+      <div class="hero-bg-slide" style="background-image: url('/images/sedes/san sebastian tutla.jpg')"></div>
+      <div class="hero-bg-slide" style="background-image: url('/images/sedes/sanjacinto.jpeg')"></div>
+      <div class="hero-bg-slide" style="background-image: url('/images/sedes/tule.jpg')"></div>
+      <div class="hero-bg-slide" style="background-image: url('/images/sedes/xoxocotlan.jpeg')"></div>
+    </div>
+    <div class="hero-overlay"></div>
     <div class="container">
       <div class="page-hero-content">
         <span class="page-badge">8 Municipios Anfitriones</span>
@@ -30,7 +41,7 @@ const municipalityLinks = {
 
         <div class="municipalities-links-container card">
           <div class="municipalities-links-image">
-            <img src="/images/sedes/WhatsApp Image 2026-01-10 at 1.30.03 PM.jpeg" alt="Mapa de municipios" />
+            <img src="/images/sedes/mapa_sedes.jpeg" alt="Mapa de municipios" />
           </div>
           <div class="municipalities-links-separator"></div>
           <div class="municipalities-links-list">
@@ -332,7 +343,7 @@ const municipalityLinks = {
 </BaseLayout>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
+  function initLightbox() {
     const lightbox = document.getElementById('image-lightbox');
     const lightboxImage = document.getElementById('lightbox-image');
     const lightboxCaption = document.getElementById('lightbox-caption');
@@ -380,16 +391,109 @@ const municipalityLinks = {
         }
       });
     }
+  }
+
+  function initCarousel() {
+    const carousel = document.querySelector('.hero-bg-carousel');
+    if (!carousel) return;
+
+    const slides = Array.from(carousel.querySelectorAll('.hero-bg-slide'));
+    let currentIndex = 0;
+    let intervalId;
+
+    // Initialize first slide
+    if (!carousel.querySelector('.active')) {
+      slides[0].classList.add('active');
+    }
+
+    const nextSlide = () => {
+        const nextIndex = (currentIndex + 1) % slides.length;
+        
+        slides[currentIndex].classList.remove('active');
+        slides[nextIndex].classList.add('active');
+        
+        currentIndex = nextIndex;
+    };
+
+    const startAutoplay = () => {
+        stopAutoplay();
+        intervalId = setInterval(nextSlide, 5000);
+    };
+
+    const stopAutoplay = () => {
+        if (intervalId) {
+            clearInterval(intervalId);
+            intervalId = null;
+        }
+    };
+
+    startAutoplay();
+  }
+
+  // Run on initial load
+  document.addEventListener('DOMContentLoaded', () => {
+    initLightbox();
+    initCarousel();
+  });
+
+  // Run on view transitions
+  document.addEventListener('astro:page-load', () => {
+    initLightbox();
+    initCarousel();
   });
 </script>
 
 <style>
   /* Hero */
   .page-hero {
-    background: linear-gradient(135deg, #1B396A 0%, #5D85A6 100%);
-    padding: 4rem 0 3rem;
+    background: transparent;
+    padding: 6rem 0 3rem;
     color: white;
     position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .hero-bg-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    z-index: 0;
+  }
+
+  .hero-bg-slide.active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(27, 57, 106, 0.85) 0%, rgba(93, 133, 166, 0.85) 100%);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .container {
+    position: relative;
+    z-index: 3;
   }
 
   .page-hero-content {
@@ -839,10 +943,6 @@ const municipalityLinks = {
       grid-template-columns: 1fr;
     }
   }
-    .highlights-list {
-      grid-template-columns: 1fr;
-    }
-  }
 
   /* Map and Table Layout */
   /* Map and Table Layout */
@@ -958,6 +1058,9 @@ const municipalityLinks = {
     max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
+    background: transparent;
+    box-shadow: none;
+    border: none;
   }
   
   .page-hero-content .municipalities-links-container {
@@ -1012,7 +1115,12 @@ const municipalityLinks = {
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    /* Use space-between to distribute links evenly across the height */
+     justify-content: flex-start; /* 👈 en vez de space-between */
+  gap: 0.4rem; /* ajusta esto a tu gusto */
+    /* Adjust these percentages to match the image header and footer space */
+    padding-top: 10%; 
+    padding-bottom: 5%;
     padding-left: var(--spacing-md);
   }
 
@@ -1020,7 +1128,7 @@ const municipalityLinks = {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--color-secondary);
+    color: white;
     text-decoration: none;
     font-weight: 500;
     padding: 0.25rem var(--spacing-sm);
@@ -1062,8 +1170,113 @@ const municipalityLinks = {
       background: linear-gradient(to right, transparent, var(--color-border), transparent);
     }
 
+
     .municipalities-links-list {
       padding-left: 0;
+    }
+  }
+
+  /* Carousel Styles */
+  .carousel-container {
+    position: relative;
+    overflow: hidden;
+    width: 70%; /* Match parent width */
+    height: 500px; /* Fixed height for consistency */
+    border-radius: var(--radius-md);
+    background: #000;
+  }
+
+  .carousel-track {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .carousel-slide.active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* or contain, depending on preference */
+    display: block;
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.3s;
+    font-size: 1.2rem;
+  }
+
+  .carousel-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .prev-btn {
+    left: 10px;
+  }
+
+  .next-btn {
+    right: 10px;
+  }
+
+  .carousel-indicators {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+  }
+
+  .indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .indicator.active {
+    background: white;
+    transform: scale(1.2);
+  }
+
+  @media (max-width: 768px) {
+    .carousel-container {
+      width: 100%;
+      height: 300px;
     }
   }
 </style>
