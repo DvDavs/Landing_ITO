@@ -27,12 +27,13 @@ const currentPath = Astro.url.pathname;
       
       <ul class="nav-menu">
         <li><a href="/" class={currentPath === '/' ? 'active' : ''}>Inicio</a></li>
-        <li><a href="/evento" class={currentPath === '/evento' ? 'active' : ''}>El Evento</a></li>
-        <li><a href="/escuelas" class={currentPath === '/escuelas' ? 'active' : ''}>Escuelas</a></li>
+        <li><a href="/evento" class={currentPath === '/evento' ? 'active' : ''}>Evento</a></li>
+        <li><a href="/escuelas" class={currentPath === '/escuelas' ? 'active' : ''}>Tecnológicos participantes</a></li>
         <li><a href="/hoteles" class={currentPath === '/hoteles' ? 'active' : ''}>Hoteles</a></li>
         <li><a href="/sedes" class={currentPath === '/sedes' ? 'active' : ''}>Sedes</a></li>
         <li><a href="/galeria" class={currentPath === '/galeria' ? 'active' : ''}>Galería</a></li>
         <li><a href="/registro" class={currentPath === '/registro' ? 'active' : ''}>Registro</a></li>
+        <li><a href="/convocatoria.pdf" target="_blank">Convocatoria</a></li>
       </ul>
     </div>
   </nav>

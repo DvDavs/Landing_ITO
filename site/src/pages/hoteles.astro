@@ -87,7 +87,7 @@ const categories = {
           <thead>
             <tr>
               <th>Hotel</th>
-              <th>Categoría</th>
+              <th>Convenio</th>
               <th>Sencilla</th>
               <th>Doble</th>
               <th>Triple</th>
@@ -113,8 +113,8 @@ const categories = {
                   )}
                 </td>
                 <td>
-                  <span class={`category-badge category-${hotel.category}`}>
-                    {categories[hotel.category as keyof typeof categories]}
+                  <span class={`category-badge category-${hotel.convenio ? 'económico' : 'alto'}`} style={`background-color: ${hotel.convenio ? '#dcfce7' : '#fee2e2'}; color: ${hotel.convenio ? '#166534' : '#991b1b'};`}>
+                    {hotel.convenio ? 'Sí' : 'No'}
                   </span>
                 </td>
                 <td class="price">${hotel.rooms.sencilla.toLocaleString('es-MX')}</td>
@@ -170,13 +170,35 @@ const categories = {
 
             <div class="hotel-card-body">
               <div class="hotel-info-section">
-                <h4>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                    <circle cx="12" cy="10" r="3"></circle>
-                  </svg>
-                  Ubicación
-                </h4>
+                <div class="location-header">
+                  <h4>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    Ubicación
+                  </h4>
+                  <div class="hotel-links">
+                    {hotel.mapLink && (
+                      <a href={hotel.mapLink} target="_blank" rel="noopener noreferrer" class="icon-link map-link" title="Ver en Google Maps">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+                          <line x1="8" y1="2" x2="8" y2="18"></line>
+                          <line x1="16" y1="6" x2="16" y2="22"></line>
+                        </svg>
+                      </a>
+                    )}
+                    {hotel.website && (
+                      <a href={hotel.website} target="_blank" rel="noopener noreferrer" class="icon-link web-link" title="Visitar sitio web">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <line x1="2" y1="12" x2="22" y2="12"></line>
+                          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                      </a>
+                    )}
+                  </div>
+                </div>
                 <p>{hotel.location}</p>
                 <p class="distance-info"><strong>Distancia:</strong> {hotel.distance}</p>
               </div>
@@ -780,5 +802,47 @@ const categories = {
     .services-list {
       grid-template-columns: 1fr;
     }
+  }
+
+  .location-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .location-header h4 {
+    margin-bottom: 0;
+  }
+
+  .hotel-links {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--color-bg-alt);
+    color: var(--color-primary);
+    transition: all 0.3s ease;
+  }
+
+  .icon-link:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  .map-link:hover {
+    background: #0F9D58; /* Google Maps Green */
+  }
+
+  .web-link:hover {
+    background: #4285F4; /* Typical Web Blue */
   }
 </style>
