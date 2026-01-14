@@ -69,7 +69,7 @@ const categories = {
       </div>
 
       <div class="warning-box">
-        <strong>Importante:</strong> Algunas tarifas están sugetas al convenio entre Instituto tecnológico de Oaxaca y los hoteles. Se recomienda hacer reservaciones con anticipación mencionando el código o nombre del evento.
+        <strong>Importante:</strong> Algunas tarifas están sujetas al convenio entre Instituto Tecnológico de Oaxaca y los hoteles. Se recomienda hacer reservaciones con anticipación mencionando el código o nombre del evento.
       </div>
     </div>
   </section>
@@ -465,6 +465,12 @@ const categories = {
   .hotels-table th {
     background: linear-gradient(135deg, var(--color-tecnm-primary) 0%, #152d52 100%);
     white-space: nowrap;
+    
+    /* Propiedades para fijar el encabezado */
+    position: sticky;
+    top: 0; /* Ajusta este valor si tienes un menú de navegación fijo (ej. top: 80px) */
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Añade sombra para que no se pierda al hacer scroll */
   }
 
   .hotels-table td {
