@@ -86,19 +86,21 @@ const categories = {
         <!-- Static Header Table -->
         <table class="hotels-table header-table">
           <colgroup>
-            <col style="width: 25%">
+            <col style="width: 20%">
+            <col style="width: 8%">
             <col style="width: 8%">
             <col style="width: 10%">
             <col style="width: 10%">
             <col style="width: 10%">
             <col style="width: 10%">
+            <col style="width: 9%">
             <col style="width: 10%">
-            <col style="width: 12%">
             <col style="width: 5%">
           </colgroup>
           <thead>
             <tr>
               <th>Hotel</th>
+              <th>Cupo</th>
               <th>Convenio</th>
               <th>Sencilla</th>
               <th>Doble</th>
@@ -115,14 +117,15 @@ const categories = {
         <div class="table-body-wrapper">
           <table class="hotels-table body-table">
             <colgroup>
-              <col style="width: 25%">
+              <col style="width: 20%">
+              <col style="width: 8%">
               <col style="width: 8%">
               <col style="width: 10%">
               <col style="width: 10%">
               <col style="width: 10%">
               <col style="width: 10%">
+              <col style="width: 9%">
               <col style="width: 10%">
-              <col style="width: 12%">
               <col style="width: 5%">
             </colgroup>
             <tbody>
@@ -140,6 +143,11 @@ const categories = {
                         {hotel.reservationCode}
                       </span>
                     )}
+                  </td>
+                  <td>
+                    <span class="category-badge" style={`background-color: ${hotel.cupo === 'Casi lleno' ? '#fef3c7' : '#dcfce7'}; color: ${hotel.cupo === 'Casi lleno' ? '#b45309' : '#166534'};`}>
+                      {hotel.cupo}
+                    </span>
                   </td>
                   <td>
                     <span class={`category-badge category-${hotel.convenio ? 'económico' : 'alto'}`} style={`background-color: ${hotel.convenio ? '#dcfce7' : '#fee2e2'}; color: ${hotel.convenio ? '#166534' : '#991b1b'};`}>
@@ -394,7 +402,7 @@ const categories = {
 <style>
   /* Hero */
   .page-hero {
-    background: linear-gradient(135deg, rgba(27, 57, 106, 0.5) 0%, rgba(93, 133, 166, 0.5) 100%), url('/images/sdaut/pexels-brian-chavez-311043431-15378135.jpg');
+    background: linear-gradient(135deg, rgba(27, 57, 106, 0.5) 0%, rgba(93, 133, 166, 0.5) 100%), url('/images/sdaut/pexels-brian-chavez-311043431-15378135.webp');
     background-size: cover;
     background-position: center;
     padding: 6rem 0 3rem;

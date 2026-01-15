@@ -2,6 +2,7 @@
   {
     "id": 1,
     "name": "Hotel Antiguo Fortín",
+    "cupo": "Disponible",
     "convenio": true,
     "category": "económico",
     "rooms": {
@@ -39,6 +40,7 @@
   {
     "id": 2,
     "name": "Hotel Fortín Plaza",
+    "cupo": "Disponible",
     "convenio": false,
     "category": "alto",
     "rooms": {
@@ -77,6 +79,7 @@
   {
     "id": 3,
     "name": "Hotel Los Olivos Spa",
+    "cupo": "Casi lleno",
     "convenio": false,
     "category": "medio",
     "rooms": {
@@ -120,6 +123,7 @@
   {
     "id": 4,
     "name": "Hotel Oaxaca Guest",
+    "cupo": "Disponible",
     "convenio": false,
     "category": "medio",
     "rooms": {
@@ -158,6 +162,7 @@
   {
     "id": 5,
     "name": "One Oaxaca Centro",
+    "cupo": "Disponible",
     "convenio": true,
     "category": "medio-alto",
     "rooms": {
@@ -196,6 +201,7 @@
   {
     "id": 6,
     "name": "Hotel Victoria Oaxaca",
+    "cupo": "Disponible",
     "convenio": true,
     "category": "alto",
     "rooms": {
@@ -234,6 +240,7 @@
   {
     "id": 7,
     "name": "Hotel Oaxaca Real",
+    "cupo": "Disponible",
     "convenio": false,
     "category": "medio-alto",
     "rooms": {
@@ -270,6 +277,7 @@
   {
     "id": 8,
     "name": "Hotel Oaxaca Dorado",
+    "cupo": "Disponible",
     "convenio": false,
     "category": "medio",
     "rooms": {
@@ -303,6 +311,7 @@
   {
     "id": 9,
     "name": "Fiesta Inn Oaxaca",
+    "cupo": "Disponible",
     "convenio": true,
     "category": "alto",
     "rooms": {
@@ -341,6 +350,7 @@
   {
     "id": 10,
     "name": "Hotel Colina Dorada",
+    "cupo": "Disponible",
     "convenio": false,
     "category": "económico",
     "rooms": {
@@ -373,6 +383,7 @@
   {
     "id": 11,
     "name": "Hotel Virginia",
+    "cupo": "Disponible",
     "convenio": false,
     "category": "económico",
     "rooms": {
@@ -407,6 +418,7 @@
   {
     "id": 12,
     "name": "Villas del Sol",
+    "cupo": "Disponible",
     "convenio": true,
     "category": "medio",
     "rooms": {
@@ -440,6 +452,7 @@
   {
     "id": 13,
     "name": "Life Hotel",
+    "cupo": "Disponible",
     "convenio": true,
     "category": "medio",
     "rooms": {
@@ -474,6 +487,7 @@
   {
     "id": 14,
     "name": "Kōoch Aparthotel",
+    "cupo": "Disponible",
     "convenio": true,
     "category": "medio-alto",
     "rooms": {
