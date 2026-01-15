@@ -36,7 +36,7 @@
   {
     "id": 3,
     "name": "San Jacinto Amilpas",
-    "image": "/images/sedes/sanjacinto.jpeg",
+    "image": "/images/sedes/sanjacinto.jpg",
     "president": "Fidel Alejandro Díaz Díaz",
     "type": "Municipio",
     "description": "Municipio conurbado a la ciudad de Oaxaca, conocido por su desarrollo comercial y cercanía con las principales vías de comunicación.",
@@ -52,7 +52,7 @@
   {
     "id": 4,
     "name": "Santa Cruz Xoxocotlán",
-    "image": "/images/sedes/xoxocotlan.jpeg",
+    "image": "/images/sedes/xoxocotlan.jpg",
     "president": "Nancy Natalia Benítez Zárate",
     "type": "Municipio",
     "description": "Municipio conocido por su aeropuerto internacional y su rica tradición en la celebración del Día de Muertos.",
