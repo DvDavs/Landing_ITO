@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="Contacto y Soporte Técnico - XXXI Encuentro Nacional" 
+  description="Ponte en contacto con el equipo de soporte técnico del XXXI Encuentro Nacional de Escoltas y Bandas de Guerra."
+>
+  <div class="page-header">
+    <div class="container">
+      <h1>Contacto y Soporte Técnico</h1>
+    </div>
+  </div>
+
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </div>
+          <h3>Soporte Técnico</h3>
+          <p>¿Tienes problemas con la plataforma o preguntas técnicas?</p>
+          <div class="email-links">
+            <a href="mailto:19161415@itoaxaca.edu.mx" class="contact-link">19161415@itoaxaca.edu.mx</a>
+            <a href="mailto:19161275@itoaxaca.edu.mx" class="contact-link">19161275@itoaxaca.edu.mx</a>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="icon-wrapper">
+             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          </div>
+          <h3>Información General</h3>
+          <p>Dudas sobre el evento, logística y convocatorias.</p>
+          <a href="mailto:plan_oaxaca@tecnm.mx" class="contact-btn">plan_oaxaca@tecnm.mx</a>
+        </div>
+
+        
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    background-image: url('/images/sedes/contactos.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+    position: relative;
+  }
+  /* Optional: Add a dark overlay to ensure text readability if the image is bright */
+  .page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+    z-index: 1;
+  }
+  .page-header .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    font-weight: 700;
+    color: white;
+  }
+
+  .contact-section {
+    padding: 4rem 0;
+    background-color: #f8f9fa;
+    min-height: 60vh;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .contact-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  .icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background: rgba(27, 57, 106, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: #1B396A;
+  }
+
+  .contact-card h3 {
+    color: #1B396A;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .contact-card p {
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .contact-btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: #1B396A;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+
+  .contact-btn:hover {
+    background: #C59B6D;
+  }
+
+  .contact-btn.secondary {
+    background: transparent;
+    border: 2px solid #1B396A;
+    color: #1B396A;
+  }
+
+  .contact-btn.secondary:hover {
+    background: #1B396A;
+    color: white;
+  }
+
+  .email-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .contact-link {
+    color: #1B396A;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  .contact-link:hover {
+    color: #C59B6D;
+    border-bottom-color: #C59B6D;
+  }
+</style>
