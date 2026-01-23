@@ -498,7 +498,11 @@ const locations = [
         controls.addEventListener('click', handleModeClick);
       }
 
-      requestIdleCallback(() => preloadImages(cards));
+      if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+        window.requestIdleCallback(() => preloadImages(cards));
+      } else {
+        setTimeout(() => preloadImages(cards), 0);
+      }
 
       cards.forEach((card, i) => {
         const btn = card.querySelector('.card-content');
