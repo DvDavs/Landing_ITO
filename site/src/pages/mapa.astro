@@ -560,7 +560,8 @@ const locations = [
       if (!activeCard || !img) return;
 
       const src = activeCard.getAttribute(`data-${mode}`);
-      if (!src || img.src === src) return;
+      const currentSrc = img.getAttribute('src');
+      if (!src || currentSrc === src) return;
 
       img.style.opacity = '0.5';
 
