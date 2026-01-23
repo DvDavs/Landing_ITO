@@ -148,6 +148,23 @@ const locations = [
         </div>
       </div>
 
+      <div class="mobile-locations" role="toolbar" aria-label="Seleccionar punto de interés">
+        {locations.map((loc, index) => (
+          <button 
+            class={`mobile-location-btn ${index === 0 ? 'active' : ''}`}
+            data-id={loc.id}
+            data-mapa={loc.images.mapa}
+            data-satelital={loc.images.satelital}
+            type="button"
+            aria-label={`Ver ${loc.name} en el mapa`}
+            aria-pressed={index === 0 ? 'true' : 'false'}
+          >
+            <Icon icon={loc.icon} class="mobile-location-icon" width="1.5rem" height="1.5rem" aria-hidden="true" />
+            <span class="mobile-location-name">{loc.name}</span>
+          </button>
+        ))}
+      </div>
+
     </div>
   </section>
 </BaseLayout>
@@ -416,6 +433,62 @@ const locations = [
     border-radius: 3px;
   }
 
+  /* Controles móviles - ocultos por defecto */
+  .mobile-locations {
+    display: none;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .75rem;
+    margin-top: 1.5rem;
+  }
+
+  .mobile-location-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: 1rem .75rem;
+    background: #fff;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all .2s;
+    font-size: .875rem;
+    font-weight: 600;
+    color: #1B396A;
+    text-align: center;
+    min-height: 90px;
+  }
+
+  .mobile-location-btn:hover {
+    border-color: #C59B6D;
+    background: rgba(197, 155, 109, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(197, 155, 109, 0.15);
+  }
+
+  .mobile-location-btn.active {
+    background: #1B396A;
+    color: #fff;
+    border-color: #1B396A;
+    box-shadow: 0 4px 16px rgba(27, 57, 106, 0.3);
+  }
+
+  .mobile-location-icon {
+    flex-shrink: 0;
+    transition: transform .2s;
+  }
+
+  .mobile-location-btn.active .mobile-location-icon {
+    color: #C59B6D;
+    transform: scale(1.1);
+  }
+
+  .mobile-location-name {
+    display: block;
+    line-height: 1.3;
+  }
+
   @media (max-width: 1024px) {
     .layout-grid {
       grid-template-columns: 1fr;
@@ -433,6 +506,26 @@ const locations = [
     }
   }
 
+  @media (max-width: 768px) {
+    /* Ocultar sidebar en móvil */
+    .locations-sidebar {
+      display: none;
+    }
+    
+    /* Mostrar controles móviles */
+    .mobile-locations {
+      display: grid;
+    }
+
+    .layout-grid {
+      gap: 0;
+    }
+
+    .map-container {
+      height: 450px;
+    }
+  }
+
   @media (max-width: 640px) {
     .page-hero {
       padding: 2rem 0;
@@ -442,10 +535,6 @@ const locations = [
     }
     .container {
       padding: 0 1rem;
-    }
-    .locations-sidebar {
-      padding: 1rem;
-      max-height: 400px;
     }
     .map-container {
       height: 400px;
@@ -457,6 +546,15 @@ const locations = [
     .mode-btn {
       padding: .5rem 1rem;
       font-size: .85rem;
+    }
+    .mobile-location-btn {
+      padding: .875rem .625rem;
+      font-size: .8125rem;
+      min-height: 85px;
+    }
+    .mobile-locations {
+      gap: .625rem;
+      margin-top: 1.25rem;
     }
   }
 
@@ -477,39 +575,90 @@ const locations = [
     
     let mode = 'satelital';
     let activeCard = null;
+    let activeMobileBtn = null;
     let img = null;
     const imgCache = new Map();
+    let initialized = false;
+    let sidebarHandler = null;
+    let controlsHandler = null;
+    let mobileHandler = null;
+    const keyNavHandlers = new Map();
 
     function init() {
+      if (initialized) return;
+      
       const cards = document.querySelectorAll('.location-card');
+      const mobileBtns = document.querySelectorAll('.mobile-location-btn');
       img = document.getElementById('main-map-image');
       
-      if (!img || !cards.length) return;
+      if (!img) return;
 
       activeCard = document.querySelector('.location-card.active');
+      activeMobileBtn = document.querySelector('.mobile-location-btn.active');
 
       const sidebar = document.querySelector('.locations-sidebar');
       if (sidebar) {
-        sidebar.addEventListener('click', handleCardClick);
+        if (sidebarHandler) {
+          sidebar.removeEventListener('click', sidebarHandler);
+        }
+        sidebarHandler = handleCardClick;
+        sidebar.addEventListener('click', sidebarHandler);
       }
 
       const controls = document.querySelector('.map-controls');
       if (controls) {
-        controls.addEventListener('click', handleModeClick);
+        if (controlsHandler) {
+          controls.removeEventListener('click', controlsHandler);
+        }
+        controlsHandler = handleModeClick;
+        controls.addEventListener('click', controlsHandler);
+      }
+
+      // Manejador para botones móviles
+      const mobileLocations = document.querySelector('.mobile-locations');
+      if (mobileLocations) {
+        if (mobileHandler) {
+          mobileLocations.removeEventListener('click', mobileHandler);
+        }
+        mobileHandler = handleMobileClick;
+        mobileLocations.addEventListener('click', mobileHandler);
       }
 
       if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
-        window.requestIdleCallback(() => preloadImages(cards));
+        window.requestIdleCallback(() => {
+          preloadImages(cards);
+          preloadMobileImages(mobileBtns);
+        });
       } else {
-        setTimeout(() => preloadImages(cards), 0);
+        setTimeout(() => {
+          preloadImages(cards);
+          preloadMobileImages(mobileBtns);
+        }, 0);
       }
 
+      // Limpiar y agregar listeners de teclado
       cards.forEach((card, i) => {
         const btn = card.querySelector('.card-content');
         if (btn) {
-          btn.addEventListener('keydown', (e) => handleKeyNav(e, i, cards));
+          const oldHandler = keyNavHandlers.get(btn);
+          if (oldHandler) {
+            btn.removeEventListener('keydown', oldHandler);
+          }
+          const handler = (e) => handleKeyNav(e, i, cards);
+          keyNavHandlers.set(btn, handler);
+          btn.addEventListener('keydown', handler);
         }
       });
+
+      initialized = true;
+    }
+
+    function resetInitialization() {
+      initialized = false;
+      sidebarHandler = null;
+      controlsHandler = null;
+      mobileHandler = null;
+      keyNavHandlers.clear();
     }
 
     function handleCardClick(e) {
@@ -520,6 +669,23 @@ const locations = [
       if (!card || card === activeCard) return;
 
       selectCard(card, btn);
+      
+      // Sincronizar botón móvil
+      const locationId = card.dataset.id;
+      syncMobileButton(locationId);
+    }
+
+    function handleMobileClick(e) {
+      const btn = e.target.closest('.mobile-location-btn');
+      if (!btn) return;
+      
+      if (btn === activeMobileBtn) return;
+
+      selectMobileButton(btn);
+      
+      // Sincronizar card del sidebar
+      const locationId = btn.dataset.id;
+      syncSidebarCard(locationId);
     }
 
     function handleModeClick(e) {
@@ -546,6 +712,47 @@ const locations = [
       activeCard = card;
 
       updateImg();
+    }
+
+    function selectMobileButton(btn) {
+      document.querySelectorAll('.mobile-location-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+      activeMobileBtn = btn;
+
+      updateImgFromMobile();
+    }
+
+    function syncMobileButton(locationId) {
+      const mobileBtn = document.querySelector(`.mobile-location-btn[data-id="${locationId}"]`);
+      if (mobileBtn && mobileBtn !== activeMobileBtn) {
+        document.querySelectorAll('.mobile-location-btn').forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        mobileBtn.classList.add('active');
+        mobileBtn.setAttribute('aria-pressed', 'true');
+        activeMobileBtn = mobileBtn;
+      }
+    }
+
+    function syncSidebarCard(locationId) {
+      const card = document.querySelector(`.location-card[data-id="${locationId}"]`);
+      if (card && card !== activeCard) {
+        document.querySelectorAll('.location-card').forEach(c => {
+          c.classList.remove('active');
+          const b = c.querySelector('.card-content');
+          if (b) b.setAttribute('aria-pressed', 'false');
+        });
+        card.classList.add('active');
+        const btn = card.querySelector('.card-content');
+        if (btn) btn.setAttribute('aria-pressed', 'true');
+        activeCard = card;
+      }
     }
 
     function updateModeButtons() {
@@ -580,7 +787,35 @@ const locations = [
         updateAlt();
       };
       tempImg.onerror = () => {
-        // If the image fails to load, restore opacity so the UI does not remain faded
+        img.style.opacity = '1';
+      };
+      tempImg.src = src;
+    }
+
+    function updateImgFromMobile() {
+      if (!activeMobileBtn || !img) return;
+
+      const src = activeMobileBtn.getAttribute(`data-${mode}`);
+      const currentSrc = img.getAttribute('src');
+      if (!src || currentSrc === src) return;
+
+      img.style.opacity = '0.5';
+
+      if (imgCache.has(src)) {
+        img.src = src;
+        img.style.opacity = '1';
+        updateAltFromMobile();
+        return;
+      }
+
+      const tempImg = new Image();
+      tempImg.onload = () => {
+        imgCache.set(src, true);
+        img.src = src;
+        img.style.opacity = '1';
+        updateAltFromMobile();
+      };
+      tempImg.onerror = () => {
         img.style.opacity = '1';
       };
       tempImg.src = src;
@@ -591,10 +826,28 @@ const locations = [
       img.alt = `${mode === 'mapa' ? 'Mapa' : 'Vista satelital'} de ${name}`;
     }
 
+    function updateAltFromMobile() {
+      const name = activeMobileBtn?.querySelector('.mobile-location-name')?.textContent || 'Ubicación';
+      img.alt = `${mode === 'mapa' ? 'Mapa' : 'Vista satelital'} de ${name}`;
+    }
+
     function preloadImages(cards) {
       cards.forEach(card => {
         ['mapa', 'satelital'].forEach(m => {
           const src = card.getAttribute(`data-${m}`);
+          if (src && !imgCache.has(src)) {
+            const i = new Image();
+            i.onload = () => imgCache.set(src, true);
+            i.src = src;
+          }
+        });
+      });
+    }
+
+    function preloadMobileImages(btns) {
+      btns.forEach(btn => {
+        ['mapa', 'satelital'].forEach(m => {
+          const src = btn.getAttribute(`data-${m}`);
           if (src && !imgCache.has(src)) {
             const i = new Image();
             i.onload = () => imgCache.set(src, true);
@@ -616,12 +869,22 @@ const locations = [
       if (nextBtn) nextBtn.focus();
     }
 
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(init);
-    } else {
-      setTimeout(init, 1);
+    function initMapInteractivity(shouldReset = false) {
+      if (shouldReset) {
+        resetInitialization();
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(init);
+      } else {
+        setTimeout(init, 1);
+      }
     }
 
-    document.addEventListener('astro:page-load', init);
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => initMapInteractivity(false));
+    } else {
+      initMapInteractivity(false);
+    }
+    document.addEventListener('astro:page-load', () => initMapInteractivity(true));
   })();
 </script>
