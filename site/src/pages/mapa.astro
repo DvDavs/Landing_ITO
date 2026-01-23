@@ -80,7 +80,12 @@ const locations = [
               data-satelital={loc.images.satelital}
               role="listitem"
             >
-              <button class="card-content" type="button" aria-label={`Ver ${loc.name} en el mapa`}>
+              <button 
+                class="card-content" 
+                type="button" 
+                aria-label={`Ver ${loc.name} en el mapa`}
+                aria-pressed={index === 0 ? 'true' : 'false'}
+              >
                 <div class="card-header">
                   <Icon icon={loc.icon} class="location-icon" width="1.25rem" height="1.25rem" aria-hidden="true" />
                   <h3>{loc.name}</h3>
@@ -429,7 +434,7 @@ const locations = [
   }
 
   @media (max-width: 640px) {
-    .page-header {
+    .page-hero {
       padding: 2rem 0;
     }
     .map-section {
@@ -493,7 +498,11 @@ const locations = [
         controls.addEventListener('click', handleModeClick);
       }
 
-      requestIdleCallback(() => preloadImages(cards));
+      if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+        window.requestIdleCallback(() => preloadImages(cards));
+      } else {
+        setTimeout(() => preloadImages(cards), 0);
+      }
 
       cards.forEach((card, i) => {
         const btn = card.querySelector('.card-content');
@@ -551,7 +560,8 @@ const locations = [
       if (!activeCard || !img) return;
 
       const src = activeCard.getAttribute(`data-${mode}`);
-      if (!src || img.src === src) return;
+      const currentSrc = img.getAttribute('src');
+      if (!src || currentSrc === src) return;
 
       img.style.opacity = '0.5';
 
@@ -568,6 +578,10 @@ const locations = [
         img.src = src;
         img.style.opacity = '1';
         updateAlt();
+      };
+      tempImg.onerror = () => {
+        // If the image fails to load, restore opacity so the UI does not remain faded
+        img.style.opacity = '1';
       };
       tempImg.src = src;
     }
