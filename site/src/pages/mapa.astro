@@ -80,7 +80,12 @@ const locations = [
               data-satelital={loc.images.satelital}
               role="listitem"
             >
-              <button class="card-content" type="button" aria-label={`Ver ${loc.name} en el mapa`}>
+              <button 
+                class="card-content" 
+                type="button" 
+                aria-label={`Ver ${loc.name} en el mapa`}
+                aria-pressed={index === 0 ? 'true' : 'false'}
+              >
                 <div class="card-header">
                   <Icon icon={loc.icon} class="location-icon" width="1.25rem" height="1.25rem" aria-hidden="true" />
                   <h3>{loc.name}</h3>
