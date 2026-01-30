@@ -517,5 +517,37 @@
     "reservationCode": "#ESCOLTAS Y BANDAS",
     "distance": "Santa Rosa Panzacola",
     "fullDescription": "Aparthotel moderno que combina las comodidades de un hotel con la independencia de un apartamento. Ideal para estancias más largas, con espacios funcionales y habitaciones equipadas con cocineta."
+  },
+  {
+    "id": 15,
+    "name": "María Inés Hotel Suite",
+    "cupo": "Disponible",
+    "convenio": false,
+    "category": "medio",
+    "rooms": {
+      "sencilla": 1696
+    },
+    "breakfast": false,
+    "breakfastPrice": 0,
+    "location": "San Agustín de las Juntas",
+    "address": "Av. Simbolos patrios KM 4.5, Lote 1, San Agustín de las Juntas, Oaxaca, C.P. 71260",
+    "phone": "951 503 3731",
+    "phoneAlt": "951 252 2744",
+    "email": "mariaineshotel@gmail.com",
+    "website": "https://www.booking.com/hotel/mx/maria-ines-suite.es-mx.html",
+    "mapLink": "https://maps.app.goo.gl/pcVrHXvsWCkbeZj5A",
+    "image": "/images/hoteles/maria-ines.jpg",
+    "hasImage": true,
+    "needsVerification": true,
+    "contactPerson": "",
+    "services": [
+      "Wi-Fi",
+      "Estacionamiento",
+      "Agua caliente",
+      "TV"
+    ],
+    "notes": "Consultar tarifas y disponibilidad directamente.",
+    "distance": "Zona Aeropuerto",
+    "fullDescription": "Hotel Suite María Inés ofrece una estancia cómoda en San Agustín de las Juntas, ideal para quienes buscan cercanía al aeropuerto o una zona tranquila a las afueras de la ciudad."
   }
 ]
