@@ -2,8 +2,30 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import hotelsData from '../data/hotels.json';
 
-// Ordenar hoteles por precio (sencilla)
-const hotelsSorted = [...hotelsData].sort((a, b) => a.rooms.sencilla - b.rooms.sencilla);
+// Ordenar hoteles por "completitud" de precios y luego por costo
+const hotelsSorted = [...hotelsData].sort((a, b) => {
+  // Función para contar cuántos precios tiene definidos el hotel (de los 4 principales)
+  const countPrices = (hotel) => {
+    let count = 0;
+    if (hotel.rooms.sencilla) count++;
+    if (hotel.rooms.doble) count++;
+    if (hotel.rooms.triple) count++;
+    if (hotel.rooms.cuadruple) count++;
+    return count;
+  };
+
+  const countA = countPrices(a);
+  const countB = countPrices(b);
+
+  // 1. Priorizar por cantidad de precios disponibles (descendente)
+  if (countA !== countB) {
+    return countB - countA;
+  }
+
+  // 2. Si tienen la misma cantidad de precios, ordenar por precio de sencilla (ascendente)
+  // Si no tienen precio de sencilla, se tratan como 0 (o infinitos, según preferencia, aquí 0 para mantener consistencia)
+  return (a.rooms.sencilla || 0) - (b.rooms.sencilla || 0);
+});
 
 const categories = {
   'económico': 'Económico',
@@ -154,10 +176,61 @@ const categories = {
                       {hotel.convenio ? 'Sí' : 'No'}
                     </span>
                   </td>
-                  <td class="price">${hotel.rooms.sencilla.toLocaleString('es-MX')}</td>
-                  <td class="price">{hotel.rooms.doble ? `$${hotel.rooms.doble.toLocaleString('es-MX')}` : '-'}</td>
-                  <td class="price">{hotel.rooms.triple ? `$${hotel.rooms.triple.toLocaleString('es-MX')}` : '-'}</td>
-                  <td class="price">{hotel.rooms.cuadruple ? `$${hotel.rooms.cuadruple.toLocaleString('es-MX')}` : '-'}</td>
+                  {/* Logic to distribute text across empty price cells */
+                   (() => {
+                     const emptyPrices = [!hotel.rooms.sencilla, !hotel.rooms.doble, !hotel.rooms.triple, !hotel.rooms.cuadruple];
+                     const emptyCount = emptyPrices.filter(Boolean).length;
+                     const emptyIndices = emptyPrices.map((isEmpty, index) => isEmpty ? index : -1).filter(idx => idx !== -1);
+                     
+                     // Helper to get text for specific scenarios
+                     const getTextForEmptyCell = (globalIndex, emptyIndexInGroup) => {
+                        if (emptyCount === 1) return (
+                          <>
+                            Consultar directamente
+                            <br />
+                            con el hotel/recinto
+                          </>
+                        );
+                        
+                        if (emptyCount === 2) {
+                            if (emptyIndexInGroup === 0) return "Consultar directamente";
+                            if (emptyIndexInGroup === 1) return "con el hotel";
+                        }
+                        
+                        if (emptyCount === 3) {
+                            if (emptyIndexInGroup === 0) return "Consultar";
+                            if (emptyIndexInGroup === 1) return "directamente";
+                            if (emptyIndexInGroup === 2) return "con el hotel";
+                        }
+                        
+                        if (emptyCount === 4) {
+                            if (emptyIndexInGroup === 0) return "Consultar";
+                            if (emptyIndexInGroup === 1) return "directamente";
+                            if (emptyIndexInGroup === 2) return "con el";
+                            if (emptyIndexInGroup === 3) return "hotel";
+                        }
+                        
+                        return "-";
+                     };
+
+                     const renderCell = (price, index) => {
+                       if (price) return <td class="price">${price.toLocaleString('es-MX')}</td>;
+                       
+                       // Find which position this empty cell is amongst the group of empty cells
+                       const emptyIndexInGroup = emptyIndices.indexOf(index);
+                       const text = getTextForEmptyCell(index, emptyIndexInGroup);
+                       
+                       return <td class="price"><span class="text-xs text-muted" style="font-size: 0.65rem; font-weight: normal; color: var(--color-text-light); line-height: 1.1; display: block;">{text}</span></td>;
+                     };
+
+                     return [
+                       renderCell(hotel.rooms.sencilla, 0),
+                       renderCell(hotel.rooms.doble, 1),
+                       renderCell(hotel.rooms.triple, 2),
+                       renderCell(hotel.rooms.cuadruple, 3)
+                     ];
+                   })()
+                  }
                   <td>
                     {hotel.breakfast ? (
                       <span class="badge badge-success">Incluido</span>
@@ -222,7 +295,7 @@ const categories = {
               </div>
               <div class="hotel-price-highlight">
                 <span class="price-label">Desde</span>
-                <span class="price-value">${hotel.rooms.sencilla.toLocaleString('es-MX')}</span>
+                <span class="price-value">${hotel.rooms.sencilla ? hotel.rooms.sencilla.toLocaleString('es-MX') : '---'}</span>
                 <span class="price-period">por noche</span>
               </div>
             </div>
@@ -285,30 +358,42 @@ const categories = {
                   </svg>
                   Tarifas por Tipo de Habitación
                 </h4>
-                <div class="rates-grid">
-                  <div class="rate-item">
-                    <span class="rate-type">Sencilla</span>
-                    <span class="rate-price">${hotel.rooms.sencilla.toLocaleString('es-MX')}</span>
+                  <div class="rates-grid">
+                    {/* Render available prices first */}
+                    {['sencilla', 'doble', 'triple', 'cuadruple'].map(type => {
+                      if (hotel.rooms[type]) {
+                        return (
+                          <div class="rate-item">
+                            <span class="rate-type">{type.charAt(0).toUpperCase() + type.slice(1)}</span>
+                            <span class="rate-price">${hotel.rooms[type].toLocaleString('es-MX')}</span>
+                          </div>
+                        );
+                      }
+                      return null;
+                    })}
+
+                    {/* Handle missing prices */}
+                    {(() => {
+                      const missingTypes = ['sencilla', 'doble', 'triple', 'cuadruple'].filter(type => !hotel.rooms[type]);
+                      
+                      if (missingTypes.length > 1) {
+                        return (
+                          <div class="rate-item" style="grid-column: 1 / -1;">
+                             <span class="rate-price" style="font-size: 0.8rem; line-height: 1.2; font-weight: normal; color: var(--color-text-light);">Consultar habitaciones<br>con el hotel/recinto</span>
+                          </div>
+                        );
+                      } else if (missingTypes.length === 1) {
+                        const type = missingTypes[0];
+                         return (
+                          <div class="rate-item">
+                            <span class="rate-type">{type.charAt(0).toUpperCase() + type.slice(1)}</span>
+                             <span class="rate-price" style="font-size: 0.75rem; line-height: 1.2; font-weight: normal; color: var(--color-text-light);">Consultar directamente<br>al hotel/recinto</span>
+                          </div>
+                        );
+                      }
+                      return null;
+                    })()}
                   </div>
-                  {hotel.rooms.doble && (
-                    <div class="rate-item">
-                      <span class="rate-type">Doble</span>
-                      <span class="rate-price">${hotel.rooms.doble.toLocaleString('es-MX')}</span>
-                    </div>
-                  )}
-                  {hotel.rooms.triple && (
-                    <div class="rate-item">
-                      <span class="rate-type">Triple</span>
-                      <span class="rate-price">${hotel.rooms.triple.toLocaleString('es-MX')}</span>
-                    </div>
-                  )}
-                  {hotel.rooms.cuadruple && (
-                    <div class="rate-item">
-                      <span class="rate-type">Cuádruple</span>
-                      <span class="rate-price">${hotel.rooms.cuadruple.toLocaleString('es-MX')}</span>
-                    </div>
-                  )}
-                </div>
               </div>
 
               {hotel.breakfast && (
@@ -334,7 +419,7 @@ const categories = {
 
               {hotel.notes && (
                 <div class="hotel-notes">
-                  <p><strong>Información adicional:</strong> {hotel.notes}</p>
+                  <p><strong>Nota importante:</strong> Consultar tarifas y promociones con el hotel mencionando el evento "XXXI Encuentro Nacional de Escoltas y Bandas de Guerra". {hotel.notes}</p>
                 </div>
               )}
 
