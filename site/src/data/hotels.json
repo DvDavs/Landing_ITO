@@ -549,5 +549,38 @@
     "notes": "Consultar tarifas y disponibilidad directamente.",
     "distance": "Zona Aeropuerto",
     "fullDescription": "Hotel Suite María Inés ofrece una estancia cómoda en San Agustín de las Juntas, ideal para quienes buscan cercanía al aeropuerto o una zona tranquila a las afueras de la ciudad."
+  },
+  {
+    "id": 16,
+    "name": "CAMILA SUITES & ROOMS OAXACA",
+    "cupo": "Disponible",
+    "convenio": false,
+    "category": "alto",
+    "rooms": {
+      "sencilla": 1950,
+      "doble": 2640
+    },
+    "breakfast": false,
+    "breakfastPrice": 0,
+    "location": "Centro de Oaxaca",
+    "address": "Calle de los Libres 305, RUTA INDEPENDENCIA, Centro, 68000 Oaxaca de Juárez, Oax.",
+    "phone": "",
+    "phoneAlt": "",
+    "email": "",
+    "website": "https://direct-book.com/properties/camilasuitesrooms?locale=es&_gads_gcid=731761819&_gads_gclabel=4ZV2CPGWq7MBEJuZ99wC&_gha_gcid=100233201&_gha_phid=2f2ee8f7-3b55-41e1-90ca-2934ba6f6e7d&_src=DemandPlus&abw=1&booking_source=cpc&campaign_id=14790890783&cdow=Thursday&checkInDate=2026-02-05&checkOutDate=2026-02-06&country=MX&currency=MXN&device=desktop&gad_campaignid=14790890783&gad_source=1&gbraid=0AAAAACudzJskEBfLpWWzPDkD5qkMD3I59&gclid=Cj0KCQiA-YvMBhDtARIsAHZuUzIhbFRMD4hkN3YFf4p3BdYbXqqGGwWknFgQqhPbKKPDn6Bwz1ObQXgaAru0EALw_wcB&los=1&meta=Google&tsd=default&utm_source=GoogleHotelAds&items[0][adults]=2&items[0][children]=0&items[0][infants]=0&items[0][rateId]=899265&trackPage=yes",
+    "mapLink": "https://maps.app.goo.gl/pGJvi4FGLyZwJN5e6",
+    "image": "",
+    "hasImage": false,
+    "needsVerification": true,
+    "contactPerson": "",
+    "services": [
+      "Wi-Fi gratuito",
+      "Aire acondicionado",
+      "TV por cable",
+      "Baño privado"
+    ],
+    "notes": "Precios sujetos a cambio. Consultar disponibilidad.",
+    "distance": "Centro histórico",
+    "fullDescription": "Hotel boutique ubicado en el centro de Oaxaca."
   }
 ]
