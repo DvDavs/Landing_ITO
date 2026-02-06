@@ -1,0 +1,1208 @@
+---
+// Componente de compartir de alta calidad con modal y botón flotante - VERSIÓN MEJORADA
+---
+
+<!-- Botón Flotante con Badge de Pulse -->
+<button 
+  id="shareButton" 
+  class="share-button"
+  aria-label="Compartir evento"
+  title="Compartir evento"
+>
+  <div class="share-button-pulse"></div>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="18" cy="5" r="3"></circle>
+    <circle cx="6" cy="12" r="3"></circle>
+    <circle cx="18" cy="19" r="3"></circle>
+    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+  </svg>
+</button>
+
+<!-- Modal -->
+<div id="shareModal" class="share-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="share-modal-overlay" id="modalOverlay"></div>
+  <div class="share-modal-content">
+    <!-- Header con Logo -->
+    <div class="share-modal-header">
+      <img 
+        src="/images/logos/logo-evento.png" 
+        alt="Logo XXXI Encuentro Nacional" 
+        class="share-modal-logo"
+      />
+      <button 
+        class="share-modal-close" 
+        id="closeModal"
+        aria-label="Cerrar modal"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Título y Descripción -->
+    <h2 id="modalTitle" class="share-modal-title">
+      Comparte el Encuentro Nacional
+    </h2>
+    
+    <p class="share-modal-description">
+      Ayuda a difundir el XXXI Encuentro Nacional de Escoltas y Bandas de Guerra del TecNM 2026
+    </p>
+
+    <!-- QR Code Container con Funcionalidad Mejorada -->
+    <div class="share-qr-container">
+      <div class="share-qr-wrapper">
+        <img 
+          src="/images/QR/pagina_principal.png" 
+          alt="Código QR del evento - Escanea para acceder directamente" 
+          class="share-qr-image"
+          id="qrImage"
+          loading="lazy"
+        />
+        <div class="share-qr-overlay">
+          <button class="share-qr-zoom" id="zoomQRBtn" aria-label="Ver QR en tamaño completo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <p class="share-qr-label">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        Escanea para acceder al sitio oficial
+      </p>
+    </div>
+
+    <!-- Sección de Compartir Rápido -->
+    <div class="share-quick-section">
+      <h3 class="share-section-title">Comparte rápidamente</h3>
+      <div class="share-actions-grid">
+        <button class="share-action-btn share-action-whatsapp" id="whatsappBtn">
+          <div class="share-action-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+          </div>
+          <div class="share-action-content">
+            <span class="share-action-label">WhatsApp</span>
+            <span class="share-action-desc">Envía a tus contactos</span>
+          </div>
+        </button>
+
+        <button class="share-action-btn share-action-email" id="emailBtn">
+          <div class="share-action-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+          </div>
+          <div class="share-action-content">
+            <span class="share-action-label">Correo</span>
+            <span class="share-action-desc">Comparte por email</span>
+          </div>
+        </button>
+
+        <button class="share-action-btn share-action-facebook" id="facebookBtn">
+          <div class="share-action-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </div>
+          <div class="share-action-content">
+            <span class="share-action-label">Facebook</span>
+            <span class="share-action-desc">Publica en tu muro</span>
+          </div>
+        </button>
+
+        <button class="share-action-btn share-action-twitter" id="twitterBtn">
+          <div class="share-action-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </div>
+          <div class="share-action-content">
+            <span class="share-action-label">X (Twitter)</span>
+            <span class="share-action-desc">Comparte el evento</span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Sección de Herramientas -->
+    <div class="share-tools-section">
+      <h3 class="share-section-title">Herramientas adicionales</h3>
+      <div class="share-tools-grid">
+        <button class="share-tool-btn" id="copyLinkBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+          </svg>
+          <span>Copiar Enlace</span>
+        </button>
+
+        <button class="share-tool-btn" id="downloadQRBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Descargar QR</span>
+        </button>
+
+        <button class="share-tool-btn" id="nativeShareBtn" style="display: none;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="5" r="3"></circle>
+            <circle cx="6" cy="12" r="3"></circle>
+            <circle cx="18" cy="19" r="3"></circle>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+          </svg>
+          <span>Compartir...</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Estadísticas de Compartir (Opcional) -->
+    <div class="share-stats">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+        <circle cx="9" cy="7" r="4"></circle>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+      </svg>
+      <span>Ayúdanos a llegar a más personas</span>
+    </div>
+
+    <!-- Notificación de éxito -->
+    <div class="share-notification" id="shareNotification">
+      <div class="share-notification-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <span id="notificationText">¡Enlace copiado!</span>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Zoom para QR -->
+<div id="qrZoomModal" class="qr-zoom-modal" role="dialog" aria-modal="true" aria-label="Vista ampliada del código QR">
+  <div class="qr-zoom-overlay" id="qrZoomOverlay"></div>
+  <div class="qr-zoom-content">
+    <img 
+      src="/images/QR/pagina_principal.png" 
+      alt="Código QR ampliado" 
+      class="qr-zoom-image"
+      id="qrZoomImage"
+    />
+    <p class="qr-zoom-instructions">Acerca tu dispositivo para escanear</p>
+  </div>
+</div>
+
+<style>
+  :root {
+    --color-primary: #1B396A;
+    --color-gold: #C59B6D;
+    --color-gold-hover: #B38A5E;
+    --color-success: #10b981;
+    --color-whatsapp: #25D366;
+    --color-facebook: #1877F2;
+    --color-twitter: #000000;
+    --color-email: #EA4335;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.24);
+    --radius-sm: 12px;
+    --radius-md: 16px;
+    --radius-lg: 20px;
+    --radius-xl: 24px;
+    --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  /* ===== BOTÓN FLOTANTE ===== */
+  .share-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-hover) 100%);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(197, 155, 109, 0.4),
+                0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: var(--transition-bounce);
+    z-index: 999;
+    backdrop-filter: blur(10px);
+  }
+
+  .share-button::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-gold), var(--color-gold-hover));
+    opacity: 0;
+    transition: var(--transition-base);
+    z-index: -1;
+  }
+
+  .share-button:hover::before {
+    opacity: 0.3;
+    inset: -6px;
+  }
+
+  .share-button:hover {
+    transform: translateY(-6px) scale(1.08);
+    box-shadow: 0 16px 40px rgba(197, 155, 109, 0.5),
+                0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .share-button:active {
+    transform: translateY(-3px) scale(1.04);
+  }
+
+  .share-button svg {
+    width: 26px;
+    height: 26px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    position: relative;
+    z-index: 1;
+  }
+
+  .share-button-pulse {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--color-gold);
+    opacity: 0.6;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    pointer-events: none;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.6;
+    }
+    50% {
+      transform: scale(1.3);
+      opacity: 0;
+    }
+  }
+
+  /* ===== MODAL PRINCIPAL ===== */
+  .share-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .share-modal.active {
+    display: flex;
+  }
+
+  .share-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(12px);
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .share-modal-content {
+    position: relative;
+    background: white;
+    border-radius: var(--radius-xl);
+    max-width: 520px;
+    width: 100%;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-xl);
+    animation: slideUpScale 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    max-height: 92vh;
+    overflow-y: auto;
+  }
+
+  /* ===== HEADER ===== */
+  .share-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+
+  .share-modal-logo {
+    height: 52px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .share-modal-close {
+    background: #f3f4f6;
+    border: none;
+    color: #6b7280;
+    cursor: pointer;
+    padding: 0.625rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    transition: var(--transition-base);
+    margin: -0.5rem -0.5rem 0 0;
+  }
+
+  .share-modal-close:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: rotate(90deg) scale(1.1);
+  }
+
+  /* ===== TÍTULO Y DESCRIPCIÓN ===== */
+  .share-modal-title {
+    font-family: var(--font-heading, system-ui);
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .share-modal-description {
+    color: #6b7280;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  /* ===== QR CONTAINER ===== */
+  .share-qr-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .share-qr-wrapper {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    border: 2px solid #e5e7eb;
+    margin-bottom: 1rem;
+    position: relative;
+    transition: var(--transition-base);
+  }
+
+  .share-qr-wrapper:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-gold);
+  }
+
+  .share-qr-image {
+    width: 240px;
+    height: 240px;
+    display: block;
+    border-radius: var(--radius-md);
+  }
+
+  .share-qr-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(27, 57, 106, 0.9);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition-base);
+    cursor: pointer;
+  }
+
+  .share-qr-wrapper:hover .share-qr-overlay {
+    opacity: 1;
+  }
+
+  .share-qr-zoom {
+    background: white;
+    border: none;
+    color: var(--color-primary);
+    padding: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-bounce);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .share-qr-zoom:hover {
+    transform: scale(1.1);
+    background: var(--color-gold);
+    color: white;
+  }
+
+  .share-qr-label {
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-weight: 500;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .share-qr-label svg {
+    flex-shrink: 0;
+  }
+
+  /* ===== SECCIONES ===== */
+  .share-quick-section,
+  .share-tools-section {
+    margin-bottom: 1.75rem;
+  }
+
+  .share-section-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  /* ===== BOTONES DE REDES SOCIALES ===== */
+  .share-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .share-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f9fafb;
+    border: 2px solid #e5e7eb;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: var(--transition-base);
+    text-align: left;
+  }
+
+  .share-action-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: var(--transition-bounce);
+  }
+
+  .share-action-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .share-action-label {
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: var(--color-primary);
+  }
+
+  .share-action-desc {
+    font-size: 0.75rem;
+    color: #6b7280;
+  }
+
+  /* Estilos específicos por red social */
+  .share-action-whatsapp .share-action-icon {
+    background: #E8F8F0;
+    color: var(--color-whatsapp);
+  }
+
+  .share-action-whatsapp:hover {
+    background: var(--color-whatsapp);
+    border-color: var(--color-whatsapp);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+  }
+
+  .share-action-whatsapp:hover .share-action-icon {
+    background: white;
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  .share-action-whatsapp:hover .share-action-label,
+  .share-action-whatsapp:hover .share-action-desc {
+    color: white;
+  }
+
+  .share-action-facebook .share-action-icon {
+    background: #E7F3FF;
+    color: var(--color-facebook);
+  }
+
+  .share-action-facebook:hover {
+    background: var(--color-facebook);
+    border-color: var(--color-facebook);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(24, 119, 242, 0.3);
+  }
+
+  .share-action-facebook:hover .share-action-icon {
+    background: white;
+    transform: scale(1.1) rotate(-5deg);
+  }
+
+  .share-action-facebook:hover .share-action-label,
+  .share-action-facebook:hover .share-action-desc {
+    color: white;
+  }
+
+  .share-action-twitter .share-action-icon {
+    background: #F0F0F0;
+    color: var(--color-twitter);
+  }
+
+  .share-action-twitter:hover {
+    background: var(--color-twitter);
+    border-color: var(--color-twitter);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .share-action-twitter:hover .share-action-icon {
+    background: white;
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  .share-action-twitter:hover .share-action-label,
+  .share-action-twitter:hover .share-action-desc {
+    color: white;
+  }
+
+  .share-action-email .share-action-icon {
+    background: #FEF2F2;
+    color: var(--color-email);
+  }
+
+  .share-action-email:hover {
+    background: var(--color-email);
+    border-color: var(--color-email);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(234, 67, 53, 0.3);
+  }
+
+  .share-action-email:hover .share-action-icon {
+    background: white;
+    transform: scale(1.1) rotate(-5deg);
+  }
+
+  .share-action-email:hover .share-action-label,
+  .share-action-email:hover .share-action-desc {
+    color: white;
+  }
+
+  /* ===== HERRAMIENTAS ===== */
+  .share-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .share-tool-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    padding: 1rem;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: var(--radius-md);
+    color: var(--color-primary);
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-base);
+  }
+
+  .share-tool-btn:hover {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .share-tool-btn svg {
+    flex-shrink: 0;
+    transition: var(--transition-bounce);
+  }
+
+  .share-tool-btn:hover svg {
+    transform: scale(1.15);
+  }
+
+  /* ===== ESTADÍSTICAS ===== */
+  .share-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%);
+    border-radius: var(--radius-md);
+    color: #4F46E5;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .share-stats svg {
+    flex-shrink: 0;
+  }
+
+  /* ===== NOTIFICACIÓN ===== */
+  .share-notification {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(120px);
+    background: var(--color-success);
+    color: white;
+    padding: 1rem 1.75rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    box-shadow: 0 12px 32px rgba(16, 185, 129, 0.4);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition-bounce);
+    z-index: 10001;
+  }
+
+  .share-notification.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .share-notification-icon {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* ===== MODAL DE ZOOM QR ===== */
+  .qr-zoom-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .qr-zoom-modal.active {
+    display: flex;
+  }
+
+  .qr-zoom-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .qr-zoom-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    animation: zoomIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .qr-zoom-image {
+    width: min(500px, 80vw);
+    height: min(500px, 80vw);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+    background: white;
+    padding: 1.5rem;
+  }
+
+  .qr-zoom-instructions {
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 500;
+    text-align: center;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  /* ===== ANIMACIONES ===== */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUpScale {
+    from {
+      opacity: 0;
+      transform: translateY(40px) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes zoomIn {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .share-button {
+      width: 56px;
+      height: 56px;
+      bottom: 1.5rem;
+      right: 1.5rem;
+    }
+
+    .share-button svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .share-modal-content {
+      padding: 2rem 1.5rem;
+      border-radius: var(--radius-lg);
+      max-height: 95vh;
+    }
+
+    .share-modal-title {
+      font-size: 1.5rem;
+    }
+
+    .share-modal-description {
+      font-size: 0.9375rem;
+    }
+
+    .share-qr-wrapper {
+      padding: 1.25rem;
+    }
+
+    .share-qr-image {
+      width: 200px;
+      height: 200px;
+    }
+
+    .share-actions-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .share-action-btn {
+      padding: 0.875rem;
+    }
+
+    .share-tools-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .share-notification {
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      transform: translateX(0) translateY(120px);
+      font-size: 0.875rem;
+    }
+
+    .share-notification.show {
+      transform: translateX(0) translateY(0);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .share-modal-logo {
+      height: 40px;
+    }
+
+    .share-modal-title {
+      font-size: 1.375rem;
+    }
+
+    .share-qr-image {
+      width: 180px;
+      height: 180px;
+    }
+
+    .share-action-icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .share-action-label {
+      font-size: 0.875rem;
+    }
+
+    .share-action-desc {
+      font-size: 0.6875rem;
+    }
+  }
+
+  /* ===== ACCESIBILIDAD ===== */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    .share-button-pulse {
+      animation: none;
+    }
+  }
+
+  /* ===== SCROLLBAR PERSONALIZADO ===== */
+  .share-modal-content {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-gold) #f3f4f6;
+  }
+
+  .share-modal-content::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .share-modal-content::-webkit-scrollbar-track {
+    background: #f3f4f6;
+    border-radius: 10px;
+  }
+
+  .share-modal-content::-webkit-scrollbar-thumb {
+    background: var(--color-gold);
+    border-radius: 10px;
+  }
+
+  .share-modal-content::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold-hover);
+  }
+
+  /* ===== FOCUS VISIBLE ===== */
+  .share-button:focus-visible,
+  .share-modal-close:focus-visible,
+  .share-action-btn:focus-visible,
+  .share-tool-btn:focus-visible {
+    outline: 3px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+</style>
+
+<script>
+  // ===== VARIABLES =====
+  const shareButton = document.getElementById('shareButton');
+  const shareModal = document.getElementById('shareModal');
+  const closeModal = document.getElementById('closeModal');
+  const modalOverlay = document.getElementById('modalOverlay');
+  const copyLinkBtn = document.getElementById('copyLinkBtn');
+  const whatsappBtn = document.getElementById('whatsappBtn');
+  const emailBtn = document.getElementById('emailBtn');
+  const facebookBtn = document.getElementById('facebookBtn');
+  const twitterBtn = document.getElementById('twitterBtn');
+  const downloadQRBtn = document.getElementById('downloadQRBtn');
+  const nativeShareBtn = document.getElementById('nativeShareBtn');
+  const shareNotification = document.getElementById('shareNotification');
+  const notificationText = document.getElementById('notificationText');
+  const zoomQRBtn = document.getElementById('zoomQRBtn');
+  const qrZoomModal = document.getElementById('qrZoomModal');
+  const qrZoomOverlay = document.getElementById('qrZoomOverlay');
+  
+  const siteURL = 'https://bandasdeguerra.oaxaca.tecnm.mx/';
+  const shareTitle = 'XXXI Encuentro Nacional de Escoltas y Bandas de Guerra - TecNM 2026';
+  const shareMessage = 'Te invito al XXXI Encuentro Nacional de Escoltas y Bandas de Guerra del TecNM 2026. Consulta toda la información oficial aquí:';
+  const shareHashtags = 'TecNM,BandasDeGuerra,Escoltas,Oaxaca2026';
+
+  // ===== DETECTAR SOPORTE PARA WEB SHARE API =====
+  if (typeof navigator.share !== 'undefined' && nativeShareBtn) {
+    nativeShareBtn.style.display = 'flex';
+  }
+
+  // ===== FUNCIONES MODAL PRINCIPAL =====
+  function openModal() {
+    if (shareModal) {
+      shareModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+        if (closeModal) closeModal.focus();
+      }, 100);
+    }
+  }
+
+  function closeModalFunc() {
+    if (shareModal) {
+      shareModal.classList.remove('active');
+      document.body.style.overflow = '';
+      if (shareButton) shareButton.focus();
+    }
+  }
+
+  // ===== FUNCIONES MODAL ZOOM QR =====
+  function openQRZoom() {
+    if (qrZoomModal) {
+      qrZoomModal.classList.add('active');
+    }
+  }
+
+  function closeQRZoomFunc() {
+    if (qrZoomModal) {
+      qrZoomModal.classList.remove('active');
+    }
+  }
+
+  // ===== NOTIFICACIÓN =====
+  function showNotification(message: string, duration: number = 3000) {
+    if (notificationText && shareNotification) {
+      notificationText.textContent = message;
+      shareNotification.classList.add('show');
+      
+      setTimeout(() => {
+        shareNotification.classList.remove('show');
+      }, duration);
+    }
+  }
+
+  // ===== COPIAR ENLACE =====
+  async function copyLink() {
+    try {
+      await navigator.clipboard.writeText(siteURL);
+      showNotification('✅ ¡Enlace copiado al portapapeles!');
+    } catch (err) {
+      const textarea = document.createElement('textarea');
+      textarea.value = siteURL;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      
+      try {
+        document.execCommand('copy');
+        showNotification('✅ ¡Enlace copiado al portapapeles!');
+      } catch (e) {
+        showNotification('❌ No se pudo copiar el enlace');
+      }
+      
+      document.body.removeChild(textarea);
+    }
+  }
+
+  // ===== COMPARTIR POR WHATSAPP =====
+  function shareWhatsApp() {
+    const encodedMessage = encodeURIComponent(`${shareMessage} ${siteURL}`);
+    const whatsappURL = `https://wa.me/?text=${encodedMessage}`;
+    window.open(whatsappURL, '_blank', 'noopener,noreferrer');
+  }
+
+  // ===== COMPARTIR POR EMAIL =====
+  function shareEmail() {
+    const subject = encodeURIComponent(shareTitle);
+    const body = encodeURIComponent(`${shareMessage}\n\n${siteURL}\n\nSaludos cordiales`);
+    const mailtoURL = `mailto:?subject=${subject}&body=${body}`;
+    window.location.href = mailtoURL;
+  }
+
+  // ===== COMPARTIR POR FACEBOOK =====
+  function shareFacebook() {
+    const facebookURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(siteURL)}`;
+    window.open(facebookURL, '_blank', 'noopener,noreferrer,width=600,height=400');
+  }
+
+  // ===== COMPARTIR POR TWITTER/X =====
+  function shareTwitter() {
+    const text = encodeURIComponent(shareMessage);
+    const url = encodeURIComponent(siteURL);
+    const hashtags = encodeURIComponent(shareHashtags);
+    const twitterURL = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}`;
+    window.open(twitterURL, '_blank', 'noopener,noreferrer,width=600,height=400');
+  }
+
+  // ===== COMPARTIR NATIVO =====
+  async function nativeShare() {
+    if (typeof navigator.share !== 'undefined') {
+      try {
+        await navigator.share({
+          title: shareTitle,
+          text: shareMessage,
+          url: siteURL
+        });
+        showNotification('✅ ¡Compartido exitosamente!');
+      } catch (err) {
+        if (err instanceof Error && err.name !== 'AbortError') {
+          console.error('Error al compartir:', err);
+        }
+      }
+    }
+  }
+
+  // ===== DESCARGAR QR =====
+  function downloadQR() {
+    const qrImage = document.getElementById('qrImage') as HTMLImageElement;
+    if (!qrImage) return;
+
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    
+    if (!ctx) return;
+
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = function() {
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0);
+      
+      canvas.toBlob((blob) => {
+        if (!blob) return;
+        
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'QR-Encuentro-Nacional-Bandas-Guerra-TecNM-2026.png';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+        
+        showNotification('✅ ¡Código QR descargado!');
+      }, 'image/png');
+    };
+    
+    img.onerror = function() {
+      showNotification('❌ Error al descargar el código QR');
+    };
+    
+    img.src = qrImage.src;
+  }
+
+  // ===== EVENT LISTENERS =====
+  shareButton?.addEventListener('click', openModal);
+  closeModal?.addEventListener('click', closeModalFunc);
+  modalOverlay?.addEventListener('click', closeModalFunc);
+  copyLinkBtn?.addEventListener('click', copyLink);
+  whatsappBtn?.addEventListener('click', shareWhatsApp);
+  emailBtn?.addEventListener('click', shareEmail);
+  facebookBtn?.addEventListener('click', shareFacebook);
+  twitterBtn?.addEventListener('click', shareTwitter);
+  downloadQRBtn?.addEventListener('click', downloadQR);
+  nativeShareBtn?.addEventListener('click', nativeShare);
+  zoomQRBtn?.addEventListener('click', openQRZoom);
+  qrZoomOverlay?.addEventListener('click', closeQRZoomFunc);
+
+  // ===== CERRAR CON ESCAPE =====
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (qrZoomModal?.classList.contains('active')) {
+        closeQRZoomFunc();
+      } else if (shareModal?.classList.contains('active')) {
+        closeModalFunc();
+      }
+    }
+  });
+
+  // ===== TRAP FOCUS =====
+  function trapFocus(modal: HTMLElement | null) {
+    modal?.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (!modal.classList.contains('active')) return;
+      
+      if (e.key === 'Tab') {
+        const focusableElements = modal.querySelectorAll(
+          'button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        const firstElement = focusableElements[0] as HTMLElement;
+        const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+        if (e.shiftKey && document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        } else if (!e.shiftKey && document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
+    });
+  }
+
+  trapFocus(shareModal);
+  trapFocus(qrZoomModal);
+
+</script>
