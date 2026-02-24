@@ -6,51 +6,87 @@ import { getImage } from 'astro:assets';
 const galleryImages = [
   {
     id: 1,
-    src: '/images/escoltas/12122025_escolta-1024x1024.png',
+    src: '/images/escoltas/Cprinci.jpg',
+    alt: 'Ceremonia Principal Encuentro Escoltas',
+    category: 'Ceremonias'
+  },
+  {
+    id: 2,
+    src: '/images/escoltas/E.jpg',
     alt: 'Escolta en formación',
     category: 'Escoltas'
   },
   {
-    id: 2,
-    src: '/images/escoltas/495098947_1229603755842845_3110889817962747073_n.jpg',
+    id: 3,
+    src: '/images/escoltas/E2.jpg',
+    alt: 'Participantes del encuentro',
+    category: 'Escoltas'
+  },
+  {
+    id: 4,
+    src: '/images/escoltas/E3.jpg',
     alt: 'Escolta en ceremonia',
     category: 'Escoltas'
   },
   {
-    id: 3,
-    src: '/images/escoltas/597716955_1350716400421249_6888935462609749141_n.jpg',
-    alt: 'Banda de guerra en desfile',
+    id: 5,
+    src: '/images/escoltas/B.jpg',
+    alt: 'Banda de guerra marchando',
     category: 'Bandas'
   },
   {
-    id: 4,
-    src: '/images/escoltas/598583887_122161610414789277_328695429715700718_n.jpg',
-    alt: 'Ceremonia de inauguración',
-    category: 'Ceremonias'
-  },
-  {
-    id: 5,
-    src: '/images/escoltas/599091360_1435823661887519_201917931349658465_n.jpg',
-    alt: 'Escolta marchando',
-    category: 'Escoltas'
-  },
-  {
     id: 6,
-    src: '/images/escoltas/599370695_1292110469621726_305694927949810631_n.jpg',
-    alt: 'Banda de guerra actuando',
+    src: '/images/escoltas/B2.jpg',
+    alt: 'Banda de guerra en formación',
     category: 'Bandas'
   },
   {
     id: 7,
-    src: '/images/escoltas/600289569_1344046010855378_3282665262656441046_n.jpg',
-    alt: 'Competencia de escoltas',
-    category: 'Escoltas'
+    src: '/images/escoltas/B3.jpg',
+    alt: 'Banda de guerra actuando',
+    category: 'Bandas'
   },
   {
     id: 8,
-    src: '/images/escoltas/600289902_873752938541232_6907474978700034534_n.jpg',
-    alt: 'Delegación participante',
+    src: '/images/escoltas/B4.jpg',
+    alt: 'Competencia de bandas de guerra',
+    category: 'Bandas'
+  },
+  {
+    id: 9,
+    src: '/images/escoltas/B5.jpg',
+    alt: 'Banda de guerra nacional',
+    category: 'Bandas'
+  },
+  {
+    id: 10,
+    src: '/images/escoltas/C.jpg',
+    alt: 'Ceremonia cívica',
     category: 'Ceremonias'
+  },
+  {
+    id: 11,
+    src: '/images/escoltas/C2.jpg',
+    alt: 'Homenaje a los símbolos patrios',
+    category: 'Ceremonias'
+  },
+  {
+    id: 12,
+    src: '/images/escoltas/C3.jpg',
+    alt: 'Ceremonia de apertura',
+    category: 'Ceremonias'
+  },
+  {
+    id: 13,
+    src: '/images/escoltas/C4.jpg',
+    alt: 'Clausura del encuentro',
+    category: 'Ceremonias'
+  },
+  {
+    id: 14,
+    src: '/images/escoltas/EB.jpg',
+    alt: 'Escoltas y Bandas de Guerra',
+    category: 'Escoltas,Bandas'
   }
 ];
 
@@ -639,129 +675,142 @@ const categories = ['Todas', 'Escoltas', 'Bandas', 'Ceremonias'];
 </style>
 
 <script>
-  // Gallery filtering
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const galleryItems = document.querySelectorAll('.gallery-item');
-  const galleryGrid = document.getElementById('galleryGrid');
-  const noResults = document.getElementById('noResults');
+  function initGallery() {
+    // Gallery filtering
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const galleryGrid = document.getElementById('galleryGrid');
+    const noResults = document.getElementById('noResults');
 
-  filterButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const category = (btn as HTMLElement).dataset.category;
+    if (!filterButtons.length || !galleryItems.length) return;
 
-      filterButtons.forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const category = (btn as HTMLElement).dataset.category;
 
-      let visibleCount = 0;
+        filterButtons.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
 
-      galleryItems.forEach((item) => {
-        const itemCategory = (item as HTMLElement).dataset.category;
+        let visibleCount = 0;
 
-        if (category === 'Todas' || itemCategory === category) {
-          item.classList.remove('hidden');
-          visibleCount++;
-        } else {
-          item.classList.add('hidden');
+        galleryItems.forEach((item) => {
+          const itemCategory = (item as HTMLElement).dataset.category || '';
+          const categoriesList = itemCategory.split(',');
+
+          if (category === 'Todas' || categoriesList.includes(category)) {
+            item.classList.remove('hidden');
+            visibleCount++;
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+
+        // Show/hide no results
+        if (noResults && galleryGrid) {
+          if (visibleCount === 0) {
+            noResults.style.display = 'block';
+            galleryGrid.style.display = 'none';
+          } else {
+            noResults.style.display = 'none';
+            galleryGrid.style.display = 'grid';
+          }
         }
       });
-
-      // Show/hide no results
-      if (noResults && galleryGrid) {
-        if (visibleCount === 0) {
-          noResults.style.display = 'block';
-          galleryGrid.style.display = 'none';
-        } else {
-          noResults.style.display = 'none';
-          galleryGrid.style.display = 'grid';
-        }
-      }
     });
-  });
 
-  // Lightbox functionality
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImage = document.getElementById('lightboxImage') as HTMLImageElement;
-  const lightboxCategory = document.getElementById('lightboxCategory');
-  const lightboxCounter = document.getElementById('lightboxCounter');
-  const lightboxClose = document.getElementById('lightboxClose');
-  const lightboxPrev = document.getElementById('lightboxPrev');
-  const lightboxNext = document.getElementById('lightboxNext');
-  const zoomButtons = document.querySelectorAll('.gallery-zoom-btn');
+    // Lightbox functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage') as HTMLImageElement;
+    const lightboxCategory = document.getElementById('lightboxCategory');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+    const zoomButtons = document.querySelectorAll('.gallery-zoom-btn');
 
-  let currentImageIndex = 0;
-  const images = Array.from(galleryItems).map((item) => {
-    const img = item.querySelector('.gallery-image') as HTMLImageElement;
-    const category = (item as HTMLElement).dataset.category;
-    return { src: img.src, alt: img.alt, category };
-  });
-
-  function showLightbox(index: number) {
     if (!lightbox || !lightboxImage) return;
 
-    currentImageIndex = index;
-    const image = images[index];
-
-    lightboxImage.src = image.src;
-    lightboxImage.alt = image.alt;
-
-    if (lightboxCategory) {
-      lightboxCategory.textContent = image.category || '';
-    }
-
-    if (lightboxCounter) {
-      lightboxCounter.textContent = `${index + 1} / ${images.length}`;
-    }
-
-    lightbox.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeLightbox() {
-    if (!lightbox) return;
-    lightbox.style.display = 'none';
-    document.body.style.overflow = '';
-  }
-
-  function showPrevImage() {
-    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-    showLightbox(currentImageIndex);
-  }
-
-  function showNextImage() {
-    currentImageIndex = (currentImageIndex + 1) % images.length;
-    showLightbox(currentImageIndex);
-  }
-
-  // Event listeners
-  zoomButtons.forEach((btn, index) => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      showLightbox(index);
+    let currentImageIndex = 0;
+    const images = Array.from(galleryItems).map((item) => {
+      const img = item.querySelector('.gallery-image') as HTMLImageElement;
+      const category = (item as HTMLElement).dataset.category;
+      return { src: img.src, alt: img.alt, category };
     });
-  });
 
-  galleryItems.forEach((item, index) => {
-    item.addEventListener('click', () => {
-      showLightbox(index);
+    function showLightbox(index: number) {
+      currentImageIndex = index;
+      const image = images[index];
+
+      lightboxImage.src = image.src;
+      lightboxImage.alt = image.alt;
+
+      if (lightboxCategory) {
+        lightboxCategory.textContent = image.category || '';
+      }
+
+      if (lightboxCounter) {
+        lightboxCounter.textContent = `${index + 1} / ${images.length}`;
+      }
+
+      lightbox.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    function showPrevImage() {
+      currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+      showLightbox(currentImageIndex);
+    }
+
+    function showNextImage() {
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      showLightbox(currentImageIndex);
+    }
+
+    // Event listeners for zoom buttons and item clicks
+    zoomButtons.forEach((btn, index) => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showLightbox(index);
+      });
     });
-  });
 
-  lightboxClose?.addEventListener('click', closeLightbox);
-  lightboxPrev?.addEventListener('click', showPrevImage);
-  lightboxNext?.addEventListener('click', showNextImage);
+    galleryItems.forEach((item, index) => {
+      item.addEventListener('click', () => {
+        showLightbox(index);
+      });
+    });
 
-  lightbox?.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-      closeLightbox();
-    }
-  });
+    lightboxClose?.addEventListener('click', closeLightbox);
+    lightboxPrev?.addEventListener('click', showPrevImage);
+    lightboxNext?.addEventListener('click', showNextImage);
 
-  // Keyboard navigation
-  document.addEventListener('keydown', (e) => {
-    if (lightbox?.style.display === 'flex') {
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') showPrevImage();
-      if (e.key === 'ArrowRight') showNextImage();
-    }
-  });
+    lightbox?.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    // Keyboard navigation
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (lightbox.style.display === 'flex') {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') showPrevImage();
+        if (e.key === 'ArrowRight') showNextImage();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    // Clean up event listener when page unloads (if necessary for SPA-like transitions)
+    // Astro script handles some of this, but it's good practice
+  }
+
+  // Initialize on load and for Astro transitions if enabled
+  document.addEventListener('DOMContentLoaded', initGallery);
+  document.addEventListener('astro:page-load', initGallery);
 </script>
