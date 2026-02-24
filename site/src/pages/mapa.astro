@@ -631,23 +631,23 @@ const locations = [
   (function() {
     'use strict';
     
-    let mode = 'satelital';
-    let activeCard = null;
-    let activeMobileBtn = null;
-    let img = null;
-    const imgCache = new Map();
+    let mode: 'mapa' | 'satelital' = 'satelital';
+    let activeCard: HTMLElement | null = null;
+    let activeMobileBtn: HTMLElement | null = null;
+    let img: HTMLImageElement | null = null;
+    const imgCache = new Map<string, boolean>();
     let initialized = false;
-    let sidebarHandler = null;
-    let controlsHandler = null;
-    let mobileHandler = null;
-    const keyNavHandlers = new Map();
+    let sidebarHandler: ((e: Event) => void) | null = null;
+    let controlsHandler: ((e: Event) => void) | null = null;
+    let mobileHandler: ((e: Event) => void) | null = null;
+    const keyNavHandlers = new Map<HTMLElement, (e: KeyboardEvent) => void>();
 
     function init() {
       if (initialized) return;
       
       const cards = document.querySelectorAll('.location-card');
       const mobileBtns = document.querySelectorAll('.mobile-location-btn');
-      img = document.getElementById('main-map-image');
+      img = document.getElementById('main-map-image') as HTMLImageElement | null;
       
       if (!img) return;
 
@@ -680,7 +680,7 @@ const locations = [
         mobileHandler = handleMobileClick;
         mobileLocations.addEventListener('click', mobileHandler);
         
-        setupScrollFade(mobileLocations);
+        setupScrollFade(mobileLocations as HTMLElement);
       }
 
       if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
@@ -695,14 +695,14 @@ const locations = [
         }, 0);
       }
 
-      cards.forEach((card, i) => {
-        const btn = card.querySelector('.card-content');
+      cards.forEach((card: Element, i: number) => {
+        const btn = card.querySelector('.card-content') as HTMLElement | null;
         if (btn) {
           const oldHandler = keyNavHandlers.get(btn);
           if (oldHandler) {
             btn.removeEventListener('keydown', oldHandler);
           }
-          const handler = (e) => handleKeyNav(e, i, cards);
+          const handler = (e: Event) => handleKeyNav(e as KeyboardEvent, i, cards);
           keyNavHandlers.set(btn, handler);
           btn.addEventListener('keydown', handler);
         }
@@ -719,7 +719,7 @@ const locations = [
       keyNavHandlers.clear();
     }
 
-    function setupScrollFade(container) {
+    function setupScrollFade(container: HTMLElement) {
       let scrollHandler = null;
 
       function updateScrollFade() {
@@ -766,22 +766,22 @@ const locations = [
       resizeObserver.observe(container);
     }
 
-    function handleCardClick(e) {
-      const btn = e.target.closest('.card-content');
+    function handleCardClick(e: Event) {
+      const btn = (e.target as HTMLElement | null)?.closest('.card-content');
       if (!btn) return;
       
-      const card = btn.closest('.location-card');
+      const card = btn?.closest('.location-card') as HTMLElement | null;
       if (!card || card === activeCard) return;
 
-      selectCard(card, btn);
+      selectCard(card, btn as HTMLElement);
       
       // Sincronizar botón móvil
-      const locationId = card.dataset.id;
+      const locationId = (card as HTMLElement).dataset.id ?? '';
       syncMobileButton(locationId);
     }
 
-    function handleMobileClick(e) {
-      const btn = e.target.closest('.mobile-location-btn');
+    function handleMobileClick(e: Event) {
+      const btn = (e.target as HTMLElement)?.closest('.mobile-location-btn') as HTMLElement | null;
       if (!btn) return;
       
       if (btn === activeMobileBtn) return;
@@ -789,23 +789,24 @@ const locations = [
       selectMobileButton(btn);
       
       // Sincronizar card del sidebar
-      const locationId = btn.dataset.id;
+      const locationId = btn.dataset.id ?? '';
       syncSidebarCard(locationId);
     }
 
-    function handleModeClick(e) {
-      const btn = e.target.closest('.mode-btn');
+    function handleModeClick(e: Event) {
+      const btn = (e.target as HTMLElement)?.closest('.mode-btn') as HTMLElement | null;
       if (!btn) return;
 
       const newMode = btn.dataset.mode;
-      if (newMode === mode) return;
+      if (!newMode || newMode === mode) return;
+      if (newMode !== 'mapa' && newMode !== 'satelital') return;
 
       mode = newMode;
       updateModeButtons();
       updateImg();
     }
 
-    function selectCard(card, btn) {
+    function selectCard(card: HTMLElement, btn: HTMLElement) {
       document.querySelectorAll('.location-card').forEach(c => {
         c.classList.remove('active');
         const b = c.querySelector('.card-content');
@@ -819,7 +820,7 @@ const locations = [
       updateImg();
     }
 
-    function selectMobileButton(btn) {
+    function selectMobileButton(btn: HTMLElement) {
       document.querySelectorAll('.mobile-location-btn').forEach(b => {
         b.classList.remove('active');
         b.setAttribute('aria-pressed', 'false');
@@ -829,7 +830,7 @@ const locations = [
       btn.setAttribute('aria-pressed', 'true');
       activeMobileBtn = btn;
 
-      const container = document.querySelector('.mobile-locations');
+      const container = document.querySelector('.mobile-locations') as HTMLElement | null;
       if (container) {
         const btnLeft = btn.offsetLeft;
         const btnWidth = btn.offsetWidth;
@@ -841,21 +842,21 @@ const locations = [
       updateImgFromMobile();
     }
 
-    function syncMobileButton(locationId) {
-      const mobileBtn = document.querySelector(`.mobile-location-btn[data-id="${locationId}"]`);
+    function syncMobileButton(locationId: string) {
+      const mobileBtn = document.querySelector(`.mobile-location-btn[data-id="${locationId}"]`) as HTMLElement | null;
       if (mobileBtn && mobileBtn !== activeMobileBtn) {
-        document.querySelectorAll('.mobile-location-btn').forEach(b => {
-          b.classList.remove('active');
+        document.querySelectorAll('.mobile-location-btn').forEach((b: Element) => {
+          (b as HTMLElement).classList.remove('active');
           b.setAttribute('aria-pressed', 'false');
         });
         mobileBtn.classList.add('active');
         mobileBtn.setAttribute('aria-pressed', 'true');
         activeMobileBtn = mobileBtn;
 
-        const container = document.querySelector('.mobile-locations');
+        const container = document.querySelector('.mobile-locations') as HTMLElement | null;
         if (container) {
-          const btnLeft = mobileBtn.offsetLeft;
-          const btnWidth = mobileBtn.offsetWidth;
+          const btnLeft = (mobileBtn as HTMLElement).offsetLeft;
+          const btnWidth = (mobileBtn as HTMLElement).offsetWidth;
           const containerWidth = container.offsetWidth;
           const scrollLeft = btnLeft - (containerWidth / 2) + (btnWidth / 2);
           container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
@@ -863,7 +864,7 @@ const locations = [
       }
     }
 
-    function syncSidebarCard(locationId) {
+    function syncSidebarCard(locationId: string) {
       const card = document.querySelector(`.location-card[data-id="${locationId}"]`);
       if (card && card !== activeCard) {
         document.querySelectorAll('.location-card').forEach(c => {
@@ -874,30 +875,32 @@ const locations = [
         card.classList.add('active');
         const btn = card.querySelector('.card-content');
         if (btn) btn.setAttribute('aria-pressed', 'true');
-        activeCard = card;
+        activeCard = card as HTMLElement;
       }
     }
 
     function updateModeButtons() {
-      document.querySelectorAll('.mode-btn').forEach(btn => {
-        const isActive = btn.dataset.mode === mode;
-        btn.classList.toggle('active', isActive);
-        btn.setAttribute('aria-pressed', String(isActive));
+      document.querySelectorAll('.mode-btn').forEach((btn: Element) => {
+        const el = btn as HTMLElement;
+        const isActive = el.dataset.mode === mode;
+        el.classList.toggle('active', isActive);
+        el.setAttribute('aria-pressed', String(isActive));
       });
     }
 
     function updateImg() {
-      if (!activeCard || !img) return;
+      const imgEl = img;
+      if (!activeCard || !imgEl) return;
 
       const src = activeCard.getAttribute(`data-${mode}`);
-      const currentSrc = img.getAttribute('src');
+      const currentSrc = imgEl.getAttribute('src');
       if (!src || currentSrc === src) return;
 
-      img.style.opacity = '0.5';
+      imgEl.style.opacity = '0.5';
 
       if (imgCache.has(src)) {
-        img.src = src;
-        img.style.opacity = '1';
+        imgEl.src = src;
+        imgEl.style.opacity = '1';
         updateAlt();
         return;
       }
@@ -905,28 +908,29 @@ const locations = [
       const tempImg = new Image();
       tempImg.onload = () => {
         imgCache.set(src, true);
-        img.src = src;
-        img.style.opacity = '1';
+        imgEl.src = src;
+        imgEl.style.opacity = '1';
         updateAlt();
       };
       tempImg.onerror = () => {
-        img.style.opacity = '1';
+        imgEl.style.opacity = '1';
       };
       tempImg.src = src;
     }
 
     function updateImgFromMobile() {
-      if (!activeMobileBtn || !img) return;
+      const imgEl = img;
+      if (!activeMobileBtn || !imgEl) return;
 
       const src = activeMobileBtn.getAttribute(`data-${mode}`);
-      const currentSrc = img.getAttribute('src');
+      const currentSrc = imgEl.getAttribute('src');
       if (!src || currentSrc === src) return;
 
-      img.style.opacity = '0.5';
+      imgEl.style.opacity = '0.5';
 
       if (imgCache.has(src)) {
-        img.src = src;
-        img.style.opacity = '1';
+        imgEl.src = src;
+        imgEl.style.opacity = '1';
         updateAltFromMobile();
         return;
       }
@@ -934,28 +938,28 @@ const locations = [
       const tempImg = new Image();
       tempImg.onload = () => {
         imgCache.set(src, true);
-        img.src = src;
-        img.style.opacity = '1';
+        imgEl.src = src;
+        imgEl.style.opacity = '1';
         updateAltFromMobile();
       };
       tempImg.onerror = () => {
-        img.style.opacity = '1';
+        imgEl.style.opacity = '1';
       };
       tempImg.src = src;
     }
 
     function updateAlt() {
       const name = activeCard?.querySelector('h3')?.textContent || 'Ubicación';
-      img.alt = `${mode === 'mapa' ? 'Mapa' : 'Vista satelital'} de ${name}`;
+      if (img) img.alt = `${mode === 'mapa' ? 'Mapa' : 'Vista satelital'} de ${name}`;
     }
 
     function updateAltFromMobile() {
       const name = activeMobileBtn?.querySelector('.mobile-location-name')?.textContent || 'Ubicación';
-      img.alt = `${mode === 'mapa' ? 'Mapa' : 'Vista satelital'} de ${name}`;
+      if (img) img.alt = `${mode === 'mapa' ? 'Mapa' : 'Vista satelital'} de ${name}`;
     }
 
-    function preloadImages(cards) {
-      cards.forEach(card => {
+    function preloadImages(cards: NodeListOf<Element>) {
+      cards.forEach((card: Element) => {
         ['mapa', 'satelital'].forEach(m => {
           const src = card.getAttribute(`data-${m}`);
           if (src && !imgCache.has(src)) {
@@ -967,8 +971,8 @@ const locations = [
       });
     }
 
-    function preloadMobileImages(btns) {
-      btns.forEach(btn => {
+    function preloadMobileImages(btns: NodeListOf<Element>) {
+      btns.forEach((btn: Element) => {
         ['mapa', 'satelital'].forEach(m => {
           const src = btn.getAttribute(`data-${m}`);
           if (src && !imgCache.has(src)) {
@@ -980,7 +984,7 @@ const locations = [
       });
     }
 
-    function handleKeyNav(e, idx, cards) {
+    function handleKeyNav(e: KeyboardEvent, idx: number, cards: NodeListOf<Element>) {
       if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
       
       e.preventDefault();
@@ -988,7 +992,7 @@ const locations = [
         ? Math.min(idx + 1, cards.length - 1)
         : Math.max(idx - 1, 0);
       
-      const nextBtn = cards[nextIdx]?.querySelector('.card-content');
+      const nextBtn = cards[nextIdx]?.querySelector('.card-content') as HTMLElement | null;
       if (nextBtn) nextBtn.focus();
     }
 
