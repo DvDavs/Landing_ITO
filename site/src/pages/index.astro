@@ -2,9 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { ViewTransitions } from 'astro:transitions';
 
-// Control de transmisión en vivo (variables de entorno)
+// URL fija de retransmisión de la inauguración (evento pasado, no cambia)
+const replayInauguracionUrl = 'https://www.youtube.com/live/EdIpxnm34kU';
+
+// Control de transmisión en vivo (variables de entorno, para lives futuros)
 const isLive = import.meta.env.PUBLIC_YOUTUBE_LIVE_ENABLED === 'true';
-const youtubeLiveUrl = import.meta.env.PUBLIC_YOUTUBE_LIVE_URL || 'https://www.youtube.com/live/EdIpxnm34kU?si=EHd7RiYqLMpVzR6D';
+const youtubeLiveUrl = import.meta.env.PUBLIC_YOUTUBE_LIVE_URL || '';
 ---
 
 <BaseLayout 
@@ -85,7 +88,7 @@ const youtubeLiveUrl = import.meta.env.PUBLIC_YOUTUBE_LIVE_URL || 'https://www.y
           La transmisión en vivo ya finalizó. Ya puedes ver la retransmisión completa del acto inaugural en YouTube.
         </p>
         <div class="replay-highlight-actions">
-          <a href={youtubeLiveUrl} target="_blank" class="btn btn-primary btn-lg">
+          <a href={replayInauguracionUrl} target="_blank" class="btn btn-primary btn-lg">
             Ver retransmisión
           </a>
           <a href="/galeria" class="btn btn-outline btn-lg">
