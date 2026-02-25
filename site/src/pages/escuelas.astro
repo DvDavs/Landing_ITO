@@ -2,20 +2,23 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import schoolsData from '../data/schools.json';
 
-const totalSchools = schoolsData.length;
+// Separar el ITO (sede) del resto de las escuelas clasificadas
+const sedeSchool = schoolsData.find(school => school.sede === true);
+const classifiedSchools = schoolsData.filter(school => school.sede !== true);
+const totalSchools = schoolsData.length; // 41 total (40 clasificadas + 1 sede)
 const regions = [...new Set(schoolsData.map(school => school.region))].sort();
 ---
 
 <BaseLayout 
-  title="Escuelas Participantes - XXXI Encuentro Nacional TecNM 2026"
-  description="Conoce los 40 Institutos Tecnológicos participantes en el XXXI Encuentro Nacional de Escoltas y Bandas de Guerra del TecNM 2026."
+  title="Escuelas | XXXI Encuentro Escoltas y Bandas 2026"
+  description="Conoce los 40 Institutos Tecnológicos clasificados más el Instituto Tecnológico de Oaxaca como sede en el XXXI Encuentro Nacional de Escoltas y Bandas de Guerra del TecNM 2026."
 >
   <!-- Hero Section -->
   <section class="page-hero">
     <div class="container">
       <div class="page-hero-content">
-        <span class="page-badge">40 Instituciones Clasificadas</span>
-        <h1 class="page-title">Escuelas Participantes</h1>
+        <span class="page-badge">40 Instituciones Clasificadas + Sede Oaxaca</span>
+        <h1 class="page-title">Tecnológicos Participantes</h1>
         <p class="page-subtitle">
           Institutos Tecnológicos que representarán al TecNM en el encuentro nacional
         </p>
@@ -58,11 +61,6 @@ const regions = [...new Set(schoolsData.map(school => school.region))].sort();
         </div>
       </div>
 
-      <div class="search-results-info">
-        <p id="resultsCount">
-          Mostrando <strong>{totalSchools}</strong> instituciones
-        </p>
-      </div>
     </div>
   </section>
 
@@ -70,7 +68,63 @@ const regions = [...new Set(schoolsData.map(school => school.region))].sort();
   <section class="schools-section">
     <div class="container">
       <div class="schools-grid" id="schoolsGrid">
-        {schoolsData.map((school) => (
+        <!-- Instituto Tecnológico de Oaxaca - Sede -->
+        {sedeSchool && (
+          <div class="school-card school-card-sede card" data-region={sedeSchool.region} data-name={sedeSchool.name.toLowerCase()}>
+            <div class="school-header">
+              <div class="school-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+              </div>
+              <span class="school-region-badge badge badge-primary">{sedeSchool.region}</span>
+            </div>
+            
+            <div class="school-body">
+              <h3 class="school-name">{sedeSchool.name}</h3>
+              <p class="school-description">{sedeSchool.description}</p>
+            </div>
+
+            <div class="school-footer">
+              <div class="school-disciplines">
+                <span class="discipline-tag discipline-tag-sede">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                  Escolta
+                </span>
+                <span class="discipline-tag discipline-tag-sede">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 18V5l12-2v13"></path>
+                    <circle cx="6" cy="18" r="3"></circle>
+                    <circle cx="18" cy="16" r="3"></circle>
+                  </svg>
+                  Banda
+                </span>
+                <span class="discipline-tag discipline-tag-sede-badge">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  Sede
+                </span>
+              </div>
+              {sedeSchool.website && (
+                <a href={sedeSchool.website} target="_blank" rel="noopener" class="school-link">
+                  Sitio web
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              )}
+            </div>
+          </div>
+        )}
+
+        {classifiedSchools.map((school) => (
           <div class="school-card card" data-region={school.region} data-name={school.name.toLowerCase()}>
             <div class="school-header">
               <div class="school-icon">
@@ -135,20 +189,21 @@ const regions = [...new Set(schoolsData.map(school => school.region))].sort();
     <div class="container">
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-number">40</div>
+          <div class="stat-number">41</div>
           <div class="stat-label">Instituciones Participantes</div>
+          <div class="stat-sublabel">(40 Clasificadas + Sede Oaxaca)</div>
         </div>
         <div class="stat-card">
           <div class="stat-number">3</div>
           <div class="stat-label">Regiones Representadas</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">80</div>
+          <div class="stat-number">82</div>
           <div class="stat-label">Grupos Competidores</div>
-          <div class="stat-sublabel">(40 Escoltas + 40 Bandas)</div>
+          <div class="stat-sublabel">(41 Escoltas + 41 Bandas)</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">800+</div>
+          <div class="stat-number">1000+</div>
           <div class="stat-label">Estudiantes Participantes</div>
         </div>
       </div>
@@ -161,7 +216,7 @@ const regions = [...new Set(schoolsData.map(school => school.region))].sort();
       <div class="section-header text-center">
         <h2>Clasificación Regional</h2>
         <p class="lead">
-          Los institutos clasificaron a través de encuentros regionales realizados en 2025
+          Los institutos clasificaron a través de encuentros regionales realizados en 2026
         </p>
       </div>
 
@@ -248,7 +303,9 @@ const regions = [...new Set(schoolsData.map(school => school.region))].sort();
 <style>
   /* Hero */
   .page-hero {
-    background: linear-gradient(135deg, #1B396A 0%, #5D85A6 100%);
+    background: linear-gradient(135deg, rgba(27, 57, 106, 0.5) 0%, rgba(93, 133, 166, 0.5) 100%), url('/images/sdaut/pexels-dominicrp-1000650.webp');
+    background-size: cover;
+    background-position: center;
     padding: 4rem 0 3rem;
     color: white;
     position: relative;
@@ -417,6 +474,32 @@ const regions = [...new Set(schoolsData.map(school => school.region))].sort();
     display: none;
   }
 
+  .school-card-sede {
+    background: linear-gradient(135deg, rgba(139, 21, 56, 0.04) 0%, rgba(27, 57, 106, 0.06) 100%);
+    border: 1px solid rgba(139, 21, 56, 0.2);
+    box-shadow: 0 2px 12px rgba(139, 21, 56, 0.08);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .school-card-sede::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(139, 21, 56, 0.3) 0%, rgba(27, 57, 106, 0.4) 50%, rgba(139, 21, 56, 0.3) 100%);
+  }
+
+  .school-card-sede .school-icon {
+    background: linear-gradient(135deg, rgba(139, 21, 56, 0.08) 0%, rgba(27, 57, 106, 0.06) 100%);
+  }
+
+  .school-card-sede .school-icon svg {
+    stroke: var(--color-primary);
+  }
+
   .school-header {
     display: flex;
     justify-content: space-between;
@@ -490,6 +573,25 @@ const regions = [...new Set(schoolsData.map(school => school.region))].sort();
   .discipline-tag svg {
     flex-shrink: 0;
     stroke: var(--color-secondary);
+  }
+
+  .discipline-tag-sede {
+    background: rgba(139, 21, 56, 0.08);
+  }
+
+  .discipline-tag-sede svg {
+    stroke: var(--color-primary);
+  }
+
+  .discipline-tag-sede-badge {
+    background: linear-gradient(135deg, rgba(139, 21, 56, 0.12) 0%, rgba(27, 57, 106, 0.1) 100%);
+    color: var(--color-primary);
+    font-weight: 600;
+    border: 1px solid rgba(139, 21, 56, 0.25);
+  }
+
+  .discipline-tag-sede-badge svg {
+    stroke: var(--color-primary);
   }
 
   .school-link {

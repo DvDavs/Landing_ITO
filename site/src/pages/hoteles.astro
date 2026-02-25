@@ -2,8 +2,30 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import hotelsData from '../data/hotels.json';
 
-// Ordenar hoteles por precio (sencilla)
-const hotelsSorted = [...hotelsData].sort((a, b) => a.rooms.sencilla - b.rooms.sencilla);
+// Ordenar hoteles por "completitud" de precios y luego por costo
+const hotelsSorted = [...hotelsData].sort((a, b) => {
+  // Función para contar cuántos precios tiene definidos el hotel (de los 4 principales)
+  const countPrices = (hotel) => {
+    let count = 0;
+    if (hotel.rooms.sencilla) count++;
+    if (hotel.rooms.doble) count++;
+    if (hotel.rooms.triple) count++;
+    if (hotel.rooms.cuadruple) count++;
+    return count;
+  };
+
+  const countA = countPrices(a);
+  const countB = countPrices(b);
+
+  // 1. Priorizar por cantidad de precios disponibles (descendente)
+  if (countA !== countB) {
+    return countB - countA;
+  }
+
+  // 2. Si tienen la misma cantidad de precios, ordenar por precio de sencilla (ascendente)
+  // Si no tienen precio de sencilla, se tratan como 0 (o infinitos, según preferencia, aquí 0 para mantener consistencia)
+  return (a.rooms.sencilla || 0) - (b.rooms.sencilla || 0);
+});
 
 const categories = {
   'económico': 'Económico',
@@ -14,7 +36,7 @@ const categories = {
 ---
 
 <BaseLayout 
-  title="Hoteles y Hospedaje - XXXI Encuentro Nacional TecNM 2026"
+  title="Hoteles | XXXI Encuentro Escoltas y Bandas 2026"
   description="Encuentra las mejores opciones de hospedaje en Oaxaca con tarifas especiales para participantes del XXXI Encuentro Nacional de Escoltas y Bandas de Guerra."
 >
   <!-- Hero Section -->
@@ -69,7 +91,7 @@ const categories = {
       </div>
 
       <div class="warning-box">
-        <strong>Importante:</strong> Las tarifas están sujetas a disponibilidad y vigencia. Se recomienda hacer reservaciones con anticipación mencionando el código del evento.
+        <strong>Importante:</strong> Algunas tarifas están sujetas al convenio entre Instituto Tecnológico de Oaxaca y los hoteles. Se recomienda hacer reservaciones con anticipación mencionando el código o nombre del evento.
       </div>
     </div>
   </section>
@@ -82,63 +104,173 @@ const categories = {
         <p class="lead">Todas las tarifas son por noche e incluyen impuestos (IVA 16% + ISH 3%)</p>
       </div>
 
-      <div class="table-wrapper">
-        <table class="hotels-table">
+      <div class="table-outer-container">
+        <!-- Static Header Table -->
+        <table class="hotels-table header-table">
+          <colgroup>
+            <col style="width: 20%">
+            <col style="width: 8%">
+            <col style="width: 8%">
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 9%">
+            <col style="width: 10%">
+            <col style="width: 5%">
+          </colgroup>
           <thead>
             <tr>
               <th>Hotel</th>
-              <th>Categoría</th>
+              <th>Cupo</th>
+              <th>Convenio</th>
               <th>Sencilla</th>
               <th>Doble</th>
               <th>Triple</th>
               <th>Cuádruple</th>
               <th>Desayuno</th>
-              <th>Ubicación</th>
+              <th>Notas</th>
+              <th>Enlaces</th>
             </tr>
           </thead>
-          <tbody>
-            {hotelsSorted.map((hotel) => (
-              <tr>
-                <td>
-                  <strong>{hotel.name}</strong>
-                  {hotel.reservationCode && (
-                    <span class="reservation-code">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="8.5" cy="7" r="4"></circle>
-                        <polyline points="17 11 19 13 23 9"></polyline>
-                      </svg>
-                      {hotel.reservationCode}
-                    </span>
-                  )}
-                </td>
-                <td>
-                  <span class={`category-badge category-${hotel.category}`}>
-                    {categories[hotel.category as keyof typeof categories]}
-                  </span>
-                </td>
-                <td class="price">${hotel.rooms.sencilla.toLocaleString('es-MX')}</td>
-                <td class="price">{hotel.rooms.doble ? `$${hotel.rooms.doble.toLocaleString('es-MX')}` : '-'}</td>
-                <td class="price">{hotel.rooms.triple ? `$${hotel.rooms.triple.toLocaleString('es-MX')}` : '-'}</td>
-                <td class="price">{hotel.rooms.cuadruple ? `$${hotel.rooms.cuadruple.toLocaleString('es-MX')}` : '-'}</td>
-                <td>
-                  {hotel.breakfast ? (
-                    <span class="badge badge-success">Incluido</span>
-                  ) : hotel.breakfastPrice > 0 ? (
-                    <span class="badge">+${hotel.breakfastPrice}</span>
-                  ) : (
-                    <span class="text-muted">No incluido</span>
-                  )}
-                </td>
-                <td class="location-cell">{hotel.distance}</td>
-              </tr>
-            ))}
-          </tbody>
         </table>
+
+        <!-- Scrollable Body Table -->
+        <div class="table-body-wrapper">
+          <table class="hotels-table body-table">
+            <colgroup>
+              <col style="width: 20%">
+              <col style="width: 8%">
+              <col style="width: 8%">
+              <col style="width: 10%">
+              <col style="width: 10%">
+              <col style="width: 10%">
+              <col style="width: 10%">
+              <col style="width: 9%">
+              <col style="width: 10%">
+              <col style="width: 5%">
+            </colgroup>
+            <tbody>
+              {hotelsSorted.map((hotel) => (
+                <tr>
+                  <td>
+                    <strong>{hotel.name}</strong>
+                    {hotel.reservationCode && (
+                      <span class="reservation-code">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                          <circle cx="8.5" cy="7" r="4"></circle>
+                          <polyline points="17 11 19 13 23 9"></polyline>
+                        </svg>
+                        {hotel.reservationCode}
+                      </span>
+                    )}
+                  </td>
+                  <td>
+                    <span class="category-badge" style={`background-color: ${hotel.cupo === 'Casi lleno' ? '#fef3c7' : '#dcfce7'}; color: ${hotel.cupo === 'Casi lleno' ? '#b45309' : '#166534'};`}>
+                      {hotel.cupo}
+                    </span>
+                  </td>
+                  <td>
+                    <span class={`category-badge category-${hotel.convenio ? 'económico' : 'alto'}`} style={`background-color: ${hotel.convenio ? '#dcfce7' : '#fee2e2'}; color: ${hotel.convenio ? '#166534' : '#991b1b'};`}>
+                      {hotel.convenio ? 'Sí' : 'No'}
+                    </span>
+                  </td>
+                  {/* Logic to distribute text across empty price cells */
+                   (() => {
+                     const emptyPrices = [!hotel.rooms.sencilla, !hotel.rooms.doble, !hotel.rooms.triple, !hotel.rooms.cuadruple];
+                     const emptyCount = emptyPrices.filter(Boolean).length;
+                     const emptyIndices = emptyPrices.map((isEmpty, index) => isEmpty ? index : -1).filter(idx => idx !== -1);
+                     
+                     // Helper to get text for specific scenarios
+                     const getTextForEmptyCell = (globalIndex, emptyIndexInGroup) => {
+                        if (emptyCount === 1) return (
+                          <>
+                            Consultar directamente
+                            <br />
+                            con el hotel/recinto
+                          </>
+                        );
+                        
+                        if (emptyCount === 2) {
+                            if (emptyIndexInGroup === 0) return "Consultar directamente";
+                            if (emptyIndexInGroup === 1) return "con el hotel";
+                        }
+                        
+                        if (emptyCount === 3) {
+                            if (emptyIndexInGroup === 0) return "Consultar";
+                            if (emptyIndexInGroup === 1) return "directamente";
+                            if (emptyIndexInGroup === 2) return "con el hotel";
+                        }
+                        
+                        if (emptyCount === 4) {
+                            if (emptyIndexInGroup === 0) return "Consultar";
+                            if (emptyIndexInGroup === 1) return "directamente";
+                            if (emptyIndexInGroup === 2) return "con el";
+                            if (emptyIndexInGroup === 3) return "hotel";
+                        }
+                        
+                        return "-";
+                     };
+
+                     const renderCell = (price, index) => {
+                       if (price) return <td class="price">${price.toLocaleString('es-MX')}</td>;
+                       
+                       // Find which position this empty cell is amongst the group of empty cells
+                       const emptyIndexInGroup = emptyIndices.indexOf(index);
+                       const text = getTextForEmptyCell(index, emptyIndexInGroup);
+                       
+                       return <td class="price"><span class="text-xs text-muted" style="font-size: 0.65rem; font-weight: normal; color: var(--color-text-light); line-height: 1.1; display: block;">{text}</span></td>;
+                     };
+
+                     return [
+                       renderCell(hotel.rooms.sencilla, 0),
+                       renderCell(hotel.rooms.doble, 1),
+                       renderCell(hotel.rooms.triple, 2),
+                       renderCell(hotel.rooms.cuadruple, 3)
+                     ];
+                   })()
+                  }
+                  <td>
+                    {hotel.breakfast ? (
+                      <span class="badge badge-success">Incluido</span>
+                    ) : hotel.breakfastPrice > 0 ? (
+                      <span class="badge">+${hotel.breakfastPrice}</span>
+                    ) : (
+                      <span class="text-muted">No incluido</span>
+                    )}
+                  </td>
+                  <td class="location-cell" style="font-size: 0.85rem;">{hotel.notes || hotel.distance}</td>
+                  <td>
+                    <div class="hotel-quick-links" style="display: flex; gap: 0.5rem; justify-content: center;">
+                      {hotel.mapLink && (
+                        <a href={hotel.mapLink} target="_blank" rel="noopener noreferrer" title="Ver ubicación" style="color: var(--color-primary);">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                          </svg>
+                        </a>
+                      )}
+                      {hotel.website && (
+                        <a href={hotel.website} target="_blank" rel="noopener noreferrer" title="Visitar sitio web" style="color: var(--color-primary);">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                          </svg>
+                        </a>
+                      )}
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div class="table-note info-box">
-        <p><strong>Nota:</strong> Los precios pueden variar según disponibilidad y temporada. Contacta directamente con el hotel mencionando tu participación en el XXXI Encuentro Nacional TecNM 2026.</p>
+        <p><strong>Nota:</strong> Contacta directamente con el hotel mencionando tu participación en el XXXI Encuentro Nacional TecNM 2026.</p>
       </div>
     </div>
   </section>
@@ -163,20 +295,42 @@ const categories = {
               </div>
               <div class="hotel-price-highlight">
                 <span class="price-label">Desde</span>
-                <span class="price-value">${hotel.rooms.sencilla.toLocaleString('es-MX')}</span>
+                <span class="price-value">${hotel.rooms.sencilla ? hotel.rooms.sencilla.toLocaleString('es-MX') : '---'}</span>
                 <span class="price-period">por noche</span>
               </div>
             </div>
 
             <div class="hotel-card-body">
               <div class="hotel-info-section">
-                <h4>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                    <circle cx="12" cy="10" r="3"></circle>
-                  </svg>
-                  Ubicación
-                </h4>
+                <div class="location-header">
+                  <h4>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    Ubicación
+                  </h4>
+                  <div class="hotel-links">
+                    {hotel.mapLink && (
+                      <a href={hotel.mapLink} target="_blank" rel="noopener noreferrer" class="icon-link map-link" title="Ver en Google Maps">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+                          <line x1="8" y1="2" x2="8" y2="18"></line>
+                          <line x1="16" y1="6" x2="16" y2="22"></line>
+                        </svg>
+                      </a>
+                    )}
+                    {hotel.website && (
+                      <a href={hotel.website} target="_blank" rel="noopener noreferrer" class="icon-link web-link" title="Visitar sitio web">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <line x1="2" y1="12" x2="22" y2="12"></line>
+                          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                      </a>
+                    )}
+                  </div>
+                </div>
                 <p>{hotel.location}</p>
                 <p class="distance-info"><strong>Distancia:</strong> {hotel.distance}</p>
               </div>
@@ -204,30 +358,42 @@ const categories = {
                   </svg>
                   Tarifas por Tipo de Habitación
                 </h4>
-                <div class="rates-grid">
-                  <div class="rate-item">
-                    <span class="rate-type">Sencilla</span>
-                    <span class="rate-price">${hotel.rooms.sencilla.toLocaleString('es-MX')}</span>
+                  <div class="rates-grid">
+                    {/* Render available prices first */}
+                    {['sencilla', 'doble', 'triple', 'cuadruple'].map(type => {
+                      if (hotel.rooms[type]) {
+                        return (
+                          <div class="rate-item">
+                            <span class="rate-type">{type.charAt(0).toUpperCase() + type.slice(1)}</span>
+                            <span class="rate-price">${hotel.rooms[type].toLocaleString('es-MX')}</span>
+                          </div>
+                        );
+                      }
+                      return null;
+                    })}
+
+                    {/* Handle missing prices */}
+                    {(() => {
+                      const missingTypes = ['sencilla', 'doble', 'triple', 'cuadruple'].filter(type => !hotel.rooms[type]);
+                      
+                      if (missingTypes.length > 1) {
+                        return (
+                          <div class="rate-item" style="grid-column: 1 / -1;">
+                             <span class="rate-price" style="font-size: 0.8rem; line-height: 1.2; font-weight: normal; color: var(--color-text-light);">Consultar habitaciones<br>con el hotel/recinto</span>
+                          </div>
+                        );
+                      } else if (missingTypes.length === 1) {
+                        const type = missingTypes[0];
+                         return (
+                          <div class="rate-item">
+                            <span class="rate-type">{type.charAt(0).toUpperCase() + type.slice(1)}</span>
+                             <span class="rate-price" style="font-size: 0.75rem; line-height: 1.2; font-weight: normal; color: var(--color-text-light);">Consultar directamente<br>al hotel/recinto</span>
+                          </div>
+                        );
+                      }
+                      return null;
+                    })()}
                   </div>
-                  {hotel.rooms.doble && (
-                    <div class="rate-item">
-                      <span class="rate-type">Doble</span>
-                      <span class="rate-price">${hotel.rooms.doble.toLocaleString('es-MX')}</span>
-                    </div>
-                  )}
-                  {hotel.rooms.triple && (
-                    <div class="rate-item">
-                      <span class="rate-type">Triple</span>
-                      <span class="rate-price">${hotel.rooms.triple.toLocaleString('es-MX')}</span>
-                    </div>
-                  )}
-                  {hotel.rooms.cuadruple && (
-                    <div class="rate-item">
-                      <span class="rate-type">Cuádruple</span>
-                      <span class="rate-price">${hotel.rooms.cuadruple.toLocaleString('es-MX')}</span>
-                    </div>
-                  )}
-                </div>
               </div>
 
               {hotel.breakfast && (
@@ -253,7 +419,7 @@ const categories = {
 
               {hotel.notes && (
                 <div class="hotel-notes">
-                  <p><strong>Información adicional:</strong> {hotel.notes}</p>
+                  <p><strong>Nota importante:</strong> Consultar tarifas y promociones con el hotel mencionando el evento "XXXI Encuentro Nacional de Escoltas y Bandas de Guerra". {hotel.notes}</p>
                 </div>
               )}
 
@@ -321,8 +487,10 @@ const categories = {
 <style>
   /* Hero */
   .page-hero {
-    background: linear-gradient(135deg, #1B396A 0%, #5D85A6 100%);
-    padding: 4rem 0 3rem;
+    background: linear-gradient(135deg, rgba(27, 57, 106, 0.5) 0%, rgba(93, 133, 166, 0.5) 100%), url('/images/sdaut/pexels-brian-chavez-311043431-15378135.webp');
+    background-size: cover;
+    background-position: center;
+    padding: 6rem 0 3rem;
     color: white;
     position: relative;
   }
@@ -414,11 +582,41 @@ const categories = {
 
   .hotels-table {
     min-width: 1000px;
+    width: 100%;
+    table-layout: fixed; /* Enforce constant column widths */
+  }
+
+  /* Scroll Wrapper Logic */
+  .table-outer-container {
+    overflow-x: auto; /* Enable horizontal scroll for wide table */
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-border);
+  }
+
+  .header-table {
+    margin-bottom: 0; /* Attach directly to body table */
+    background: white;
+  }
+  
+  .table-body-wrapper {
+    max-height: 70vh;
+    overflow-y: auto;
+    /* Hide scrollbar for header matching? Optional */
+  }
+  
+  .body-table {
+    border-top: none;
   }
 
   .hotels-table th {
+    /* No longer sticky needed, it's in a separate static table */
+    /* top: 0; */
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     background: linear-gradient(135deg, var(--color-tecnm-primary) 0%, #152d52 100%);
     white-space: nowrap;
+    padding: 1rem 0.5rem; /* Compact padding */
   }
 
   .hotels-table td {
@@ -703,21 +901,20 @@ const categories = {
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     border: 1px solid var(--color-border);
-    position: relative;
-    padding-left: 5rem;
     transition: all var(--transition-base);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 var(--spacing-lg);
+    align-items: start;
   }
 
   .tip-card:hover {
-    transform: translateX(8px);
+    transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
     border-color: var(--color-primary);
   }
 
   .tip-number {
-    position: absolute;
-    left: var(--spacing-md);
-    top: var(--spacing-lg);
     width: 56px;
     height: 56px;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
@@ -729,17 +926,24 @@ const categories = {
     font-size: 1.5rem;
     font-weight: 800;
     box-shadow: var(--shadow-md);
+    grid-row: 1 / 3;
+    grid-column: 1;
   }
 
   .tip-card h3 {
     font-size: 1.25rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 0.25rem;
   }
 
   .tip-card p {
     margin: 0;
     color: var(--color-text-light);
     line-height: 1.6;
+    grid-column: 2;
+    grid-row: 2;
   }
 
   /* Responsive */
@@ -759,18 +963,62 @@ const categories = {
     }
 
     .tip-card {
-      padding-left: var(--spacing-md);
-      padding-top: 5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var(--spacing-md);
+      padding: var(--spacing-lg);
     }
 
     .tip-number {
-      left: 50%;
-      transform: translateX(-50%);
-      top: var(--spacing-md);
+      margin-bottom: var(--spacing-sm);
     }
 
     .services-list {
       grid-template-columns: 1fr;
     }
+  }
+
+  .location-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .location-header h4 {
+    margin-bottom: 0;
+  }
+
+  .hotel-links {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--color-bg-alt);
+    color: var(--color-primary);
+    transition: all 0.3s ease;
+  }
+
+  .icon-link:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  .map-link:hover {
+    background: #0F9D58; /* Google Maps Green */
+  }
+
+  .web-link:hover {
+    background: #4285F4; /* Typical Web Blue */
   }
 </style>

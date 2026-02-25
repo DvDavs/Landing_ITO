@@ -1,39 +1,57 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import venuesData from '../data/venues.json';
+
+const municipalityLinks = {
+  'Oaxaca de Juárez': 'https://www.oaxaca.gob.mx/',
+  'San Pablo Villa de Mitla': 'https://www.economia.gob.mx/datamexico/es/profile/geo/san-pablo-villa-de-mitla',
+  'San Jacinto Amilpas': 'https://www.economia.gob.mx/datamexico/es/profile/geo/san-jacinto-amilpas',
+  'Santa Cruz Xoxocotlán': 'https://santacruzxoxocotlan.gob.mx/',
+  'San Sebastián Tutla': 'https://www.sansebastiantutla.gob.mx/',
+  'Santa María El Tule': 'https://santamariadeltule.gob.mx/',
+  'Cuilápam de Guerrero': 'https://municipiodecuilapamdeguerrero.gob.mx/',
+  'Santa María Atzompa': 'https://santamariatzompa.gob.mx/municipio/'
+};
 ---
 
 <BaseLayout 
-  title="Sedes y Municipios - XXXI Encuentro Nacional TecNM 2026"
+  title="Sedes | XXXI Encuentro Escoltas y Bandas 2026"
   description="Descubre los 8 municipios anfitriones del XXXI Encuentro Nacional de Escoltas y Bandas de Guerra en Oaxaca. Conoce su riqueza cultural e histórica."
 >
   <!-- Hero Section -->
   <section class="page-hero">
+    <div class="hero-bg-carousel">
+      <div class="hero-bg-slide" style="background-image: url('/images/sdaut/pexels-mikhail-nilov-6942604.webp')"></div>
+      <div class="hero-bg-slide" style="background-image: url('/images/sdaut/pexels-lourdes-perez-franco-1351717852-34735116.webp')"></div>
+      <div class="hero-bg-slide" style="background-image: url('/images/sdaut/pexels-alancabello-1618553.webp')"></div>
+    </div>
+    <div class="hero-overlay"></div>
     <div class="container">
       <div class="page-hero-content">
         <span class="page-badge">8 Municipios Anfitriones</span>
         <h1 class="page-title">Sedes y Municipios</h1>
         <p class="page-subtitle">
-          Descubre la riqueza cultural e histórica de Oaxaca
+          Oaxaca te da la Bienvenida
         </p>
-      </div>
-    </div>
-  </section>
 
-  <!-- Intro Section -->
-  <section class="intro-section">
-    <div class="container-narrow">
-      <div class="intro-content text-center">
-        <h2>Oaxaca te da la Bienvenida</h2>
-        <p class="lead">
-          El XXXI Encuentro Nacional se llevará a cabo en 8 municipios de los Valles Centrales de Oaxaca, 
-          cada uno con su propia identidad cultural, historia y tradiciones que enriquecerán tu experiencia.
-        </p>
-        <p>
-          Más allá de las competencias, este evento es una oportunidad única para conocer el patrimonio 
-          cultural de Oaxaca, declarado Patrimonio Mundial por la UNESCO, y disfrutar de su reconocida 
-          gastronomía, artesanías y hospitalidad.
-        </p>
+        <div class="municipalities-links-container card">
+          <div class="municipalities-links-image">
+            <img src="/images/sedes/mapa_sedes.jpeg" alt="Mapa de municipios" />
+          </div>
+          <div class="municipalities-links-separator"></div>
+          <div class="municipalities-links-list">
+            {venuesData.map((venue) => (
+              <a href={municipalityLinks[venue.name] || '#'} target="_blank" rel="noopener noreferrer" class="municipality-link">
+                {venue.name}
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -44,7 +62,7 @@ import venuesData from '../data/venues.json';
       {venuesData.map((venue, index) => (
         <div class={`venue-card ${index % 2 === 0 ? 'venue-card-left' : 'venue-card-right'}`}>
           <div class="venue-card-inner card">
-            <div class="venue-header">
+            <div class="venue-header" style={`background-image: linear-gradient(rgba(27, 57, 106, 0.85), rgba(93, 133, 166, 0.85)), url('${venue.image}'); background-size: cover; background-position: center;`}>
               <div class="venue-number">{index + 1}</div>
               <div class="venue-title-section">
                 <h3 class="venue-name">{venue.name}</h3>
@@ -60,6 +78,12 @@ import venuesData from '../data/venues.json';
                   )}
                 </div>
               </div>
+              <button class="image-preview-btn" aria-label="Ver imagen completa" data-image={venue.image} data-title={venue.name}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
             </div>
 
             <div class="venue-body">
@@ -103,26 +127,7 @@ import venuesData from '../data/venues.json';
       ))}
     </div>
   </section>
-
-  <!-- Map Section -->
-  <section class="map-section">
-    <div class="container">
-      <div class="section-header text-center">
-        <h2>Ubicación de los Municipios</h2>
-        <p class="lead">
-          Todos los municipios están ubicados en los Valles Centrales de Oaxaca
-        </p>
-      </div>
-
-      <div class="map-container card">
-        <img src="/images/sedes/WhatsApp Image 2026-01-10 at 1.30.03 PM.jpeg" alt="Mapa de municipios participantes" class="map-image" />
-        <div class="map-caption">
-          <p>Los 8 municipios anfitriones están estratégicamente ubicados en la región de los Valles Centrales, 
-          facilitando el desplazamiento entre sedes durante el evento.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- Cultural Highlights -->
   <section class="cultural-section section-primary">
@@ -256,7 +261,7 @@ import venuesData from '../data/venues.json';
           <h3>Transporte</h3>
           <p>
             Los municipios anfitriones están bien conectados por carretera. Se recomienda usar 
-            taxis sitio o aplicaciones de transporte. Durante el evento habrá transporte coordinado 
+            taxis sitio, binnibus o colectivos. Durante el evento habrá transporte coordinado 
             entre las sedes principales.
           </p>
         </div>
@@ -322,15 +327,168 @@ import venuesData from '../data/venues.json';
       </div>
     </div>
   </section>
+  <!-- Image Lightbox Modal -->
+  <div id="image-lightbox" class="lightbox-overlay">
+    <div class="lightbox-content">
+      <button id="lightbox-close" class="lightbox-close">&times;</button>
+      <img id="lightbox-image" src="" alt="Vista previa de sede" />
+      <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+  </div>
 </BaseLayout>
+
+<script>
+  function initLightbox() {
+    const lightbox = document.getElementById('image-lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const closeBtn = document.getElementById('lightbox-close');
+    const previewBtns = document.querySelectorAll('.image-preview-btn');
+
+    if (lightbox && lightboxImage && lightboxCaption && closeBtn) {
+      // Open modal
+      previewBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const imageUrl = btn.getAttribute('data-image');
+          const title = btn.getAttribute('data-title');
+          
+          if (imageUrl) {
+            lightboxImage.setAttribute('src', imageUrl);
+            lightboxCaption.textContent = title || '';
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+          }
+        });
+      });
+
+      // Close modal functions
+      const closeModal = () => {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+        setTimeout(() => {
+            lightboxImage.setAttribute('src', '');
+        }, 300); // Clear source after transition
+      };
+
+      closeBtn.addEventListener('click', closeModal);
+
+      // Close on background click
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          closeModal();
+        }
+      });
+
+      // Close on escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+          closeModal();
+        }
+      });
+    }
+  }
+
+  function initCarousel() {
+    const carousel = document.querySelector('.hero-bg-carousel');
+    if (!carousel) return;
+
+    const slides = Array.from(carousel.querySelectorAll('.hero-bg-slide'));
+    let currentIndex = 0;
+    let intervalId;
+
+    // Initialize first slide
+    if (!carousel.querySelector('.active')) {
+      slides[0].classList.add('active');
+    }
+
+    const nextSlide = () => {
+        const nextIndex = (currentIndex + 1) % slides.length;
+        
+        slides[currentIndex].classList.remove('active');
+        slides[nextIndex].classList.add('active');
+        
+        currentIndex = nextIndex;
+    };
+
+    const startAutoplay = () => {
+        stopAutoplay();
+        intervalId = setInterval(nextSlide, 5000);
+    };
+
+    const stopAutoplay = () => {
+        if (intervalId) {
+            clearInterval(intervalId);
+            intervalId = null;
+        }
+    };
+
+    startAutoplay();
+  }
+
+  // Run on initial load
+  document.addEventListener('DOMContentLoaded', () => {
+    initLightbox();
+    initCarousel();
+  });
+
+  // Run on view transitions
+  document.addEventListener('astro:page-load', () => {
+    initLightbox();
+    initCarousel();
+  });
+</script>
 
 <style>
   /* Hero */
   .page-hero {
-    background: linear-gradient(135deg, #1B396A 0%, #5D85A6 100%);
-    padding: 4rem 0 3rem;
+    background: transparent;
+    padding: 6rem 0 3rem;
     color: white;
     position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .hero-bg-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    z-index: 0;
+  }
+
+  .hero-bg-slide.active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(27, 57, 106, 0.5) 0%, rgba(93, 133, 166, 0.5) 100%);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .container {
+    position: relative;
+    z-index: 3;
   }
 
   .page-hero-content {
@@ -409,9 +567,99 @@ import venuesData from '../data/venues.json';
     display: flex;
     gap: var(--spacing-md);
     padding: var(--spacing-lg);
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    /* Background handled via inline styles for images */
+    background-color: var(--color-primary); 
     color: white;
     align-items: flex-start;
+    position: relative;
+    min-height: 160px; /* Fixed height for consistency */
+  }
+
+  .image-preview-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    backdrop-filter: blur(4px);
+  }
+
+  .image-preview-btn:hover {
+    background: white;
+    color: var(--color-primary);
+    transform: scale(1.1);
+  }
+
+  /* Lightbox Styles */
+  .lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    padding: 2rem;
+  }
+
+  .lightbox-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .lightbox-content img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    object-fit: contain;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: -10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+  }
+
+  .lightbox-close:hover {
+    color: var(--color-accent);
+  }
+
+  .lightbox-caption {
+    color: white;
+    margin-top: 1rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+    text-align: center;
   }
 
   .venue-number {
@@ -572,11 +820,7 @@ import venuesData from '../data/venues.json';
     overflow: hidden;
   }
 
-  .map-image {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
+  /* Old map-image style removed, moved to new block */
 
   .map-caption {
     padding: var(--spacing-md) var(--spacing-lg);
@@ -692,6 +936,348 @@ import venuesData from '../data/venues.json';
 
     .highlights-list {
       grid-template-columns: 1fr;
+    }
+  }
+
+  /* Map and Table Layout */
+  /* Map and Table Layout */
+  .map-layout-grid {
+    display: flex; /* Changed from grid to flex for stacking */
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1000px; /* Reduced width for better centered look */
+    margin: 0 auto;
+  }
+
+  .municipalities-table-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .map-container {
+    margin: 0 auto;
+    width: auto;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+  }
+
+  .map-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .table-header {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    padding: var(--spacing-md) var(--spacing-lg);
+    color: white;
+  }
+
+  .table-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: white;
+  }
+
+  .municipalities-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .municipalities-table th,
+  .municipalities-table td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .municipalities-table th {
+    background: var(--color-bg-alt);
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .municipalities-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .municipalities-table tr:hover {
+    background-color: #f8fafc;
+  }
+
+  .municipalities-table a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .municipalities-table a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 968px) {
+    .map-layout-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .map-container {
+      order: -1;
+    }
+  }
+
+  /* Municipalities Links Container */
+  .municipalities-links-container {
+    display: flex;
+    align-items: stretch;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+    width: 100%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+  }
+  
+  .page-hero-content .municipalities-links-container {
+    max-width: 1400px;
+    width: calc(100% + 300px);
+    margin-left: calc(-150px);
+    margin-right: calc(-150px);
+  }
+  
+  @media (max-width: 1200px) {
+    .page-hero-content .municipalities-links-container {
+      width: calc(100% + 200px);
+      margin-left: calc(-100px);
+      margin-right: calc(-100px);
+    }
+  }
+  
+  @media (max-width: 968px) {
+    .page-hero-content .municipalities-links-container {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  .municipalities-links-image {
+    flex-shrink: 0;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+  }
+
+  .municipalities-links-image img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    border-radius: var(--radius-md);
+  }
+
+  .municipalities-links-separator {
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--color-border), transparent);
+    flex-shrink: 0;
+  }
+
+  .municipalities-links-list {
+    width: 30%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    /* Use space-between to distribute links evenly across the height */
+     justify-content: flex-start; /* 👈 en vez de space-between */
+  gap: 0.4rem; /* ajusta esto a tu gusto */
+    /* Adjust these percentages to match the image header and footer space */
+    padding-top: 10%; 
+    padding-bottom: 5%;
+    padding-left: var(--spacing-md);
+  }
+
+  .municipality-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.25rem var(--spacing-sm);
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+    font-size: 1.5rem !important;
+    line-height: 1.2;
+    text-shadow: 
+      0 0 8px rgba(0, 0, 0, 0.8),
+      0 0 4px rgba(0, 0, 0, 0.9),
+      0 2px 4px rgba(0, 0, 0, 0.7),
+      0 1px 2px rgba(0, 0, 0, 0.8);
+  }
+
+  .municipality-link:hover {
+    color: var(--color-primary);
+    background: var(--color-bg-alt);
+    text-decoration: underline;
+    text-shadow: none;
+  }
+
+  .municipality-link svg {
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  .municipality-link:hover svg {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .municipalities-links-container {
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+
+    .municipalities-links-image {
+      width: 100%;
+      min-height: 200px;
+    }
+
+    .municipalities-links-separator {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--color-border), transparent);
+    }
+
+
+    .municipalities-links-list {
+      padding-left: 0;
+    }
+  }
+
+  /* Carousel Styles */
+  .carousel-container {
+    position: relative;
+    overflow: hidden;
+    width: 70%; /* Match parent width */
+    height: 500px; /* Fixed height for consistency */
+    border-radius: var(--radius-md);
+    background: #000;
+  }
+
+  .carousel-track {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .carousel-slide.active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* or contain, depending on preference */
+    display: block;
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.3s;
+    font-size: 1.2rem;
+  }
+
+  .carousel-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .prev-btn {
+    left: 10px;
+  }
+
+  .next-btn {
+    right: 10px;
+  }
+
+  .carousel-indicators {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+  }
+
+  .indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .indicator.active {
+    background: white;
+    transform: scale(1.2);
+  }
+
+  @media (max-width: 768px) {
+    .carousel-container {
+      width: 100%;
+      height: 300px;
     }
   }
 </style>

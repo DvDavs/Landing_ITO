@@ -2,6 +2,7 @@
   {
     "id": 1,
     "name": "Oaxaca de Juárez",
+    "image": "/images/sedes/oaxacajuarez.jpg",
     "president": "Raymundo Chagoya Villanueva",
     "type": "Capital",
     "description": "Capital del estado de Oaxaca, reconocida por su riqueza cultural, gastronómica y arquitectónica. Centro neurálgico del evento y sede principal de las competencias.",
@@ -18,6 +19,7 @@
   {
     "id": 2,
     "name": "San Pablo Villa de Mitla",
+    "image": "/images/sedes/mitla.jpg",
     "president": "Esaú López Quero",
     "type": "Pueblo Mágico",
     "description": "Reconocido como uno de los sitios arqueológicos más importantes de Oaxaca. Famoso por sus grecas únicas en la arquitectura zapoteca.",
@@ -34,6 +36,7 @@
   {
     "id": 3,
     "name": "San Jacinto Amilpas",
+    "image": "/images/sedes/sanjacinto.jpg",
     "president": "Fidel Alejandro Díaz Díaz",
     "type": "Municipio",
     "description": "Municipio conurbado a la ciudad de Oaxaca, conocido por su desarrollo comercial y cercanía con las principales vías de comunicación.",
@@ -49,6 +52,7 @@
   {
     "id": 4,
     "name": "Santa Cruz Xoxocotlán",
+    "image": "/images/sedes/xoxocotlan.jpg",
     "president": "Nancy Natalia Benítez Zárate",
     "type": "Municipio",
     "description": "Municipio conocido por su aeropuerto internacional y su rica tradición en la celebración del Día de Muertos.",
@@ -65,6 +69,7 @@
   {
     "id": 5,
     "name": "San Sebastián Tutla",
+    "image": "/images/sedes/san sebastian tutla.jpg",
     "president": "Alejandro Fernández García Vásquez",
     "type": "Municipio",
     "description": "Municipio estratégicamente ubicado en la carretera Panamericana, conocido por su desarrollo industrial y comercial.",
@@ -80,6 +85,7 @@
   {
     "id": 6,
     "name": "Santa María El Tule",
+    "image": "/images/sedes/tule.jpg",
     "president": "Filemón Gómez Soto",
     "type": "Pueblo Mágico",
     "description": "Hogar del famoso Árbol del Tule, uno de los árboles más anchos del mundo con más de 2,000 años de antigüedad.",
@@ -96,6 +102,7 @@
   {
     "id": 7,
     "name": "Cuilápam de Guerrero",
+    "image": "/images/sedes/cuilapam.jpg",
     "president": "Mayra Silva Fernández",
     "type": "Municipio Histórico",
     "description": "Municipio de gran importancia histórica, hogar del Ex Convento de Santiago Apóstol, donde fue fusilado Vicente Guerrero.",
@@ -112,6 +119,7 @@
   {
     "id": 8,
     "name": "Santa María Atzompa",
+    "image": "/images/sedes/atzompa.jpg",
     "president": "Juan Justino López Torres",
     "type": "Municipio Artesanal",
     "description": "Reconocido por su tradición alfarera y cerámica de barro verde vidriado. También cuenta con una importante zona arqueológica.",

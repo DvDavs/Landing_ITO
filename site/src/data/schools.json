@@ -1,5 +1,14 @@
 [
   {
+    "id": 0,
+    "name": "Instituto Tecnológico de Oaxaca",
+    "shortName": "IT Oaxaca",
+    "region": "Sur",
+    "website": "https://www.itoaxaca.edu.mx",
+    "description": "Sede del XXXI Encuentro Nacional de Escoltas y Bandas de Guerra del TecNM 2026",
+    "sede": true
+  },
+  {
     "id": 1,
     "name": "Instituto Tecnológico de Celaya",
     "shortName": "IT Celaya",
@@ -12,7 +21,7 @@
     "name": "Instituto Tecnológico de Aguascalientes",
     "shortName": "IT Aguascalientes",
     "region": "Centro",
-    "website": "https://www.ita.mx",
+    "website": "https://www.aguascalientes.tecnm.mx",
     "description": "Instituto dedicado a la formación de profesionales con valores cívicos y disciplina."
   },
   {
@@ -20,7 +29,7 @@
     "name": "Instituto Tecnológico de Apizaco",
     "shortName": "IT Apizaco",
     "region": "Centro",
-    "website": "https://www.itapizaco.edu.mx",
+    "website": "https://www.apizaco.tecnm.mx",
     "description": "Formando líderes con responsabilidad social y compromiso patrio."
   },
   {
@@ -28,7 +37,7 @@
     "name": "Instituto Tecnológico de Cancún",
     "shortName": "IT Cancún",
     "region": "Sur",
-    "website": "https://www.itcancun.edu.mx",
+    "website": "https://www.cancun.tecnm.mx",
     "description": "Excelencia académica con tradición cívica en el Caribe Mexicano."
   },
   {
@@ -36,7 +45,7 @@
     "name": "Instituto Tecnológico de Cd. Guzmán",
     "shortName": "IT Cd. Guzmán",
     "region": "Centro",
-    "website": "https://www.itcg.edu.mx",
+    "website": "https://www.cdguzman.tecnm.mx",
     "description": "Institución con fuerte tradición en actividades cívicas y culturales."
   },
   {
@@ -44,7 +53,7 @@
     "name": "Instituto Tecnológico de Cd. Juárez",
     "shortName": "IT Cd. Juárez",
     "region": "Norte",
-    "website": "https://www.itcj.edu.mx",
+    "website": "http://cdjuarez.tecnm.mx",
     "description": "Formando profesionistas con valores patrios en la frontera norte."
   },
   {
@@ -52,7 +61,7 @@
     "name": "Instituto Tecnológico de Cd. Madero",
     "shortName": "IT Cd. Madero",
     "region": "Norte",
-    "website": "https://www.itcm.edu.mx",
+    "website": "https://www.cdmadero.tecnm.mx",
     "description": "Tradición y excelencia en la formación de escoltas y bandas de guerra."
   },
   {
@@ -68,7 +77,7 @@
     "name": "Instituto Tecnológico de Chihuahua",
     "shortName": "IT Chihuahua",
     "region": "Norte",
-    "website": "https://www.itchihuahua.edu.mx",
+    "website": "https://itchihuahua.mx",
     "description": "Institución con amplia trayectoria en eventos cívico-culturales."
   },
   {
@@ -84,7 +93,7 @@
     "name": "Instituto Tecnológico de Delicias",
     "shortName": "IT Delicias",
     "region": "Norte",
-    "website": "https://www.itdelicias.edu.mx",
+    "website": "https://delicias.tecnm.mx",
     "description": "Compromiso con la formación cívica de la juventud tecnológica."
   },
   {
@@ -116,7 +125,7 @@
     "name": "Instituto Tecnológico de Los Mochis",
     "shortName": "IT Los Mochis",
     "region": "Norte",
-    "website": "https://www.itlm.edu.mx",
+    "website": "https://www.mochis.tecnm.mx",
     "description": "Excelencia académica con tradición en bandas de guerra."
   },
   {
@@ -124,7 +133,7 @@
     "name": "Instituto Tecnológico de Matamoros",
     "shortName": "IT Matamoros",
     "region": "Norte",
-    "website": "https://www.itmatamoros.edu.mx",
+    "website": "https://www.matamoros.tecnm.mx",
     "description": "Compromiso cívico en la frontera tamaulipeca."
   },
   {
@@ -132,7 +141,7 @@
     "name": "Instituto Tecnológico de Mazatlán",
     "shortName": "IT Mazatlán",
     "region": "Norte",
-    "website": "https://www.itmazatlan.edu.mx",
+    "website": "https://mazatlan.tecnm.mx",
     "description": "Formando profesionistas con valores cívicos junto al Pacífico."
   },
   {
@@ -140,7 +149,7 @@
     "name": "Instituto Tecnológico de Mérida",
     "shortName": "IT Mérida",
     "region": "Sur",
-    "website": "https://www.itmerida.mx",
+    "website": "https://www.merida.tecnm.mx",
     "description": "Tradición y modernidad en la formación cívica yucateca."
   },
   {
@@ -148,7 +157,7 @@
     "name": "Instituto Tecnológico de Mexicali",
     "shortName": "IT Mexicali",
     "region": "Norte",
-    "website": "https://www.itmexicali.edu.mx",
+    "website": "http://www.itmexicali.edu.mx",
     "description": "Liderazgo cívico en la capital bajacaliforniana."
   },
   {
@@ -156,7 +165,7 @@
     "name": "Instituto Tecnológico de Minatitlán",
     "shortName": "IT Minatitlán",
     "region": "Sur",
-    "website": "https://www.itminatitlan.edu.mx",
+    "website": "https://minatitlan.tecnm.mx",
     "description": "Compromiso con la formación integral y cívica."
   },
   {
@@ -164,7 +173,7 @@
     "name": "Instituto Tecnológico de Morelia",
     "shortName": "IT Morelia",
     "region": "Centro",
-    "website": "https://www.itmorelia.edu.mx",
+    "website": "https://www.morelia.tecnm.mx",
     "description": "Tradición académica y cívica en Michoacán."
   },
   {
@@ -172,7 +181,7 @@
     "name": "Instituto Tecnológico de Nuevo Laredo",
     "shortName": "IT Nuevo Laredo",
     "region": "Norte",
-    "website": "https://www.itnuevolaredo.edu.mx",
+    "website": "https://www.nlaredo.tecnm.mx",
     "description": "Formación profesional con valores patrios fronterizos."
   },
   {
@@ -180,7 +189,7 @@
     "name": "Instituto Tecnológico de Nuevo León",
     "shortName": "IT Nuevo León",
     "region": "Norte",
-    "website": "https://www.itnl.edu.mx",
+    "website": "http://nuevoleon.tecnm.mx/",
     "description": "Excelencia en formación cívica y tecnológica."
   },
   {
@@ -188,7 +197,7 @@
     "name": "Instituto Tecnológico de Orizaba",
     "shortName": "IT Orizaba",
     "region": "Sur",
-    "website": "https://www.orizaba.tecnm.mx",
+    "website": "http://orizaba.tecnm.mx/web/",
     "description": "Sede regional con tradición en eventos cívicos nacionales."
   },
   {
@@ -196,7 +205,7 @@
     "name": "Instituto Tecnológico de Puebla",
     "shortName": "IT Puebla",
     "region": "Centro",
-    "website": "https://www.itpuebla.edu.mx",
+    "website": "https://www.puebla.tecnm.mx",
     "description": "Compromiso con los valores cívicos y la excelencia académica."
   },
   {
@@ -204,7 +213,7 @@
     "name": "Instituto Tecnológico de Querétaro",
     "shortName": "IT Querétaro",
     "region": "Centro",
-    "website": "https://www.itq.edu.mx",
+    "website": "https://www.queretaro.tecnm.mx",
     "description": "Formación integral con fuerte tradición cívica."
   },
   {
@@ -212,7 +221,7 @@
     "name": "Instituto Tecnológico de Reynosa",
     "shortName": "IT Reynosa",
     "region": "Norte",
-    "website": "https://www.itr.edu.mx",
+    "website": "https://www.reynosa.tecnm.mx",
     "description": "Liderazgo cívico en la frontera norte de Tamaulipas."
   },
   {
@@ -220,7 +229,7 @@
     "name": "Instituto Tecnológico de Roque",
     "shortName": "IT Roque",
     "region": "Centro",
-    "website": "https://www.itroque.edu.mx",
+    "website": "https://www.roque.tecnm.mx",
     "description": "Compromiso con la formación cívica y profesional."
   },
   {
@@ -228,7 +237,7 @@
     "name": "Instituto Tecnológico de San Luis Potosí",
     "shortName": "IT San Luis Potosí",
     "region": "Centro",
-    "website": "https://www.itslp.edu.mx",
+    "website": "https://slp.tecnm.mx/",
     "description": "Tradición y excelencia en el centro del país."
   },
   {
@@ -236,7 +245,7 @@
     "name": "Instituto Tecnológico de Tehuacán",
     "shortName": "IT Tehuacán",
     "region": "Centro",
-    "website": "https://www.ittehuacan.edu.mx",
+    "website": "http://www.ittehuacan.edu.mx/",
     "description": "Formación profesional con valores patrios."
   },
   {
@@ -244,7 +253,7 @@
     "name": "Instituto Tecnológico de Tepic",
     "shortName": "IT Tepic",
     "region": "Norte",
-    "website": "https://www.ittepic.edu.mx",
+    "website": "https://www.tepic.tecnm.mx",
     "description": "Compromiso cívico en el occidente mexicano."
   },
   {
@@ -252,7 +261,7 @@
     "name": "Instituto Tecnológico de Tuxtepec",
     "shortName": "IT Tuxtepec",
     "region": "Sur",
-    "website": "https://www.ittuxtepec.edu.mx",
+    "website": "https://www.tuxtepec.tecnm.mx",
     "description": "Excelencia académica y cívica en la Cuenca del Papaloapan."
   },
   {
@@ -260,7 +269,7 @@
     "name": "Instituto Tecnológico de Villahermosa",
     "shortName": "IT Villahermosa",
     "region": "Sur",
-    "website": "https://www.itvillahermosa.edu.mx",
+    "website": "https://www.villahermosa.tecnm.mx",
     "description": "Formación integral en el sureste mexicano."
   },
   {
@@ -268,7 +277,7 @@
     "name": "Instituto Tecnológico de Zacatecas",
     "shortName": "IT Zacatecas",
     "region": "Centro",
-    "website": "https://www.itzac.edu.mx",
+    "website": "https://www.zacatecas.tecnm.mx",
     "description": "Tradición cívica y académica en el centro-norte."
   },
   {
@@ -276,7 +285,7 @@
     "name": "Instituto Tecnológico del Istmo",
     "shortName": "IT del Istmo",
     "region": "Sur",
-    "website": "https://www.itoaxaca.edu.mx",
+    "website": "https://istmo.tecnm.mx/",
     "description": "Compromiso con la formación cívica oaxaqueña."
   },
   {
@@ -284,7 +293,7 @@
     "name": "Instituto Tecnológico Superior de Apatzingán",
     "shortName": "ITS Apatzingán",
     "region": "Centro",
-    "website": "https://www.itsapatzingan.edu.mx",
+    "website": "https://www.apatzingan.tecnm.mx",
     "description": "Formación tecnológica con valores patrios."
   },
   {
@@ -292,7 +301,7 @@
     "name": "Instituto Tecnológico Superior de Cd. Hidalgo",
     "shortName": "ITS Cd. Hidalgo",
     "region": "Centro",
-    "website": "https://www.itsciudadhi dalgo.edu.mx",
+    "website": "https://www.cdhidalgo.tecnm.mx",
     "description": "Excelencia académica y compromiso cívico."
   },
   {
@@ -300,7 +309,7 @@
     "name": "Instituto Tecnológico Superior de Irapuato",
     "shortName": "ITS Irapuato",
     "region": "Centro",
-    "website": "https://www.itesi.edu.mx",
+    "website": "https://irapuato.tecnm.mx/",
     "description": "Tradición cívica en el Bajío guanajuatense."
   },
   {
@@ -308,7 +317,7 @@
     "name": "Instituto Tecnológico Superior de Los Reyes",
     "shortName": "ITS Los Reyes",
     "region": "Centro",
-    "website": "https://www.itslosreyes.edu.mx",
+    "website": "https://www.losreyes.tecnm.mx",
     "description": "Formación profesional con valores cívicos michoacanos."
   },
   {
@@ -316,7 +325,7 @@
     "name": "Instituto Tecnológico Superior de Santiago Papasquiaro",
     "shortName": "ITS Santiago Papasquiaro",
     "region": "Norte",
-    "website": "https://www.itsspro.edu.mx",
+    "website": "http://www.spapasquiaro.tecnm.mx/index.php",
     "description": "Compromiso con la formación integral en Durango."
   }
 ]

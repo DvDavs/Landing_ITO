@@ -1,10 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { ViewTransitions } from 'astro:transitions';
+
+// Control de transmisión en vivo (variables de entorno)
+const isLive = import.meta.env.PUBLIC_YOUTUBE_LIVE_ENABLED === 'true';
+const youtubeLiveUrl = import.meta.env.PUBLIC_YOUTUBE_LIVE_URL || 'https://www.youtube.com/live/EdIpxnm34kU?si=EHd7RiYqLMpVzR6D';
 ---
 
 <BaseLayout 
-  title="Inicio - XXXI Encuentro Nacional de Escoltas y Bandas de Guerra TecNM 2026"
+  title="XXXI Encuentro Escoltas y Bandas de Guerra 2026 | ITO"
   description="Bienvenido al XXXI Encuentro Nacional de Escoltas y Bandas de Guerra del Tecnológico Nacional de México 2026, sede Instituto Tecnológico de Oaxaca. 22-26 de Febrero de 2026."
 >
   <!-- Hero Section con Flyer -->
@@ -18,9 +22,6 @@ import { ViewTransitions } from 'astro:transitions';
             <h1 class="hero-title">
               XXXI Encuentro Nacional de Escoltas y Bandas de Guerra
             </h1>
-            <p class="hero-subtitle">
-              Tecnológico Nacional de México
-            </p>
             <div class="hero-info">
               <div class="hero-info-item">
                 <span class="info-label">Sede Anfitriona</span>
@@ -28,10 +29,16 @@ import { ViewTransitions } from 'astro:transitions';
               </div>
               <div class="hero-info-item">
                 <span class="info-label">Participantes</span>
-                <span class="info-value">40 Institutos Tecnológicos</span>
+                <span class="info-value">40 Institutos + Sede</span>
               </div>
             </div>
             <div class="hero-actions">
+              {isLive && (
+                <a href={youtubeLiveUrl} target="_blank" class="btn btn-live btn-lg pulse-btn">
+                  <span class="pulse-dot"></span>
+                  YouTube Live
+                </a>
+              )}
               <a href="/evento" class="btn btn-primary btn-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
@@ -48,12 +55,15 @@ import { ViewTransitions } from 'astro:transitions';
                   <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                   <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                 </svg>
-                Escuelas Participantes
+                Tecnológicos Participantes
               </a>
             </div>
           </div>
           <div class="hero-image">
-            <img src="/images/flyer.jpg" alt="XXXI Encuentro Nacional de Escoltas y Bandas de Guerra" class="flyer-image" />
+            <div class="hero-static-image-container-final">
+               <img src="/images/principal/sede-oficial-2026.jpeg" alt="Sede Oficial - Instituto Tecnológico de Oaxaca" class="hero-main-image" />
+            </div>
+          </div>
           </div>
         </div>
       </div>
@@ -62,6 +72,60 @@ import { ViewTransitions } from 'astro:transitions';
       <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z" fill="white"/>
       </svg>
+    </div>
+  </section>
+
+  <!-- Retransmisión Destacada -->
+  <section class="replay-highlight-section section-alt">
+    <div class="container">
+      <div class="replay-highlight-card card">
+        <span class="section-badge">Noticia destacada</span>
+        <h2>Revive la inauguración</h2>
+        <p class="lead">
+          La transmisión en vivo ya finalizó. Ya puedes ver la retransmisión completa del acto inaugural en YouTube.
+        </p>
+        <div class="replay-highlight-actions">
+          <a href={youtubeLiveUrl} target="_blank" class="btn btn-primary btn-lg">
+            Ver retransmisión
+          </a>
+          <a href="/galeria" class="btn btn-outline btn-lg">
+            Ver galería del evento
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3D Announcement Carousel -->
+  <!-- Video Announcement Section (Static Image) -->
+  <section class="video-announcement-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <h3 style="font-size: 2rem; color: #1B396A; margin-bottom: 2rem;">Te puede interesar</h3>
+      </div>
+      
+      <div class="video-container">
+        <video 
+          autoplay 
+          muted 
+          loop 
+          controls 
+          class="official-video" 
+          poster="/images/vidios/Captura de pantalla 2026-01-27 164252.png"
+        >
+          <source src="/images/escoltas/AQMY-A0h7O2KNpJuXF-Q50Vx0px1dl4TIu6Wkk2UzEKNMypamnoLVya1_ubtpfX3BLgi_wGpize4DDQMaRLcMbAn9sIxVN6TNdVTvlxDaCU6vA.mp4" type="video/mp4" />
+          Tu navegador no soporta el elemento de video.
+        </video>
+      </div>
+       
+       <div class="actions-group" style="margin-top: 4rem;">
+         <a href="https://www.facebook.com/profile.php?id=100064684089409" target="_blank" class="btn btn-primary">
+           <span class="iconify" data-icon="ri:facebook-fill"></span>
+           Ver en Facebook
+         </a>
+
+         </a>
+       </div>
     </div>
   </section>
 
@@ -78,7 +142,6 @@ import { ViewTransitions } from 'astro:transitions';
             <polyline points="10 9 9 9 8 9"></polyline>
           </svg>
           <h2>Comunicado Oficial</h2>
-          <p class="statement-subtitle">Tecnológico Nacional de México</p>
         </div>
         <div class="statement-body">
           <p class="lead">
@@ -97,9 +160,64 @@ import { ViewTransitions } from 'astro:transitions';
               </svg>
             </div>
             <p class="highlight-text">
-              Felicidades a los 40 Institutos Tecnológicos que por el puntaje alcanzado participarán en el XXXI Encuentro Nacional de Escoltas y Bandas de Guerra TecNM 2026 en el Instituto Tecnológico de Oaxaca del 22 al 26 de febrero de 2026.
+              Felicidades a los cuarenta grupos cívicos de los Institutos Tecnológicos Federales y Descentralizados que obtuvieron su pase al encuentro nacional, más el Instituto Tecnológico sede, que participarán en el XXXI Encuentro Nacional de Escoltas y Bandas de Guerra TecNM 2026 en el Instituto Tecnológico de Oaxaca del 22 al 26 de febrero de 2026.
             </p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Convocatoria -->
+  <section class="convocatoria-section section-alt">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-badge">Documento Oficial</span>
+        <h2>Convocatoria</h2>
+        <p class="lead">
+          Consulta la convocatoria oficial del XXXI Encuentro Nacional de Escoltas y Bandas de Guerra
+        </p>
+      </div>
+      
+      <div class="convocatoria-card card">
+        <div class="convocatoria-content">
+          <div class="convocatoria-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </div>
+          <div class="convocatoria-info">
+            <h3>Convocatoria Oficial</h3>
+            <p>
+              Descarga la convocatoria completa del XXXI Encuentro Nacional de Escoltas y Bandas de Guerra 2026, 
+              que incluye toda la información sobre requisitos, fechas, sedes y proceso de participación.
+            </p>
+            <div class="convocatoria-details">
+              <div class="detail-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <span>Documento PDF</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="convocatoria-actions">
+          <a href="/convocatoria.pdf" target="_blank" class="btn btn-primary btn-lg">
+            Ver convocatoria
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
+            <path d="M5 12h14"></path>
+            <path d="M12 5l7 7-7 7"></path>
+          </svg>
+
+          </a>
         </div>
       </div>
     </div>
@@ -126,9 +244,9 @@ import { ViewTransitions } from 'astro:transitions';
               <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
             </svg>
           </div>
-          <h3>40 Instituciones</h3>
+          <h3>40 Instituciones Clasificadas + Sede</h3>
           <p>
-            Institutos Tecnológicos de todo México se darán cita en Oaxaca para demostrar su talento y disciplina cívica.
+            Cuarenta Institutos Tecnológicos seleccionados en los Encuentros Regionales 2025, más el Instituto Tecnológico de Oaxaca como sede del evento, se darán cita en Oaxaca para demostrar su talento y disciplina cívica.
           </p>
           <a href="/escuelas" class="btn btn-ghost">
             Ver participantes
@@ -237,42 +355,196 @@ import { ViewTransitions } from 'astro:transitions';
     </div>
   </section>
 
-  <!-- Call to Action -->
-  <section class="cta-section section-primary">
-    <div class="container">
-      <div class="cta-content text-center">
-        <h2>¿Listo para Participar?</h2>
-        <p class="lead">
-          Mantente informado sobre el proceso de registro y actualizaciones del evento
-        </p>
-        <div class="cta-buttons">
-          <a href="/registro" class="btn btn-lg" style="background: white; color: #1B396A;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-              <circle cx="8.5" cy="7" r="4"></circle>
-              <polyline points="17 11 19 13 23 9"></polyline>
-            </svg>
-            Información de Registro
-          </a>
-          <a href="/galeria" class="btn btn-outline btn-lg" style="border-color: white; color: white;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-              <circle cx="8.5" cy="8.5" r="1.5"></circle>
-              <polyline points="21 15 16 10 5 21"></polyline>
-            </svg>
-            Ver Galería
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <script>
+    function initGalleryCarousel() {
+      const carousel = document.querySelector('.gallery-carousel');
+      if (!carousel) return;
+
+      const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+      if (slides.length === 0) return;
+
+      let currentIndex = 0;
+      let intervalId: number | null = null;
+
+      // Ensure first slide is active
+      if (!carousel.querySelector('.active')) {
+          slides[0].classList.add('active');
+      }
+
+      const nextSlide = () => {
+        slides[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % slides.length;
+        slides[currentIndex].classList.add('active');
+      };
+
+      const prevSlide = () => {
+        slides[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        slides[currentIndex].classList.add('active');
+      };
+
+      const startAutoplay = () => {
+        if (intervalId) clearInterval(intervalId);
+        intervalId = setInterval(nextSlide, 3000); 
+      };
+
+      const stopAutoplay = () => {
+        if (intervalId) {
+          clearInterval(intervalId);
+          intervalId = null;
+        }
+      };
+
+      const resetAutoplay = () => {
+        stopAutoplay();
+        startAutoplay();
+      };
+
+      const container = carousel.closest('.gallery-carousel-container');
+      
+      if (container) {
+          const prevBtn = container.querySelector('.carousel-control.prev');
+          const nextBtn = container.querySelector('.carousel-control.next');
+
+          if (prevBtn) {
+            prevBtn.addEventListener('click', (e) => {
+              e.preventDefault(); 
+              prevSlide();
+              resetAutoplay();
+            });
+          }
+
+          if (nextBtn) {
+            nextBtn.addEventListener('click', (e) => {
+              e.preventDefault();
+              nextSlide();
+              resetAutoplay();
+            });
+          }
+      }
+
+      startAutoplay();
+      carousel.addEventListener('mouseenter', stopAutoplay);
+      carousel.addEventListener('mouseleave', startAutoplay);
+    }
+
+    document.addEventListener('astro:page-load', initGalleryCarousel);
+    document.addEventListener('DOMContentLoaded', initGalleryCarousel);
+  </script>
 </BaseLayout>
 
 <style>
+  /* YouTube Live Button Styles */
+  .btn-live {
+    background: linear-gradient(135deg, #FF0000 0%, #CC0000 100%);
+    color: white !important;
+    border: none;
+    box-shadow: 0 8px 20px rgba(255, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 56px;
+  }
+
+  .btn-live:hover {
+    background: linear-gradient(135deg, #CC0000 0%, #990000 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(255, 0, 0, 0.35);
+  }
+
+  .pulse-btn {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pulse-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin-right: 10px;
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .pulse-dot::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-ring 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-ring {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(3);
+      opacity: 0;
+    }
+  }
+
+  /* Symmetric Action Buttons */
+  .actions-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .actions-group .btn {
+    min-width: 260px;
+    min-height: 64px;
+    font-size: 1.1rem;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .replay-highlight-section {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .replay-highlight-card {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    padding: var(--spacing-xl);
+  }
+
+  .replay-highlight-card h2 {
+    color: #1B396A;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .replay-highlight-card .lead {
+    margin: 0 auto var(--spacing-lg);
+    max-width: 700px;
+  }
+
+  .replay-highlight-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
   /* Hero Section */
   .hero-section {
     position: relative;
-    background: linear-gradient(135deg, #5D85A6 0%, #4a6b85 100%);
+    background: linear-gradient(135deg, rgba(27, 57, 106, 0.5) 0%, rgba(93, 133, 166, 0.5) 100%), url('/images/oaxaca/IMG3.webp');
+    background-size: cover;
+    background-position: center;
     padding: 0;
     overflow: hidden;
   }
@@ -366,9 +638,23 @@ import { ViewTransitions } from 'astro:transitions';
   }
 
   .hero-actions {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: var(--spacing-sm);
-    flex-wrap: wrap;
+    width: 100%;
+    max-width: 720px;
+  }
+
+  .hero-actions .btn {
+    min-width: 100%;
+    min-height: 56px;
+    justify-content: center;
+  }
+
+  @media (max-width: 640px) {
+    .hero-actions {
+      grid-template-columns: 1fr;
+    }
   }
 
   .btn-white {
@@ -407,6 +693,93 @@ import { ViewTransitions } from 'astro:transitions';
     display: block;
     width: 100%;
     height: auto;
+  }
+
+  /* Static Hero Image */
+  .hero-static-image-container {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow-2xl);
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    transform: perspective(1000px) rotateY(-5deg);
+    transition: transform 0.5s ease;
+  }
+
+  .hero-static-image-container:hover {
+    transform: perspective(1000px) rotateY(0deg);
+  }
+
+  .hero-main-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+  }
+
+  .hero-image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+    text-align: center;
+  }
+
+  .image-caption {
+     font-weight: 600;
+     letter-spacing: 0.05em;
+     text-transform: uppercase;
+     font-size: 0.875rem;
+  }
+
+  /* Gallery Section */
+  .gallery-section {
+    padding: var(--spacing-2xl) 0;
+    position: relative;
+  }
+
+  .gallery-carousel-wrapper {
+     max-width: 800px;
+     margin: 0 auto;
+     position: relative;
+  }
+
+  .gallery-carousel-container {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  .gallery-carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  /* Reuse carousel styles with new class names */
+  .gallery-carousel .carousel-slide {
+     position: absolute;
+     top: 0; left: 0; width: 100%; height: 100%;
+     background-size: cover;
+     background-position: center;
+     opacity: 0;
+     transition: opacity 0.8s ease-in-out;
+  }
+
+  .gallery-carousel .carousel-slide.active {
+     opacity: 1;
+     z-index: 2;
   }
 
   /* Official Statement */
@@ -490,6 +863,103 @@ import { ViewTransitions } from 'astro:transitions';
     line-height: 1.7;
     font-weight: 500;
     flex: 1;
+  }
+
+  /* Convocatoria Section */
+  .convocatoria-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .convocatoria-card {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--spacing-xl);
+  }
+
+  .convocatoria-content {
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: flex-start;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .convocatoria-icon {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(27, 57, 106, 0.1) 0%, rgba(27, 57, 106, 0.05) 100%);
+    border-radius: var(--radius-xl);
+    color: #1B396A;
+  }
+
+  .convocatoria-icon svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .convocatoria-info {
+    flex: 1;
+  }
+
+  .convocatoria-info h3 {
+    color: #1B396A;
+    font-size: 1.75rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .convocatoria-info p {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .convocatoria-details {
+    display: flex;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+    margin-top: var(--spacing-md);
+  }
+
+  .detail-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--color-text-light);
+    font-size: 0.9375rem;
+  }
+
+  .detail-item svg {
+    color: #1B396A;
+  }
+
+  .convocatoria-actions {
+    display: flex;
+    justify-content: center;
+    padding-top: var(--spacing-md);
+    border-top: 2px solid var(--color-border);
+  }
+
+  @media (max-width: 768px) {
+    .convocatoria-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .convocatoria-icon {
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .convocatoria-details {
+      justify-content: center;
+    }
+
+    .convocatoria-actions .btn {
+      width: 100%;
+    }
   }
 
   /* Features Section */
@@ -590,32 +1060,6 @@ import { ViewTransitions } from 'astro:transitions';
     font-size: 1.125rem;
   }
 
-  /* CTA Section */
-  .cta-section {
-    padding: var(--spacing-2xl) 0;
-  }
-
-  .cta-content h2 {
-    color: white;
-    margin-bottom: var(--spacing-sm);
-    font-size: clamp(2rem, 4vw, 3rem);
-  }
-
-  .cta-content .lead {
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: var(--spacing-lg);
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .cta-buttons {
-    display: flex;
-    gap: var(--spacing-sm);
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
   /* Responsive */
   @media (max-width: 968px) {
     .hero-grid {
@@ -646,26 +1090,171 @@ import { ViewTransitions } from 'astro:transitions';
     }
   }
 
+  /* Carousel Styles */
+  .hero-carousel-container {
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 4/5;
+    margin: 0 auto;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-2xl);
+    position: relative;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+  }
+
+  .hero-carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+  }
+
+  .carousel-slide.active {
+    opacity: 1;
+    z-index: 2;
+  }
+
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+  }
+
+  .carousel-control:hover {
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--color-primary);
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .carousel-control.prev {
+    left: 10px;
+  }
+
+  .carousel-control.next {
+    right: 10px;
+  }
+
   @media (max-width: 640px) {
-    .hero-actions {
-      flex-direction: column;
-    }
-
-    .hero-actions .btn {
-      width: 100%;
-    }
-
-    .cta-buttons {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .cta-buttons .btn {
-      width: 100%;
-    }
-
     .hero-info {
       flex-direction: column;
     }
   }
+  /* Hero Static Image */
+  .hero-static-image-container-final {
+    width: 100%;
+    max-width: 480px;
+    aspect-ratio: 1131 / 1600;
+    margin: 0 auto;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+    background: transparent;
+  }
+
+  .hero-main-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: var(--radius-xl) !important;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 0 160px rgba(255, 255, 255, 0.5) !important;
+    border: none !important;
+  }
+  /* Video Announcement Section */
+  .video-announcement-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+
+  .video-container {
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  }
+
+  .official-video {
+    width: 100%;
+    display: block;
+    height: auto;
+  }
+
+  .play-button-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(8, 102, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 0 rgba(8, 102, 255, 0.7);
+    animation: pulse-blue 2s infinite;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+
+  .video-link-wrapper:hover .play-button-overlay {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: #0866FF;
+  }
+
+  .play-icon {
+    width: 40px;
+    height: 40px;
+    color: white;
+    margin-left: 4px; /* Optical center adjustment */
+  }
+
+  @keyframes pulse-blue {
+    0% {
+      transform: translate(-50%, -50%) scale(0.95);
+      box-shadow: 0 0 0 0 rgba(8, 102, 255, 0.7);
+    }
+    70% {
+      transform: translate(-50%, -50%) scale(1);
+      box-shadow: 0 0 0 20px rgba(8, 102, 255, 0);
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(0.95);
+      box-shadow: 0 0 0 0 rgba(8, 102, 255, 0);
+    }
+  }
+
 </style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+
+  });
+</script>
